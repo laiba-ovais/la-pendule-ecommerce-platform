@@ -4,9 +4,10 @@ import './index.css';
 import Course from './containers/Course';
 import * as serviceWorker from './serviceWorker';
 
+
 ReactDOM.render(
   <React.StrictMode>
-    <Course />
+    /<Course /> 
   </React.StrictMode>,
   document.getElementById('root')
 );
