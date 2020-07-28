@@ -12,12 +12,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-<<<<<<< HEAD:package.json
-    "react-stripe-checkout": "^2.6.3",
-    "stripe": "^8.69.0"
-=======
     "react-stripe-checkout": "^2.6.3"
->>>>>>> 66dd73f91a4900455509399f7014c6945468c474:client/package.json
   },
   "scripts": {
     "start": "react-scripts start",
