@@ -30,20 +30,16 @@ class Course extends React.Component{
     render(){
         return(
 
-            <BrowserRouter>            
+                      
             <div className ="container">
             {/* <Navbar/>
             <Cart/>
             <Default/> */}
-            <GridList cols={3} cellHeight={'auto'}>
-            
+            <GridList cols={3} cellHeight={'auto'}>           
             <CourseCardList CourseDetails={CourseDetails}/>
-            
-            
-
             </GridList>
              </div>
-            </BrowserRouter>
+
             
             
         )
