@@ -9,12 +9,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Course.css";
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
-const courseProduct = CourseDetails;
+
 
 class Course extends React.Component{
     constructor(props){
         super(props);
-        this.state={apiResponse: ""};
+        this.state={apiResponse: "",
+    coursProduct: CourseDetails, };
     }
    
     callAPI(){
@@ -35,9 +36,9 @@ class Course extends React.Component{
             <Cart/>
             <Default/> */}
             <GridList cols={3} cellHeight={'auto'}>
-            <Link to ={'/courses/'+ courseProduct.id } >
+            
             <CourseCardList CourseDetails={CourseDetails}/>
-            </Link>
+            
             
 
             </GridList>
