@@ -7,20 +7,16 @@ import CourseCardList from '../components/Course/CourseCardList';
 import { GridList } from '@material-ui/core';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Course.css";
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 
-
-
-
-
-
-
+const courseProduct = CourseDetails;
 
 class Course extends React.Component{
     constructor(props){
         super(props);
         this.state={apiResponse: ""};
     }
-
+   
     callAPI(){
         fetch("http://localhost:9000/Courses")
         .then(res => res.text())
@@ -33,17 +29,20 @@ class Course extends React.Component{
     render(){
         return(
 
-
+            <BrowserRouter>            
             <div className ="container">
-            <Navbar/>
+            {/* <Navbar/>
             <Cart/>
-            <Default/>
+            <Default/> */}
             <GridList cols={3} cellHeight={'auto'}>
+            <Link to ={'/courses/'+ courseProduct.id } >
             <CourseCardList CourseDetails={CourseDetails}/>
+            </Link>
+            
+
             </GridList>
-            
-            
              </div>
+            </BrowserRouter>
             
             
         )

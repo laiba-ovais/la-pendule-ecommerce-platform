@@ -21,4 +21,19 @@ const CourseCardList = ({ CourseDetails }) => {
 
 }
 
+
+// import React, { Component } from 'react'
+
+// export default class CourseCardList extends Component {
+//   render() {
+//     return (
+//       <div>
+  // listcourses
+//       </div>
+//     )
+//   }
+// }
+
+
+
 export default CourseCardList;

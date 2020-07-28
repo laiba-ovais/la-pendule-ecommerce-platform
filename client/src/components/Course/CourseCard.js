@@ -57,3 +57,15 @@ export default function CourseCardList({authorInitial, courseTitle, uploadDate, 
     </Card>
   );
 }
+
+// import React, { Component } from 'react'
+
+// export default class CourseCard extends Component {
+//   render() {
+//     return (
+//       <div>
+//         course
+//       </div>
+//     )
+//   }
+// }
