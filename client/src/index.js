@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Course from './containers/Course';
-import Payment from './components/Payment/Payment'
 import * as serviceWorker from './serviceWorker';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* /<Course />  */}
-    <Payment/>
+    /<Course /> 
+    
   </React.StrictMode>,
   document.getElementById('root')
 );

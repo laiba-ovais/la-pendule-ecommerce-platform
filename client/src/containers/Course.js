@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { CourseDetails } from '../components/Course/CourseDetails';
 import CourseCardList from '../components/Course/CourseCardList';
 import { GridList } from '@material-ui/core';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class Course extends React.Component{
     constructor(props){
@@ -20,10 +22,15 @@ class Course extends React.Component{
     }
     render(){
         return(
+            <div className ="container">
             <GridList cols={3} cellHeight={'auto'}>
-                <CourseCardList CourseDetails={CourseDetails}/>
+            <CourseCardList CourseDetails={CourseDetails}/>
             </GridList>
+             </div>
+            
+            
         )
+
 
     }
 }
