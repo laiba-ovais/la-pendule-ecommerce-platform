@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import Cart from '../components/Cart/Cart';
-import Default from '../components/Default';
+import Default from '../components/Default.';
 import { CourseDetails } from '../components/Course/CourseDetails';
 import CourseCardList from '../components/Course/CourseCardList';
 import { GridList } from '@material-ui/core';
