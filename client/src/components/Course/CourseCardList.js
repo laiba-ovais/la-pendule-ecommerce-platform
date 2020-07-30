@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 const CourseCardList = ({ CourseDetails }) => {
     const courseArray = CourseDetails.map((course,i) => {
-      return <Link to ={'/courses/'+ CourseDetails[i].id }><CourseCard
-        courseId = { CourseDetails[i].id }
+      return <Link to ={'/courses/'+ CourseDetails[i]._id} ><CourseCard
+        courseId = { CourseDetails[i]._id }
         authorInitial  = { CourseDetails[i].authorInitial }
         courseTitle = { CourseDetails[i].courseTitle }
         uploadDate = { CourseDetails[i].uploadDate }

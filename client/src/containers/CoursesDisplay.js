@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Course from './Course'
+import Course from './Course';
 
 function CourseDispay(props){
 

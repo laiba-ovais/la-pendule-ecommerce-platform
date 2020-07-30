@@ -1,21 +1,27 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter,Switch, Route, Link } from 'react-router-dom';
 import CoursesDisplay from './containers/CoursesDisplay';
 import Course from './containers/Course';
+import Navbar from './components/Navbar/Navbar';
 
 
 
-
+//s capital nhi hoga/.?
 
 function HomePage(props){
     return (
-        <BrowserRouter>
-        <Course></Course>
-        <div className="content">
-        <Route path="/order/:id" component={CoursesDisplay} />   
+       
+        <div >
+        <Navbar></Navbar>
+        <Switch>
+        <Route path="/courses/:id" component={CoursesDisplay} /> 
+        <Route exact path="/" component = {Course}/>
+        <Route exact path="/home" component = {Course}/>
+        </Switch>
+          
         </div>
-        </BrowserRouter>
-    )
+       
+    );
 }
 
 export default HomePage;

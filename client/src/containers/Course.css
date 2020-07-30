@@ -8,8 +8,7 @@
 
 body{
     font-family:"Oswald",sans-serif !important;
-    background: var(--mainWhite) !important;
-    color: var(--mainDark) !important;
+    
 }
 .text-title
 { font-family: 'Permanent Marker', cursive;

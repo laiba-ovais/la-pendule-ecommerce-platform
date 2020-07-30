@@ -9,10 +9,11 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 //import {CourseDetails } from './CourseDetails';
 import { Grow } from '@material-ui/core';
+import 'tachyons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    maxWidth: 345, 
     padding: 3,
     display: "inline-block",
     borderRight: 3,
@@ -23,10 +24,15 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '56.25%', // 16:9s
+    
   },
   avatar: {
     backgroundColor: red[500],
+  },
+  container:{
+    transition: 'all 1s linear', 
+
   },
 }));
 
@@ -34,6 +40,8 @@ export default function CourseCardList({authorInitial, courseTitle, uploadDate, 
   const classes = useStyles();
 
   return (
+  
+    <div className= " dib br3 ma2 grow bw2 shadow-5">
     <Card className={classes.root}>
       <CardHeader
         avatar={
@@ -55,6 +63,7 @@ export default function CourseCardList({authorInitial, courseTitle, uploadDate, 
         </Typography>
       </CardContent>
     </Card>
+    </div>
   );
 }
 
@@ -69,3 +78,4 @@ export default function CourseCardList({authorInitial, courseTitle, uploadDate, 
 //     )
 //   }
 // }
+
