@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Tue Jul 28 2020 15:13:09 GMT+0500 (Pakistan Standard Time)
+------------------------------------------------------
+
+Modified files:
+* client/package.json
+* client/src/index.js
+
+
+Created files:
+
+
+Deleted files:
+
+
+Renamed files:

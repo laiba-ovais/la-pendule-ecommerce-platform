@@ -1,5 +1,5 @@
 export const CourseDetails = [
-    {
+    {   id:1,
         authorInitial : 'R', 
         courseTitle : 'WEB DEVELOPMENT', 
         uploadDate : '09 September, 2020', 
@@ -8,6 +8,7 @@ export const CourseDetails = [
         courseAuthor : 'fbkjdh'
     },
     {
+        id:2,
         authorInitial : 'R', 
         courseTitle : 'WEB DEVELOPMENT', 
         uploadDate : '09 September, 2020', 
@@ -16,6 +17,7 @@ export const CourseDetails = [
         courseAuthor : 'fbkjdh'
     },
     {
+        id:3,
         authorInitial : 'R', 
         courseTitle : 'WEB DEVELOPMENT', 
         uploadDate : '09 September, 2020', 

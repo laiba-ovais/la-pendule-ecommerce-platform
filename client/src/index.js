@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Course from './containers/Course';
 import * as serviceWorker from './serviceWorker';
+import HomePage from './HomePage';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Course />
+    <HomePage></HomePage>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
