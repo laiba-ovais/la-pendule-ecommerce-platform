@@ -10,13 +10,16 @@ import '../components/Course/CourseDetails';
 import "./Course.css";
 
 import { BrowserRouter, Route, Link } from 'react-router-dom';
+import SearchBar from '../components/Navbar/SearchBar';
 
 
 class Course extends React.Component{
     constructor(props){
         super(props);
         this.state={apiResponse: "", 
-        CourseDetails: CourseDetails};
+        CourseDetails: CourseDetails,
+        searchfeild: '' };
+        
     }
    
     callAPI(){
@@ -29,28 +32,34 @@ class Course extends React.Component{
         this.callAPI();
     }
 
-    //
-    //var searchfeild = useState( '' );
+    
+    
 
-    /*const onSearchChange = (event) =>{
-      searchfeild = event.target.value;
+     onSearchChange = (event) =>{
+      var searchfeild = event.target.value;
           const filteredcourse = CourseDetails.filter(CourseDetails=>{
              return( 
               CourseDetails.courseTitle.toLowerCase().includes(searchfeild.toLowerCase()))
-             });
-             console.log(filteredcourse);
-    }
-     */ 
+             })
+             this.setState({CourseDetails:filteredcourse}); 
+             console.log(CourseDetails);
+              }
+    
     render(){
 
         return(
-                      
             <div className ="container">
+            <div>
+            <SearchBar  onChange={this.onSearchChange}> 
+            
+            </SearchBar>
+            </div>
             {/* <Navbar/>
             <Cart/>
             <Default/> */}
-            <GridList cols={3} cellHeight={'auto'}>           
-            <CourseCardList CourseDetails={CourseDetails}/>
+            
+            <GridList cols={3} cellHeight={'auto'}> 
+            <CourseCardList CourseDetails={this.state.CourseDetails}/>
             </GridList>
              </div>
 

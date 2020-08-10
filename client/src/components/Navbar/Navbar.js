@@ -185,8 +185,8 @@ export default function Navbar() {
          <Link to= '/home' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
            HOME
           </Typography></Link> 
-          <SearchBar> 
-          </SearchBar>
+          {/* <SearchBar> 
+          </SearchBar> */}
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
