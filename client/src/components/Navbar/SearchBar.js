@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
         //   } 
         //   componentDidMount();
 
-  const SearchBar=(props)=>{
+  const SearchBar=({searchField, searchChange})=>{
 
     // var searchfeild = useState( '' );
     // const [courses , setCourses] = useState( [CourseDetails]);
@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
           <SearchIcon />
           </div>
           <InputBase
-             onChange = {onChange}
+             onChange = {searchChange}
             // courses = {courses}
             placeholder="Search…"
             classes={{

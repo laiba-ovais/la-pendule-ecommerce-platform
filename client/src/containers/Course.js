@@ -18,7 +18,7 @@ class Course extends React.Component{
         super(props);
         this.state={apiResponse: "", 
         CourseDetails: CourseDetails,
-        searchfeild: '' };
+        searchField: "" };
         
     }
    
@@ -33,9 +33,9 @@ class Course extends React.Component{
         
     }
 
-    
-    
-
+     onSearchChange = (event) =>{
+        this.setState({searchField: event.target.value})
+    }
     
     // on change wala hi hai ye sahi chal rha hai dekho./..input
 
@@ -44,20 +44,20 @@ class Course extends React.Component{
     render(){
 
        
-        const onSearchChange = (event) =>{
-            var searchfeild = event.target.value;
+        
+         const   {searchField, searchChange} = this.state;
             const filteredcourse = CourseDetails.filter(CourseDetails=>{
                    return( 
-                    CourseDetails.courseTitle.toLowerCase().includes(searchfeild.toLowerCase()))
+                    CourseDetails.courseTitle.toLowerCase().includes(this.state.searchField.toLowerCase()))
                    })
-                   this.setState({CourseDetails:filteredcourse}); 
+                //    this.setState({CourseDetails:filteredcourse}); 
                    
                    console.log(CourseDetails);
-                    }
+                    
         return(
             <div className ="container">
             <div>
-            <SearchBar  onChange={onSearchChange}> 
+            <SearchBar  searchChange={this.onSearchChange}> 
             
             </SearchBar>
             </div>
@@ -66,7 +66,7 @@ class Course extends React.Component{
             <Default/> */}
             
             <GridList cols={3} cellHeight={'auto'}> 
-            <CourseCardList CourseDetails={CourseDetails}/>  
+            <CourseCardList CourseDetails={filteredcourse}/>  
             </GridList>
              </div>
 
