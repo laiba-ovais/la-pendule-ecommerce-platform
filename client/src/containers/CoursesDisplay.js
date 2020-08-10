@@ -3,8 +3,9 @@ import {ProductConsumer} from '../components/Course/contex'
 import {Link} from 'react-router-dom'
 import {ButtonContainer} from '../components/Button/Button'
 // import Course from './Product';
+import {CourseDetails} from '../components/Course/CourseDetails'
 
-export default class CourseDetails extends Component {
+export default class CourseDisplay extends Component {
   render() {
     return (
       <ProductConsumer>
