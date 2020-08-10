@@ -83,21 +83,24 @@ const useStyles = makeStyles((theme) => ({
               CourseDetails.courseTitle.toLowerCase().includes(searchfeild.toLowerCase()))
              })
              setCourses(filteredcourse); 
+             console.log(filteredcourse);
               }
       
         const classes = useStyles();
 
           return (<div className={classes.search}>
           <div className={classes.searchIcon}>
-            <SearchIcon />
+          <SearchIcon />
           </div>
           <InputBase
-          
+            onChange = {onSearchChange}
+            courses = {courses}
             placeholder="Search…"
             classes={{
               root: classes.inputRoot,
               input: classes.inputInput,
             }}
+            
             inputProps={{ 'aria-label': 'search' }}
           />
         </div>

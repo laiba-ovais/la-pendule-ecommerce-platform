@@ -17,6 +17,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import {Link} from 'react-router-dom';
 import SearchBar from './SearchBar';
 import './Navbar.css';
+import { CourseDetails } from '../Course/CourseDetails';
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -90,6 +91,7 @@ export default function Navbar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [coursesFilter , setcoursesFilter] = React.useState([CourseDetails]);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -183,7 +185,8 @@ export default function Navbar() {
          <Link to= '/home' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
            HOME
           </Typography></Link> 
-          <SearchBar ></SearchBar>
+          <SearchBar> 
+          </SearchBar>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
