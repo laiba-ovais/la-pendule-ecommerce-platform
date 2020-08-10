@@ -7,7 +7,8 @@ export const CourseDetails = [
         imageTitle : 'xyz',
         courseAuthor : 'fbkjdh',
         price :200,
-        inCart: false
+        inCart: false,
+        info: "info of course"
     },
     {
         _id:2,
@@ -18,7 +19,8 @@ export const CourseDetails = [
         imageTitle : 'xyz',
         courseAuthor : 'fbkjdh',
         price :200,
-        inCart: false
+        inCart: false,
+        info: "info of course"
     },
     {
         _id:3,
@@ -29,6 +31,7 @@ export const CourseDetails = [
         imageTitle : 'xyz',
         courseAuthor : 'fbkjdh',
         price :200,
-        inCart: false
+        inCart: false,
+        info: "info of course"
     }
 ];

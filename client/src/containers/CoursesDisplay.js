@@ -1,120 +1,69 @@
+import React, { Component } from 'react'
+import {ProductConsumer} from '../components/Course/contex'
+import {Link} from 'react-router-dom'
+import {ButtonContainer} from '../components/Button/Button'
+// import Course from './Product';
 
-import React, { Component } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { ProductConsumer } from "../components/Course/contex";
-import PropTypes from 'prop-types'
-
-export default class Product extends Component {
+export default class CourseDetails extends Component {
   render() {
-    const { _id, courseTitle, courseImage , price, inCart } = this.props.product;
     return (
-      <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
-        <div className="card">
-          <ProductConsumer>
-            {(value)=> (
-                <div
-                  className="img-container p-5"
-                  onClick= {()=>value.handleDetail(_id)}
-                >
-                  <Link to="/details">
-                    <img src={courseImage} alt="product" className="card-img-top" />
-                  </Link>
+      <ProductConsumer>
+        {
+          (value)=>{
+            const {_id,courseImage, courseAuthor,info, price, courseTitle, inCart} = 
+            value.CourseDetails;
 
-                  <button
-                    className="cart-btn"
-                    disabled={inCart ? true : false}
-                    onClick={() => {
-                      value.addToCart(_id);
-                      value.openModal(_id);
-                    }}
-                  >
-                  {inCart ? (
-                    <p className="text-capitalize mb-0" disabled>
-                      In Cart
-                    </p>
-                  ) : (
-                    <i className="fas fa-cart-plus" />
-                  )}
-                  </button>
+            return (
+                <div className="row">
+                  <div className="col-10 mx-auto text-center text-slanter text-blue my-5">
+                    <h1>
+                      {courseTitle}
+                    </h1>
+                  </div>
+                  <div className="row">
+                    <div className="col-10 mx-auto col-md-6 my-3 text-capitalize">
+                        <img src={courseImage} className="img-fluid" alt="product"/>
+                    </div>
+                    <div className="col-10 mx-auto col-md-6 my-3 text-capitalize">
+                      <h2>model: {courseTitle}</h2>
+                      <h4 className="text-title text-uppercase text-muted mt-3 mb-2">
+                        made by : <span className="text-uppercase">{courseAuthor}</span>
+                      </h4>
+                      <h4 className="text-blue">
+                        <strong>
+                          price: <span>$</span> {price}
+                        </strong>
+                      </h4>
+                      <p className="text-capitalize font-weight-bold mt-3 mb-0">
+                          some info about product:
+                      </p>
+                      <p className="text-muted lead">
+                        {info}
+                      </p>
+                      <div>
+                        <Link to="/">
+                          <ButtonContainer>
+                            back to products
+                          </ButtonContainer>
+                        </Link>
+                          <ButtonContainer 
+                            disabled={inCart?true:false}
+                            onClick={()=>{
+                              value.addToCart(_id);
+                              value.openModal(_id);
+                            }}
+                          >
+                            {inCart ? "inCart":"add to cart"}
+                          </ButtonContainer>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              )}
-          </ProductConsumer>
-          <div className="card-footer d-flex justify-content-between">
-              <p className="align-self-center mb-0">
-                {courseTitle}
-              </p>
-              <h5 className="text-blue font-italic mb-0">
-                <span className="mr-1">$</span>
-                {price}
-              </h5>
-          </div>
-        </div>
-      </ProductWrapper>
-    );
+            );
+
+          }
+        }
+      </ProductConsumer>
+    )
   }
 }
-
-Product.propTypes = {
-  product: PropTypes.shape({
-      
-      _id: PropTypes.number,
-      courseImage: PropTypes.string,
-      courseTitle: PropTypes.string,
-      price: PropTypes.number,
-      authorInitial : PropTypes.string,
-      inCart: PropTypes.bool
-  }).isRequired
-};
-
-
-const ProductWrapper = styled.div`
-    .card {
-      border-color: transparent;
-      transition: all 1s linear;
-    }
-    .card-footer {
-      background: transparent;
-      border-top: transparent;
-      transition: all 1s linear;
-    }
-    &:hover {
-      .card {
-        border: 0.04rem solid rgba(0,0,0,0.2);
-        box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.2)
-      }
-      .card-footer {
-        background: rgba(247, 247, 247);
-      }
-    }
-    .img-container {
-      position: relative;
-      overflow: hidden;
-    }
-    .card-img-top {
-      transition: all 1s linear;
-    }
-    .img-container:hover .card-img-top{
-      transform: scale(1.2);
-    }
-    .cart-btn{
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      padding: 0.2 rem 0.4rem;
-      background: var(--lightBlue);
-      border: none;
-      color:var(--mainWhite);
-      font-size: 1.4rem;
-      border-radius: 0.5rem 0 0 0;
-      transform: translate(100%, 100%);
-      transition: all 1s linear;
-    }
-    .img-container: hover .cart-btn {
-      transform: translate(0,0);
-    }
-    .cart-btn:hover{
-      color: var(--mainBlue);
-      cursor: pointer;
-    }
-`;
