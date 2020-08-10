@@ -12,13 +12,13 @@ function HomePage(props){
     return (
        
         <div >
-        <Navbar></Navbar>
+        <Navbar>
         <Switch>
         <Route path="/courses/:id" component={CoursesDisplay} /> 
         <Route exact path="/" component = {Course}/>
         <Route exact path="/home" component = {Course}/>
         </Switch>
-          
+        </Navbar>
         </div>
        
     );

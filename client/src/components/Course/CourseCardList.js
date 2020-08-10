@@ -2,6 +2,7 @@ import React from 'react';
 import CourseCard from './CourseCard';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
+
 const CourseCardList = ({ CourseDetails }) => {
     const courseArray = CourseDetails.map((course,i) => {
       return <Link to ={'/courses/'+ CourseDetails[i]._id} ><CourseCard
