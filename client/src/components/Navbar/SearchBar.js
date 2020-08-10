@@ -73,18 +73,18 @@ const useStyles = makeStyles((theme) => ({
 
   const SearchBar=(props)=>{
 
-    var searchfeild = useState( '' );
-    const [courses , setCourses] = useState( [CourseDetails]);
+    // var searchfeild = useState( '' );
+    // const [courses , setCourses] = useState( [CourseDetails]);
 
-    const onSearchChange = (event) =>{
-      searchfeild = event.target.value;
-          const filteredcourse = CourseDetails.filter(CourseDetails=>{
-             return( 
-              CourseDetails.courseTitle.toLowerCase().includes(searchfeild.toLowerCase()))
-             })
-             setCourses(filteredcourse); 
-             console.log(filteredcourse);
-              }
+    // const onSearchChange = (event) =>{
+    //   searchfeild = event.target.value;
+    //       const filteredcourse = CourseDetails.filter(CourseDetails=>{
+    //          return( 
+    //           CourseDetails.courseTitle.toLowerCase().includes(searchfeild.toLowerCase()))
+    //          })
+    //          setCourses(filteredcourse); 
+    //          console.log(filteredcourse);
+    //           }
       
         const classes = useStyles();
 
@@ -93,8 +93,8 @@ const useStyles = makeStyles((theme) => ({
           <SearchIcon />
           </div>
           <InputBase
-            onChange = {onSearchChange}
-            courses = {courses}
+             onChange = {onChange}
+            // courses = {courses}
             placeholder="Search…"
             classes={{
               root: classes.inputRoot,
