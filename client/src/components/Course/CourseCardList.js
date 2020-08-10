@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 const CourseCardList = ({ CourseDetails }) => {
     const courseArray = CourseDetails.map((course,i) => {
-      return <Link to ={'/courses/'+ CourseDetails[i]._id}  key = {CourseDetails[i]._id}><CourseCard
+      return <Link to={{ pathname: '/courses/' + CourseDetails[i]._id, state: CourseDetails[i]._id , key:CourseDetails[i]._id }}    ><CourseCard
         courseId = { CourseDetails[i]._id }
         authorInitial  = { CourseDetails[i].authorInitial }
         courseTitle = { CourseDetails[i].courseTitle }
