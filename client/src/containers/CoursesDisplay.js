@@ -57,11 +57,12 @@ export default class Product extends Component {
 
 Product.propTypes = {
   product: PropTypes.shape({
-      authorInitial : PropTypes.string,
+      
       _id: PropTypes.number,
       courseImage: PropTypes.string,
       courseTitle: PropTypes.string,
       price: PropTypes.number,
+      authorInitial : PropTypes.string,
       inCart: PropTypes.bool
   }).isRequired
 };
