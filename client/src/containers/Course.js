@@ -57,14 +57,9 @@ class Course extends React.Component{
         return(
             <div className ="container">
             <div>
-            <SearchBar  searchChange={this.onSearchChange}> 
-            
+            <SearchBar  searchChange={this.onSearchChange}>
             </SearchBar>
             </div>
-            {/* <Navbar/>
-            <Cart/>
-            <Default/> */}
-            
             <GridList cols={3} cellHeight={'auto'}> 
             <CourseCardList CourseDetails={filteredcourse}/>  
             </GridList>
