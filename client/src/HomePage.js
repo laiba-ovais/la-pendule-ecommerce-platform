@@ -3,22 +3,24 @@ import { BrowserRouter,Switch, Route, Link } from 'react-router-dom';
 import CoursesDisplay from './containers/CoursesDisplay';
 import Course from './containers/Course';
 import Navbar from './components/Navbar/Navbar';
+import SignUp from './containers/SignUp/SignUp';
+import SignIn from './containers/SignIn/SignIn';
 
 
-
-//s capital nhi hoga/.?
 
 function HomePage(props){
     return (
        
         <div >
-        <Navbar>
+        <Navbar></Navbar>
         <Switch>
         <Route path="/courses/:id" component={CoursesDisplay} /> 
         <Route exact path="/" component = {Course}/>
         <Route exact path="/home" component = {Course}/>
+        <Route exact path="/SignUp" component = {SignUp}/>
+        <Route exact path="/SignIn" component = {SignIn}/>
         </Switch>
-        </Navbar>
+        
         </div>
        
     );
