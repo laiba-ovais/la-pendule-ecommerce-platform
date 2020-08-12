@@ -29,7 +29,7 @@ var con = mysql.createConnection({
 
 app.post('/submit' , function(req, res){
     console.log(req.body);
-    var sql = "insert into users values(null,'"+ req.body.fname +"', '"+req.body.lname +"', '"+ req.body.email +"', '"+ req.body.password+"')";
+    var sql = "insert into users values(null,'"+ req.body.firstName +"', '"+req.body.lastName +"', '"+ req.body.email +"', '"+ req.body.password+"')";
     con.query(sql, function (err){
         if(err) throw err;
 

@@ -63,7 +63,7 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} method="post" >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -118,6 +118,7 @@ export default function SignUp() {
               />
             </Grid>
           </Grid>
+          <Link to ='/submit'>
           <Button
             type="submit"
             fullWidth
@@ -127,6 +128,8 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
+          </Link>
+          
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="/SignIn/" variant="body2">
