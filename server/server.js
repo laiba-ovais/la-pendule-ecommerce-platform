@@ -1,11 +1,5 @@
 const express = require('express');
 const cors = require("cors");
-
-
-
-
-
-
 var bodyParser = require('body-parser');
 const mysql = require('mysql');
 const app = express();
@@ -35,9 +29,10 @@ app.use(
         extended:false
     })
 )
-// var Users = require('./routes/User')
-require('./routes/auth.routes')(app);
-require('./routes/user.routes')(app);
+var Users = require('./routes/User')
+//newcode
+// require('./routes/auth.routes')(app);
+// require('./routes/user.routes')(app);
 
 
 app.get('/',(req,res)=>{
@@ -52,29 +47,29 @@ app.listen(4000, () =>{
 })
 
 
+//newcode 
+// const db = require("./models/role");
+// const Role = db.role;
 
-const db = require("./models/role");
-const Role = db.role;
-
-db.sequelize.sync({force: true}).then(() => {
-  console.log('Drop and Resync Db');
-  initial();
-});
+// db.sequelize.sync({force: true}).then(() => {
+//   console.log('Drop and Resync Db');
+//   initial();
+// });
 
 
-function initial() {
-  Role.create({
-    id: 1,
-    name: "user"
-  });
+// function initial() {
+//   Role.create({
+//     id: 1,
+//     name: "user"
+//   });
  
-  Role.create({
-    id: 2,
-    name: "moderator"
-  });
+//   Role.create({
+//     id: 2,
+//     name: "moderator"
+//   });
  
-  Role.create({
-    id: 3,
-    name: "admin"
-  });
-}
+//   Role.create({
+//     id: 3,
+//     name: "admin"
+//   });
+// }
