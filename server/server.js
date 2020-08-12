@@ -2,6 +2,20 @@ const express = require('express');
 const app = express();
 
 var bodyParser = require('body-parser');
+const mysql = require('mysql');
+
+const mysqlConnection = mysql.createConnection({
+    host: 'localhost',
+    user:'root',
+    password: 'Palkia786',
+    database: 'mydb'
+});
+mysqlConnection.connect((err) =>{
+    if(!err)
+    console.log('DB connection successful');
+    else
+    console.log('connection failed \n Error: '+JSON.stringify(err, undefined, 2));
+});
 
 app.use(bodyParser.json());
 app.use(
