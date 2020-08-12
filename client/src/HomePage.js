@@ -17,8 +17,8 @@ function HomePage(props){
         <Route path="/courses/:id" component={CoursesDisplay} /> 
         <Route exact path="/" component = {Course}/>
         <Route exact path="/home" component = {Course}/>
-        <Route exact path="/SignUp" component = {SignUp}/>
-        <Route exact path="/SignIn" component = {SignIn}/>
+        <Route exact path="/register" component = {SignUp}/>
+        <Route exact path="/login" component = {SignIn}/>
         </Switch>
         
         </div>

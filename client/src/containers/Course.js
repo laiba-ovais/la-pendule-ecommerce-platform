@@ -23,7 +23,7 @@ class Course extends React.Component{
     }
    
     callAPI(){
-        fetch("http://localhost:9000/Courses")
+        fetch("http://localhost:4000/")
         .then(res => res.text())
         .then(res => this.setState({apiResponse: res}))
     }
