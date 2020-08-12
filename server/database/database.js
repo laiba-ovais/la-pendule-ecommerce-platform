@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize')
 const database = {}
-const sequelize = new Sequelize('mydatabase', 'root', 'chikorita1191', {
+const sequelize = new Sequelize('mydb', 'root', 'Palkia786', {
   host: 'localhost',
   dialect: 'mysql',
-  operatorsAliases: false,
+  // operatorsAliases: false,
 
   pool: {
     max: 5,
