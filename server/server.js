@@ -35,7 +35,7 @@ app.use(
         extended:false
     })
 )
-var Users = require('./routes/User')
+// var Users = require('./routes/User')
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 
