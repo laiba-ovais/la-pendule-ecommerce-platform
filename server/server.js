@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 const mysql = require('mysql');
 const app = express();
 const exphbs = require('express-handlebars');
-
+const bcrypt = require('bcrypt');
 
 app.use(cors(corsOptions));
 var corsOptions = {
@@ -44,6 +44,14 @@ process.on('uncaughtException', function (err) {
 }); 
 app.post('/submit' , function(req, res){
         var user = req.body;
+        var passwordHashed = req.body.password;
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(passwordHashed, salt, (err, hash) => {
+                passwordHashed=hash;
+            });
+        });
+        console.log(passwordHashed);
+        
         var Oneuser={
             email: user.email,
             password:user.password,
@@ -56,7 +64,7 @@ app.post('/submit' , function(req, res){
                 console.log(err);
             }
             if (!rows.length){
-                mysqlConnection.query("insert into users ( `first_name`,`last_name`, `password`, `email`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ req.body.password +"', '"+ req.body.email+"');",function(err2,result){
+                mysqlConnection.query("insert into users ( `first_name`,`last_name`, `password`, `email`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ passwordHashed +"', '"+ req.body.email+"');",function(err2,result){
                     if(err2)  console.log(err2);
                     console.log(res.body , "data is saved");
                     res.json({ status: req.body.email + ' Registered!' }) });
