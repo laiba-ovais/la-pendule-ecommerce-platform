@@ -1,22 +1,15 @@
-const express = require('express');
-const cors = require("cors");
-var bodyParser = require('body-parser');
-const mysql = require('mysql');
-const app = express();
-const exphbs = require('express-handlebars');
+const express = require('express')
+const bodyParser = require('body-parser')
+const app = express()
+const port = 3000
+var mysql = require('mysql');
+users.use(cors())
+app.use(express.static('./client/src')) // ye kiya hai?
+
+app.use(bodyParser.urlencoded({extended: false}))
 
 
-app.use(cors(corsOptions));
-var corsOptions = {
-    origin: "http://localhost:4000"
-  };
-app.use(bodyParser.json());
-app.use(
-    bodyParser.urlencoded({
-        extended:false
-    })
-)
-// app.set('view engine', 'handlebars');//// yiya hai pehle wale error ka solution lekin usse doosra error generate hogya
+
 
 const mysqlConnection = mysql.createConnection({
     host: 'localhost',
@@ -42,14 +35,21 @@ mysqlConnection.connect((err) =>{
 process.on('uncaughtException', function (err) {
     console.log(err);
 }); 
+
+
 app.post('/submit' , function(req, res){
-        var sql11 = "SELECT email from users where email = '"+req.body.email+"'; ";
-        var check = mysqlConnection.query (sql11 ,(err)=>
-       { if(err) throw err;
-        console.log("value is checked");})
-        console.log(check)
-        if(check===null){console.log("value dont exist")}
+    const today = new Date();
     console.log(req.body);
+    
+    //     var sql11 = "SELECT email from users where email = '"+req.body.email+"'; ";
+    //     var check = mysqlConnection.query (sql11 ,(err)=>
+    //    { if(err) throw err;
+    //     console.log("value is checked");})
+    //     console.log(check)
+    //     if(check===null){console.log("value dont exist")}
+
+    
+    
     var sql = "insert into users ( `first_name`,`last_name`, `password`, `email`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ req.body.password +"', '"+ req.body.email+"')";
     mysqlConnection.query(sql, function (err){
         if(err) throw err;
@@ -63,23 +63,3 @@ app.post('/submit' , function(req, res){
     
     // mysqlConnection.end();
 })
-
-
-var Users = require('./routes/User')
-//newcode
-// require('./routes/auth.routes')(app);
-// require('./routes/user.routes')(app);
-
-
-app.get('/',(req,res)=>{
-    res.send('Hello from the product server');
-})
-// app.use('/users', Users)//esa koi path hai hamara?????????? nhi ye server ka path hai user ko access k liye
-
-
-
-app.listen(4000, () =>{
-    console.log("sdsad");
-})
-
-// tum dekho aya 5 min mei
