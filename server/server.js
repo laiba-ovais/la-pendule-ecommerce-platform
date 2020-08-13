@@ -42,7 +42,7 @@ process.on('uncaughtException', function (err) {
 }); 
 app.post('/submit' , function(req, res){
     console.log(req.body);
-    var sql = "insert into users ( `ID`,`first_name`,`last_name`, `password`, `email`) values(null,'"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ req.body.password +"', '"+ req.body.email+"')";
+    var sql = "insert into users ( `first_name`,`last_name`, `password`, `email`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ req.body.password +"', '"+ req.body.email+"')";
     mysqlConnection.query(sql, function (err){
         if(err) throw err;
 
@@ -52,7 +52,7 @@ app.post('/submit' , function(req, res){
         //console.log(' solution is ', rows[0].solution)
     })
     
-    con.end();
+    mysqlConnection.end();
 })
 
 
