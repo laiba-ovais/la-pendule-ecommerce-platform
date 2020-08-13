@@ -1,0 +1,10 @@
+.con-bod{
+   border-radius: 15px 15px 15px 15px;
+  margin-left: 20px;
+
+}
+img{
+    display: inline-block;
+    padding: 5px 5px;
+    height: 300px
+}
