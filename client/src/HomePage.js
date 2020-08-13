@@ -14,7 +14,7 @@ function HomePage(props){
     return (
 
         <Switch>
-        
+        <Route path="/" component={MainPage} /> 
         <Route path="/home" component={Home} /> 
         </Switch>
        /*
