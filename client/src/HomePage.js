@@ -5,24 +5,29 @@ import Course from './containers/Course';
 import Navbar from './components/Navbar/Navbar';
 import SignUp from './containers/SignUp/SignUp';
 import SignIn from './containers/SignIn/SignIn';
+import MainPage from './containers/MainPage/MainPage';
 
 
 
 function HomePage(props){
     return (
-       
+
+        <Switch>
+        <Route path="/" component={MainPage} /> 
+        </Switch>
+       /*
         <div >
         <Navbar></Navbar>
         <Switch>
         <Route path="/courses/:id" component={CoursesDisplay} /> 
-        <Route exact path="/" component = {Course}/>
+        
         <Route exact path="/home" component = {Course}/>
         <Route exact path="/register" component = {SignUp}/>
         <Route exact path="/login" component = {SignIn}/>
         </Switch>
-        
         </div>
-       
+        
+       */
     );
 }
 
