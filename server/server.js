@@ -52,7 +52,7 @@ app.post('/submit' , function(req, res){
         //console.log(' solution is ', rows[0].solution)
     })
     
-    mysqlConnection.end();
+    // mysqlConnection.end();
 })
 
 
@@ -73,3 +73,5 @@ app.listen(4000, () =>{
     console.log("sdsad");
 })
 
+app.set('view engine', 'handlebars');
+// tum dekho aya 5 min mei
