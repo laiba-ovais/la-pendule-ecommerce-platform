@@ -19,7 +19,7 @@ export default function Home(){
                 </div>   
             </Container>
 
-            <Container style={{background: 'pink'}} className="con-bod row mt-2 grow">
+            <Container style={{background: '#DC143C'}} className="con-bod row mt-2 grow">
     
                 <img className="col-md-4"  src={require("../../static/images/education.png")} />
                 <div className="col-md-8">
@@ -30,7 +30,7 @@ export default function Home(){
                     </p>
                 </div>   
             </Container>
-            <Container style={{background: 'purple'}} className="con-bod row mt-2 grow">
+            <Container style={{background: 'pink'}} className="con-bod row mt-2 grow">
                 
                 <img className="col-md-4"  src={require("../../static/images/sports.png")} />
                 <div className="col-md-8">
@@ -41,7 +41,7 @@ export default function Home(){
                     </p>
                 </div>   
             </Container>
-            <Container style={{background: 'blue'}} className="con-bod row mt-2 grow">
+            <Container style={{background: 'purple'}} className="con-bod row mt-2 grow">
                 
                 <img className="col-md-4"  src={require("../../static/images/soft.png")} />
                 <div className="col-md-8">
@@ -63,7 +63,7 @@ export default function Home(){
                     </p>
                 </div>   
             </Container>
-            <Container style={{background: 'red'}} className="con-bod row mt-2 grow">
+            <Container style={{background: '#00FF00'}} className="con-bod row mt-2 grow">
                 
                 <img className="col-md-4"  src={require("../../static/images/technology.png")} />
                 <div className="col-md-8">
