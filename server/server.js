@@ -3,6 +3,7 @@ const cors = require("cors");
 var bodyParser = require('body-parser');
 const mysql = require('mysql');
 const app = express();
+const exphbs = require('express-handlebars');
 
 
 app.use(cors(corsOptions));
@@ -15,6 +16,7 @@ app.use(
         extended:false
     })
 )
+// app.set('view engine', 'handlebars');//// yiya hai pehle wale error ka solution lekin usse doosra error generate hogya
 
 const mysqlConnection = mysql.createConnection({
     host: 'localhost',
@@ -45,9 +47,10 @@ app.post('/submit' , function(req, res){
     var sql = "insert into users ( `first_name`,`last_name`, `password`, `email`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ req.body.password +"', '"+ req.body.email+"')";
     mysqlConnection.query(sql, function (err){
         if(err) throw err;
-
-        res.render('index', {title: ' data saved',
-        message : 'Data saved successfully'  })
+        console.log(res.body , "data is saved");
+        res.json({ status: req.body.email + ' Registered!' })
+        // res.render('index', {title: ' data saved',
+        // message : 'Data saved successfully'  })
 
         //console.log(' solution is ', rows[0].solution)
     })
@@ -65,7 +68,7 @@ var Users = require('./routes/User')
 app.get('/',(req,res)=>{
     res.send('Hello from the product server');
 })
-app.use('/users', Users)//esa koi path hai hamara?????????? nhi ye server ka path hai user ko access k liye
+// app.use('/users', Users)//esa koi path hai hamara?????????? nhi ye server ka path hai user ko access k liye
 
 
 
@@ -73,5 +76,4 @@ app.listen(4000, () =>{
     console.log("sdsad");
 })
 
-app.set('view engine', 'handlebars');
 // tum dekho aya 5 min mei
