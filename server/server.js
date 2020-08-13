@@ -9,6 +9,12 @@ app.use(cors(corsOptions));
 var corsOptions = {
     origin: "http://localhost:4000"
   };
+app.use(bodyParser.json());
+app.use(
+    bodyParser.urlencoded({
+        extended:false
+    })
+)
 
 const mysqlConnection = mysql.createConnection({
     host: 'localhost',
@@ -23,27 +29,33 @@ mysqlConnection.connect((err) =>{
     mysqlConnection.query(sql, function (err, result) {
       if (err) throw err;
       console.log("Table created");
+    //   var sql ="INSERT INTO `users` (`ID`, `first_name`,`last_name`, `password`, `email`) VALUES (1, 'test', 'test','test', 'test@test.com');";
+        mysqlConnection.query(sql,function(err,result){if (err) throw err;
+            console.log("values inserted");})
     });}
     else
     console.log('connection failed \n Error: '+JSON.stringify(err, undefined, 2));
     
 });
+process.on('uncaughtException', function (err) {
+    console.log(err);
+}); 
+app.post('/submit' , function(req, res){
+    console.log(req.body);
+    var sql = "insert into users ( `ID`,`first_name`,`last_name`, `password`, `email`) values(null,'"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ req.body.password +"', '"+ req.body.email+"')";
+    mysqlConnection.query(sql, function (err){
+        if(err) throw err;
 
+        res.render('index', {title: ' data saved',
+        message : 'Data saved successfully'  })
 
-// mysqlConnection.connect(function(err) {
-//     if (err) throw err;
-//     console.log("Connected!");//ISE PRIMARY KEY BANAO
-//     var sql = "CREATE TABLE IF NOT EXISTS users (id INT(4),fname VARCHAR(255), lname VARCHAR(255) , email VARCHAR(255) ,password VARCHAR(255))  ";
-//     con.query(sql, function (err, result) {
-//       if (err) throw err;
-//       console.log("Table created");
-//   });
-app.use(bodyParser.json());
-app.use(
-    bodyParser.urlencoded({
-        extended:false
+        //console.log(' solution is ', rows[0].solution)
     })
-)
+    
+    con.end();
+})
+
+
 var Users = require('./routes/User')
 //newcode
 // require('./routes/auth.routes')(app);
@@ -61,30 +73,3 @@ app.listen(4000, () =>{
     console.log("sdsad");
 })
 
-
-//newcode 
-// const db = require("./models/role");
-// const Role = db.role;
-
-// db.sequelize.sync({force: true}).then(() => {
-//   console.log('Drop and Resync Db');
-//   initial();
-// });
-
-
-// function initial() {
-//   Role.create({
-//     id: 1,
-//     name: "user"
-//   });
- 
-//   Role.create({
-//     id: 2,
-//     name: "moderator"
-//   });
- 
-//   Role.create({
-//     id: 3,
-//     name: "admin"
-//   });
-// }
