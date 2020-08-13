@@ -16,9 +16,12 @@ users.post('/register', (req, res) => {
     last_name: req.body.last_name,
     email: req.body.email,
     password: req.body.password,
-    created: today
+    date: today
   }
+<<<<<<< HEAD
 console.log('server k paas jarha hai' + userData.first_name);
+=======
+>>>>>>> 20ee67a2d02f2c4b93cf41c1ac33c56e57ccbada
   User.findOne({
     where: {
       email: req.body.email
