@@ -43,23 +43,48 @@ process.on('uncaughtException', function (err) {
     console.log(err);
 }); 
 app.post('/submit' , function(req, res){
-        var sql11 = "SELECT email from users where email = '"+req.body.email+"'; ";
-        var check = mysqlConnection.query (sql11 ,(err)=>
-       { if(err) throw err;
-        console.log("value is checked");})
-        console.log(check)
-        if(check===null){console.log("value dont exist")}
-    console.log(req.body);
-    var sql = "insert into users ( `first_name`,`last_name`, `password`, `email`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ req.body.password +"', '"+ req.body.email+"')";
-    mysqlConnection.query(sql, function (err){
-        if(err) throw err;
-        console.log(res.body , "data is saved");
-        res.json({ status: req.body.email + ' Registered!' })
-        // res.render('index', {title: ' data saved',
-        // message : 'Data saved successfully'  })
+        var user = req.body;
+        var Oneuser={
+            email: user.email,
+            password:user.password,
+            first_name: user.firstname,
+            last_name: user.lastname
+        }
+        mysqlConnection.query("SELECT * FROM users WHERE email = ?", [Oneuser.email], function(err,rows){
+            if (err) {
+                mysqlConnection.end();
+                console.log(err);
+            }
+            if (!rows.length){
+                mysqlConnection.query("insert into users ( `first_name`,`last_name`, `password`, `email`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ req.body.password +"', '"+ req.body.email+"');",function(err2,result){
+                    if(err2)  console.log(err2);
+                    console.log(res.body , "data is saved");
+                    res.json({ status: req.body.email + ' Registered!' }) });
+            }
+            else{
+                console.log("email already exist");
+                res.json("email exist");
 
-        //console.log(' solution is ', rows[0].solution)
-    })
+            }
+})
+
+    //     var sql11 = "SELECT email from users where email = '"+req.body.email+"'; ";
+    //     var check = mysqlConnection.query (sql11 ,(err)=>
+    //    { if(err) throw err;
+    //     console.log("value is checked");})
+    //     console.log(check)
+    //     if(check===null){console.log("value dont exist")}
+    // console.log(req.body);
+    // var sql = "insert into users ( `first_name`,`last_name`, `password`, `email`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ req.body.password +"', '"+ req.body.email+"')";
+    // mysqlConnection.query(sql, function (err){
+    //     if(err) throw err;
+    //     console.log(res.body , "data is saved");
+    //     res.json({ status: req.body.email + ' Registered!' })
+    //     // res.render('index', {title: ' data saved',
+    //     // message : 'Data saved successfully'  })
+
+    //     //console.log(' solution is ', rows[0].solution)
+    // })
     
     // mysqlConnection.end();
 })
