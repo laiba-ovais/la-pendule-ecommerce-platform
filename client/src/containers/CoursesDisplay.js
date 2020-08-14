@@ -37,7 +37,7 @@ export default class CourseDisplay extends Component {
                         <img src={filteredcourse[0].courseImage} className="img-fluid" alt="product"/>
                         </div>
                         <div className=" container-fluid text-capitalize ">
-                        
+                        <ResponsivePlayer url="G:\[FreeCourseSite.com] Udemy - The Complete Web Developer in 2020 Zero to Mastery\1. Introduction/1. Course Outline.mp4" />
                         </div>
                         <div className="my-3">
                         <Link to="/">

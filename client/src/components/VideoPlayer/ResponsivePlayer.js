@@ -1,5 +1,6 @@
 import ReactPlayer from 'react-player';
-
+import React from 'react';
+import './ResponsivePlayer.css';
 
 const ResponsivePlayer =({url,onProgress})=> {
     
