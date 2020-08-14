@@ -13,23 +13,24 @@ import Home from './containers/Home/Home';
 function HomePage(props){
     return (
         
-        <Switch>
+        // <Switch>
         
-        <Route exact path="/home" component={Home} /> 
-        </Switch>
-       /*
+        // <Route exact path="/home" component={Home} /> 
+        // </Switch>
+       
         <div >
         <Navbar></Navbar>
         <Switch>
         <Route path="/courses/:id" component={CoursesDisplay} /> 
-        <Route path="/" component={MainPage} /> 
-        <Route exact path="/home" component = {Course}/>
+        <Route exact path="/" component={MainPage} /> 
+        <Route exact path="/home" component={Home} /> 
+        <Route exact path="/courses" component = {Course}/>
         <Route exact path="/register" component = {SignUp}/>
         <Route exact path="/login" component = {SignIn}/>
         </Switch>
         </div>
         
-       */
+       
     );
 }
 
