@@ -6,6 +6,7 @@ import {ButtonContainer} from '../components/Button/Button'
 import {CourseDetails} from '../components/Course/CourseDetails'
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { CardMedia } from '@material-ui/core';
 
 
 
@@ -35,6 +36,9 @@ export default class CourseDisplay extends Component {
                   <div className="ml-5">
                   <div className=" mx-auto my-3 text-capitalize relative">
                         <img src={filteredcourse[0].courseImage} className="img-fluid" alt="product"/>
+                        </div>
+                        <div className=" container-fluid text-capitalize ">
+                        <CardMedia component="video" src="https://drive.google.com/file/d/1AQBwYrj6YF4SnJydheCDm8puf_GgIJKl/view?usp=sharing" ></CardMedia>
                         </div>
                         <div className="my-3">
                         <Link to="/">
