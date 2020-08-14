@@ -8,7 +8,7 @@ export default function MainPage (){
   <Carousel.Item>
     
     <img
-      className="d-block w-100 h-100"
+      className="d-block w-100 h-100 op"
       src={require("../../static/images/1.jpg")}
       alt="First slide"
     />
@@ -23,7 +23,7 @@ export default function MainPage (){
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100 h-100"
+      className="d-block w-100 h-100 op"
       src={require("../../static/images/2.jpg")}
       alt="Third slide"
     />
@@ -36,7 +36,7 @@ export default function MainPage (){
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100 h-100"
+      className="d-block w-100 h-100 op"
       src={require("../../static/images/3.jpg")}
       alt="Third slide"
     />
