@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "local-fortress-160806",
+  "private_key_id": "50d93374c219e67997f955f17e401dfaa0da2e92",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDAjojkDCiYVjDP\nGOZ006MNh83XepAvGPbxW5Zg7bwUcYYCvwOrGDfyAw4vci7ZB4Va8zPKwoLEZYr5\nOpU2By6wcUogkKgFKqzmgojToTfDHkjwvuOJbd+q8pyxx5X1QqhiFsxdtW3IXzZe\nQcFLDmrAazbbQCpqPRacolDgs7lVcElwAUpPW8vrbSf2dXHrPgVftI1u5MDcWjXr\nFsGgHj855anFJquQG4MUEheAAUv9f76633gmAvblEkokwWg5W0mSeLcXTZGtMbPW\nTFCPOyBLtVtwQ9GLY3U8k84v/6Fs9IHnuyRaNpH+RWDbFaQXYj7lsCSru1p4JGFT\ngtqV5LsfAgMBAAECggEAHp7sAkaJXsRMvw+Td7OUw9jl8STCm1gUeQhFWdpPD6SH\n7kAy/056zb0SUJWPVqBSuBu3D5Yuq7hcHnW5obMIXTL+2ek3Fu8/jz6QhLBSs5rJ\neE4FgBFywUwTLVWdsWLCxSp2oFZILtYunqmak+rR1hHr/MzE50pvTJmmqT0GCsxp\ncYgaFaIRYC0Dzv0PzYTqvoUNZTbWEDQD5+NSz9hCPAqyihTcE6vLyJLSODPQkJQw\n8yYpS1z+/8CEf8rFeQrUP77O1W4kHsYG3MS6fnXJrFffi48ECkk56Z0o2Ju5Uxyu\n5Fad5mHmoM0l5FUGBqDtuXHyM8w2j24tFBXA7178dQKBgQDvtBuG7SclEsLYgjV+\nDwEws3TdkDXjNi7I4YvW9UjsWHXA0nyfWRIdCwfm28leSXvDr/SEE8syudf4D7A0\nakqmCI+O7cts8V3gHVF/swg0is0bAdheQpBE7Bz4n4BJh2Z42eEwfqB75Q/HiObj\nnkeNz9Op+q9l9tv5srrPBNl49QKBgQDNpd3jPb/NLBUkk++syoWOyDth2T+v8F//\nfTdZiTt7k1JgzvJkd8pBGkwi+8FABObpqeAt8WKgFjJaCIqLk2qodkEUxGqmq5Ie\nnU97G3oAUHglKb75GtW/Jg2RJctqP/laxfcUU7l/t8ldsV6W2qgPY5TA3lchziuC\nZGEIQGHnQwKBgFVikd+pQKVrHm8jSszBqYngkwONqDRsi5PRDBAhRb2y8Rcjo3Lb\ntqET2de5eOyWPnkBh5c4ucwy+SSK6hhxuG+WYxTlze3buLXpm6tiaczVmKRDLwC8\ns0lp1hQWNQt8KNtpuVad9KrNeKZ6NMzmB9UTL/G/s5Udr1Qt/29Y6eK1AoGAa30J\n6G/rI8Op3W+RtAA7JPFV0IQsPLrognMhjiQjuii7wywIGClgxvyG1TY/wUWOqI2J\nRppH0aMoeFTEjcXk1t7Qj5lGoY1GF8hjtdYbw7RLyCj0z+GN3ZZ3OunFU+jSXfbh\neXd1muMmVlmSNkld1IVZSCIu6tWHemUbLqPwSF8CgYAjuPjttjeYIdHgWZstHvbI\nBSMkK7jouJrCKFoH/Qmf+bOuFk2ER+AaG5ksCxgx9HY2jIG2MhU5qsQR6jtrPhuw\nesXV9rV/EZBYyiGEIO+dY5Y56qVhdXjW+3K93dWciKFxa5QuAzxFlkjbxNU/ad51\njCPEfrnGeiHnH+ZKm/RQ7A==\n-----END PRIVATE KEY-----\n",
+  "client_email": "wepro-199@local-fortress-160806.iam.gserviceaccount.com",
+  "client_id": "102672385177803881384",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/wepro-199%40local-fortress-160806.iam.gserviceaccount.com"
+}
