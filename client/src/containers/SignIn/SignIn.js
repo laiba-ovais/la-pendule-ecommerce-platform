@@ -62,7 +62,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} action='/auth' method="POST" noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -89,8 +89,10 @@ export default function SignIn() {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
+          
           <Button
             type="submit"
+
             fullWidth
             variant="contained"
             color="primary"
@@ -98,6 +100,7 @@ export default function SignIn() {
           >
             Sign In
           </Button>
+          
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
