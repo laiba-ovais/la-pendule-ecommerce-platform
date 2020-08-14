@@ -1,10 +1,8 @@
 const express = require('express');
 const mysql = require('mysql');
 
-const bcrypt = require('bcrypt');
 const router = express.Router();
-const hash = require('crypto').createHash;
-
+const {encryptPWD,comparePWD} = require('../config/passwordCompare');
 
 const mysqlConnection = mysql.createConnection({
   host: 'localhost',
@@ -34,12 +32,8 @@ process.on('uncaughtException', function (err) {
 
 router.post('/submit' , function(req, res){
       var user = req.body;
-      const passwordHashed =(password)=>{
-        // Hash password and salt with md5 encryption
-        return bcrypt.hashSync(password, bcrypt.genSaltSync(10),null);
-        };
       
-      const hashedpassword = passwordHashed(user.password)
+      const hashedpassword = encryptPWD(user.password)
       console.log(hashedpassword);
       
       var Oneuser={
@@ -67,5 +61,30 @@ router.post('/submit' , function(req, res){
 })
 
 })
+
+
+
+router.post('/login', (req, res, next) => {
+  var user = req.body;
+  var Oneuser={
+    email: user.email,
+    password:user.password,
+    first_name: user.firstname,
+    last_name: user.lastname
+}
+    mysqlConnection.query('SELECT username, password FROM users WHERE username = ? AND password = ?', [Oneuser.email, Oneuser.password], 
+    function(err, results)
+    {
+      if (err)throw err;
+      if(results) {
+      req.session.regenerate(function() {
+        res.json({ status: req.body.email + ' is logined' }) });
+      } else {
+            res.json('user not found');
+          }
+        });
+  
+
+});
 
 module.exports = router;
