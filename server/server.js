@@ -5,6 +5,8 @@ const mysql = require('mysql');
 const app = express();
 const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
+const pageRouter = require('./routes/User');
+
 
 app.use(cors(corsOptions));
 var corsOptions = {
@@ -16,6 +18,8 @@ app.use(
         extended:false
     })
 )
+
+app.use('/', pageRouter);
 // app.set('view engine', 'handlebars');//// yiya hai pehle wale error ka solution lekin usse doosra error generate hogya
 
 // const mysqlConnection = mysql.createConnection({
@@ -118,3 +122,5 @@ app.listen(4000, () =>{
 })
 
 // tum dekho aya 5 min mei
+
+module.exports = app;
