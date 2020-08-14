@@ -6,14 +6,15 @@ export default function MainPage (){
     return(
         <Carousel>
   <Carousel.Item>
-     <div class = "container">
+    
     <img
-      className="d-block w-100"
+      className="d-block w-100 h-100"
       src={require("../../static/images/1.jpg")}
       alt="First slide"
     />
-    <button id = "btn" class="btn btn-primary" type="button"> button</button>
-    </div>
+    <button id = "btn" class="btn btn-primary" type="button"><b>Get Started!</b>  </button>
+    
+    
     <Carousel.Caption>
       <h3>First slide label</h3>
       
@@ -22,10 +23,11 @@ export default function MainPage (){
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100 "
+      className="d-block w-100 h-100"
       src={require("../../static/images/2.jpg")}
       alt="Third slide"
     />
+    <button id = "btn" class="btn btn-primary" type="button"><b>Get Started!</b>  </button>
 
     <Carousel.Caption>
       <h3>Second slide label</h3>
@@ -34,11 +36,11 @@ export default function MainPage (){
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100 "
+      className="d-block w-100 h-100"
       src={require("../../static/images/3.jpg")}
       alt="Third slide"
     />
-
+    <button id = "btn" class="btn btn-primary" type="button"><b>Get Started!</b>  </button>
     <Carousel.Caption>
       <h3>Third slide label</h3>
       <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>

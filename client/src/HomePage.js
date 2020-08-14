@@ -12,10 +12,10 @@ import Home from './containers/Home/Home';
 
 function HomePage(props){
     return (
-
+        
         <Switch>
         <Route path="/" component={MainPage} /> 
-        <Route path="/home" component={Home} /> 
+        <Route exact path="/home" component={Home} /> 
         </Switch>
        /*
         <div >

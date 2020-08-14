@@ -1,16 +1,14 @@
-.container {
+/*.container {
     position: relative;
     width: 100%;
     max-width: 400px;
-  }
+  }*/
 img {
-    width: 200px;
-    height: 100%;
-    display: block;
-    position: relative;
+    width: 100%;
+   
     opacity: 0.5;
 }
-  
+
 
 /*img{
     width: 200px;
