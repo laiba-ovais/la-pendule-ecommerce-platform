@@ -21,6 +21,7 @@ import {ButtonContainer} from "../Button/Button"
 import { CourseDetails } from '../Course/CourseDetails';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {ProductConsumer} from '../Course/contex';
+import AutoComplete from './AutoComplete'
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -198,7 +199,7 @@ export default function Navbar() {
                   <Link to= '/courses' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
                    COURSES   
                   </Typography></Link>
-                  <SearchBar ></SearchBar>
+                  <AutoComplete ></AutoComplete>
                   <div className={classes.grow} />
                   <div className={classes.sectionDesktop}>
                   <Link to= '/cart'>

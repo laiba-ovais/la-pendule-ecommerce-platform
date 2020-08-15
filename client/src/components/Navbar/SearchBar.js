@@ -127,7 +127,7 @@
 
 // export default SearchBar;
 
-import React,{Component} from 'react';
+/*import React,{Component} from 'react';
 import Navbar from 'react-bootstrap/Navbar'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
@@ -178,3 +178,4 @@ class SearchBar extends React.Component{
 }
 
 export default SearchBar;
+*/
