@@ -1,14 +1,13 @@
 import React from 'react';
 import CourseCard from './CourseCard';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import {ProductConsumer} from './contex.'
-
+import {ProductConsumer} from './contex'
 
 const CourseCardList = ({ CourseDetails }) => {
-    const courseArray = CourseDetails.map((course,i) => {
+    CourseDetails.map((course,i) => {
       return( 
-      <ProductConsumer>
-        <Link to={{ pathname: '/courses/' + CourseDetails[i]._id, state: CourseDetails[i]._id , key:CourseDetails[i]._id }}    ><CourseCard
+      
+      <Link to={{ pathname: '/courses/' + CourseDetails[i]._id, state: CourseDetails[i]._id , key:CourseDetails[i]._id }}    ><CourseCard
         courseId = { CourseDetails[i]._id }
         authorInitial  = { CourseDetails[i].authorInitial }
         courseTitle = { CourseDetails[i].courseTitle }
@@ -16,14 +15,31 @@ const CourseCardList = ({ CourseDetails }) => {
         courseImage = { CourseDetails[i].courseImage }
         imageTitle = { CourseDetails[i].imageTitle }
         courseAuthor = { CourseDetails[i].courseAuthor }
-        /> </Link>
-      </ProductConsumer>
-      );
+        /> </Link>);
     });
     return (
       <div>
+        <ProductConsumer>
+        {
+          (value)=>{
+            return( value.products.map(product=>{
+            return( 
+            <div
+            onClick= {()=>value.handleDetail(product._id)}
+            ><Link to={{ pathname: '/courses/' + product._id }}>
+            <CourseCard
+            courseId = { product._id }
+            authorInitial  = { product.authorInitial }
+            courseTitle = { product.courseTitle }
+            uploadDate = { product.uploadDate }
+            courseImage = { product.courseImage }
+            imageTitle = { product.imageTitle }
+            courseAuthor = { product.courseAuthor }
+            /></Link></div>
+            )}))}}
+        </ProductConsumer>
        
-        { courseArray }
+        
      
       </div>
     );
