@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
-import {CourseDetails} from './CourseDetails';
+import {CourseDetails,courseStored} from './CourseDetails';
 import { runInThisContext } from 'vm';
 
 const ProductContext = React.createContext();
 
 class ProductProvider extends Component {
   state = {
-      products: CourseDetails,
-      detailProduct: CourseDetails,
+      products: [],
+      detailProduct: courseStored,
       cart: [],
       modalOpen: false,
-      modalProduct: CourseDetails,
+      modalProduct: courseStored,
       cartSubTotal: 0,
       cartTax: 0,
       cartTotal: 0
   }
 
   componentDidMount(){
-    // this.setProducts();
+    this.setProducts();
   }
 
   setProducts = () => {
     let tempProducts = [];
-    this.state.detailProduct.forEach(item=> {
+    CourseDetails.forEach(item=> {
       const singleItem = {...item};
       tempProducts = [...tempProducts, singleItem];
     })
@@ -50,9 +50,9 @@ class ProductProvider extends Component {
      const product = this.getItem(_id);
      const index = tempProducts.indexOf(product);
      product.inCart = true;
-     product.count = 1;
+    //  product.count = 1;
      const price = product.price;
-     product.total = price;
+    //  product.total = price;
 
      this.setState(()=>{
        return {products:tempProducts, cart:[...this.state.cart, product]}

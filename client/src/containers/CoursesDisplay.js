@@ -12,7 +12,7 @@ import ResponsivePlayer from '../components/VideoPlayer/ResponsivePlayer';
 export default class CourseDisplay extends Component {
 
     
-  render(props){
+  render(){
     
             const course_id = this.props.location.state;
             console.log(course_id);
@@ -27,8 +27,8 @@ export default class CourseDisplay extends Component {
               <ProductConsumer>
                 {
                (value)=>{
-            const {id, company, img, info, price, title, inCart} = 
-             value.detailProduct;
+            // const {_id, courseAuthor, courseImage , info, price, courseTitle, inCart} = 
+            //  value.detailProduct;
               return(
             <Container className="bg-white" >
                   <div className="col-10 mx-auto text-center  text-blue pt-4 my-5 ss">
