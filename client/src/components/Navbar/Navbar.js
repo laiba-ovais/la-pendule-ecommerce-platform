@@ -198,7 +198,7 @@ export default function Navbar() {
                   <Link to= '/courses' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
                    COURSES   
                   </Typography></Link>
-                  <SearchBar searchChange ={value.searchChange} ></SearchBar>
+                  <SearchBar ></SearchBar>
                   <div className={classes.grow} />
                   <div className={classes.sectionDesktop}>
                   <Link to= '/cart'>
