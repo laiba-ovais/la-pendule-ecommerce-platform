@@ -17,7 +17,9 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import {Link} from 'react-router-dom';
 import SearchBar from './SearchBar';
 import './Navbar.css';
+import {ButtonContainer} from "../Button/Button"
 import { CourseDetails } from '../Course/CourseDetails';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -183,12 +185,20 @@ export default function Navbar() {
             <MenuIcon />
           </IconButton>
          <Link to= '/home' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
-           HOME
+           HOME   
           </Typography></Link> 
-          {/* <SearchBar> 
-          </SearchBar> */}
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+          <Link to= '/home'>
+          <IconButton
+            color="inherit"
+            aria-label="cart"
+          >
+          <Badge badgeContent={4} color="secondary">
+          <ShoppingCartIcon/>
+          </Badge>
+          </IconButton>
+          </Link>
             <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <MailIcon />
@@ -220,6 +230,7 @@ export default function Navbar() {
             >
               <MoreIcon />
             </IconButton>
+            
           </div>
         </Toolbar>
       </AppBar>
