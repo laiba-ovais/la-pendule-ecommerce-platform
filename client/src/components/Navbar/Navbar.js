@@ -195,11 +195,15 @@ export default function Navbar() {
                  <Link to= '/home' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
                    HOME   
                   </Typography></Link> 
+                  <Link to= '/courses' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
+                   COURSES   
+                  </Typography></Link>
+                  <SearchBar searchChange ={value.products} ></SearchBar>
                   <div className={classes.grow} />
                   <div className={classes.sectionDesktop}>
                   <Link to= '/cart'>
                   <IconButton
-                    color="white"
+                    color="inherit"
                     aria-label="cart"
                   >
                   <Badge badgeContent={cart.lenght} color="secondary">

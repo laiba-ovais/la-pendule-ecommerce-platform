@@ -4,6 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { CourseDetails } from '../Course/CourseDetails';
+import {ProductConsumer} from '../Course/contex';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -71,7 +72,8 @@ const useStyles = makeStyles((theme) => ({
         //   } 
         //   componentDidMount();
 
-  const SearchBar=({searchField, searchChange})=>{
+  const SearchBar=({searchField, searchChange})=>
+  {
 
     // var searchfeild = useState( '' );
     // const [courses , setCourses] = useState( [CourseDetails]);
@@ -85,26 +87,53 @@ const useStyles = makeStyles((theme) => ({
     //          setCourses(filteredcourse); 
     //          console.log(filteredcourse);
     //           }
+    // const   {searchField, searchChange} = this.state;
+
+    // const filteredcourse = CourseDetails.filter(CourseDetails=>{
+    //   return( 
+    //     CourseDetails.courseTitle.toLowerCase().includes(this.state.searchField.toLowerCase()))
+    //                })
+    //             //    this.setState({CourseDetails:filteredcourse}); 
+                   
+    //      console.log(CourseDetails);
       
         const classes = useStyles();
 
-          return (<div className={classes.search}>
-          <div className={classes.searchIcon}>
-          <SearchIcon />
-          </div>
-          <InputBase
-             onChange = {searchChange}
-            // courses = {courses}
-            placeholder="Search…"
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
-            
-            inputProps={{ 'aria-label': 'search' }}
-          />
-        </div>
-          );
+        return(
+          
+        <ProductConsumer>
+        {
+          (value)=>{
+      const searchChange (event)=>{
+
+        const filteredcourse = value.products.filter(CourseDetails=>{
+          return( 
+          CourseDetails.courseTitle.toLowerCase().includes(this.state.searchField.toLowerCase()))
+                     })
+                  //    this.setState({CourseDetails:filteredcourse}); 
+                     
+
+      }
+      
+         console.log(CourseDetails);
+
+            return( <div className={classes.search}>
+              <div className={classes.searchIcon}>
+              <SearchIcon />
+              </div>
+              <InputBase
+                 onChange = {filteredcourse}
+                  courses = {filteredcourse}
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                
+                inputProps={{ 'aria-label': 'search' }}
+              />
+            </div>)}}
+        </ProductConsumer> );
       }
   
 
