@@ -138,7 +138,8 @@ import NameContainer from './NameContainer';
 class SearchBar extends React.Component{
   state = {
     CourseDetails: CourseDetails,
-    searchTerm: ''
+    searchTerm: '',
+
   }
 
   editSearchTerm = (e) =>{
