@@ -7,7 +7,7 @@ import SignUp from './containers/SignUp/SignUp';
 import SignIn from './containers/SignIn/SignIn';
 import MainPage from './containers/MainPage/MainPage';
 import Home from './containers/Home/Home';
-
+import Cart from './components/Cart/Cart';
 
 
 function HomePage(props){
@@ -21,6 +21,7 @@ function HomePage(props){
         <div >
         <Navbar></Navbar>
         <Switch>
+        <Route path="/cart" component={Cart} /> 
         <Route path="/courses/:id" component={CoursesDisplay} /> 
         <Route exact path="/" component={MainPage} /> 
         <Route exact path="/home" component={Home} /> 

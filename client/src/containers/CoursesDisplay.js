@@ -24,7 +24,12 @@ export default class CourseDisplay extends Component {
             
               
             return (
-            
+              <ProductConsumer>
+                {
+               (value)=>{
+            const {id, company, img, info, price, title, inCart} = 
+            value.detailProduct;
+              return(
             <Container className="bg-white" >
                   <div className="col-10 mx-auto text-center  text-blue pt-4 my-5 ss">
                     <h1 className="font-weight-bolder">
@@ -47,11 +52,11 @@ export default class CourseDisplay extends Component {
                         </Link>
                           <ButtonContainer 
                           className="ml-2"
-                            // disabled={inCart?true:false}
-                            // onClick={()=>{
-                            //   value.addToCart(_id);
-                            //   value.openModal(_id);
-                            // }}
+                            disabled={filteredcourse[0].inCart?true:false}
+                            onClick={()=>{
+                               value.addToCart(filteredcourse[0]._id);
+                               value.openModal(filteredcourse[0]._id);
+                           }}
                             
                           >
                             {filteredcourse[0].inCart ? "inCart":"add to cart"}
@@ -81,7 +86,10 @@ export default class CourseDisplay extends Component {
                   </div>
                 
             </Container>  
-                
+              )
+                          }
+                }
+            </ProductConsumer>
             )
 
           }
