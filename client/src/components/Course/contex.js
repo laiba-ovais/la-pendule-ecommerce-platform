@@ -22,7 +22,7 @@ class ProductProvider extends Component {
 
   setProducts = () => {
     let tempProducts = [];
-    CourseDetails.forEach(item=> {
+    this.state.detailProduct.forEach(item=> {
       const singleItem = {...item};
       tempProducts = [...tempProducts, singleItem];
     })

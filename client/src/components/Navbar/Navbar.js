@@ -189,13 +189,13 @@ export default function Navbar() {
           </Typography></Link> 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-          <Link to= '/home'>
+          <Link to= '/cart'>
           <IconButton
-            color="inherit"
+            color="white"
             aria-label="cart"
           >
-          <Badge badgeContent={4} color="secondary">
-          <ShoppingCartIcon/>
+          <Badge badgeContent={0} color="secondary">
+          <ShoppingCartIcon  style={ { fontSize: 30 , color: "white"}}/>
           </Badge>
           </IconButton>
           </Link>
