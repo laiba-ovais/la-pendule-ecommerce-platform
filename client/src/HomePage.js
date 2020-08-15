@@ -7,7 +7,7 @@ import SignUp from './containers/SignUp/SignUp';
 import SignIn from './containers/SignIn/SignIn';
 import MainPage from './containers/MainPage/MainPage';
 import Home from './containers/Home/Home';
-import Cart from './components/Cart/Cart';
+import Cart from './components/Cart';
 import Modal from './components/Cart/Modal';
 
 function HomePage(props){

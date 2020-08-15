@@ -20,6 +20,7 @@ import './Navbar.css';
 import {ButtonContainer} from "../Button/Button"
 import { CourseDetails } from '../Course/CourseDetails';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import {ProductConsumer} from '../Course/contex';
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -171,71 +172,80 @@ export default function Navbar() {
       </MenuItem>
     </Menu>
   );
-
+  
   return (
-    <div className={classes.grow}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
-         <Link to= '/home' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
-           HOME   
-          </Typography></Link> 
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-          <Link to= '/cart'>
-          <IconButton
-            color="white"
-            aria-label="cart"
-          >
-          <Badge badgeContent={0} color="secondary">
-          <ShoppingCartIcon  style={ { fontSize: 30 , color: "white"}}/>
-          </Badge>
-          </IconButton>
-          </Link>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-            
-          </div>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </div>
+    
+    
+<ProductConsumer>
+        {
+          (value)=>{
+            const {cart} = value;
+            console.log(cart.lenght)
+            return( <div className={classes.grow}>
+              <AppBar position="static">
+                <Toolbar>
+                  <IconButton
+                    edge="start"
+                    className={classes.menuButton}
+                    color="inherit"
+                    aria-label="open drawer"
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                 <Link to= '/home' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
+                   HOME   
+                  </Typography></Link> 
+                  <div className={classes.grow} />
+                  <div className={classes.sectionDesktop}>
+                  <Link to= '/cart'>
+                  <IconButton
+                    color="white"
+                    aria-label="cart"
+                  >
+                  <Badge badgeContent={cart.lenght} color="secondary">
+                  <ShoppingCartIcon  style={ { fontSize: 30 , color: "white"}}/>
+                  </Badge>
+                  </IconButton>
+                  </Link>
+                    <IconButton aria-label="show 4 new mails" color="inherit">
+                      <Badge badgeContent={4} color="secondary">
+                        <MailIcon />
+                      </Badge>
+                    </IconButton>
+                    <IconButton aria-label="show 17 new notifications" color="inherit">
+                      <Badge badgeContent={17} color="secondary">
+                        <NotificationsIcon />
+                      </Badge>
+                    </IconButton>
+                    <IconButton
+                      edge="end"
+                      aria-label="account of current user"
+                      aria-controls={menuId}
+                      aria-haspopup="true"
+                      onClick={handleProfileMenuOpen}
+                      color="inherit"
+                    >
+                      <AccountCircle />
+                    </IconButton>
+                  </div>
+                  <div className={classes.sectionMobile}>
+                    <IconButton
+                      aria-label="show more"
+                      aria-controls={mobileMenuId}
+                      aria-haspopup="true"
+                      onClick={handleMobileMenuOpen}
+                      color="inherit"
+                    >
+                      <MoreIcon />
+                    </IconButton>
+                    
+                  </div>
+                </Toolbar>
+              </AppBar>
+              {renderMobileMenu}
+              {renderMenu}
+            </div>)}}
+  </ProductConsumer>
+    
   );
 }
