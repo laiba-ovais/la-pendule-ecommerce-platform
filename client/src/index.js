@@ -6,12 +6,15 @@ import Course from './containers/Course';
 import * as serviceWorker from './serviceWorker';
 import HomePage from './HomePage';
 import 'tachyons';
+import {ProductProvider} from './components/Course/contex';
 
 ReactDOM.render(
-  
-   <BrowserRouter>
+  <ProductProvider>
+    <BrowserRouter>
    <HomePage></HomePage>
-   </BrowserRouter>,
+   </BrowserRouter>
+  </ProductProvider>  
+   ,
   
   document.getElementById('root') 
 );

@@ -24,7 +24,7 @@ export default class CourseDisplay extends Component {
             
               
             return (
-              <ProductConsumer>
+              <ProductConsumer >
                 {
                (value)=>{
             const {_id, courseAuthor, courseImage , info, price, courseTitle, inCart} = 
@@ -52,7 +52,7 @@ export default class CourseDisplay extends Component {
                         </Link>
                           <ButtonContainer 
                           className="ml-2"
-                            disabled={filteredcourse[0].inCart?true:false}
+                            // disabled={filteredcourse[0].inCart?true:false}
                             onClick={()=>{
                                value.addToCart(filteredcourse[0]._id);
                                value.openModal(filteredcourse[0]._id);
