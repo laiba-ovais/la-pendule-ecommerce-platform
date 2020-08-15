@@ -11,7 +11,7 @@ export default function CartTotals({value, history}) {
     const {product} = value; 
     console.log(product);
     async function handleToken(token, addresses) {
-        const response = await axios.post("http://localhost:4000/checkout",
+        const response = await axios.post("/checkout",
           { token, product }
         );
         const { status } = response.data;

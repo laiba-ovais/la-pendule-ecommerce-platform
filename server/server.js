@@ -6,7 +6,7 @@ const app = express();
 const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
 const pageRouter = require('./routes/User');
-
+const pageRouter2 = require('./routes/Checkout');
 
 app.use(cors(corsOptions));
 var corsOptions = {
@@ -20,6 +20,7 @@ app.use(
 )
 
 app.use('/', pageRouter);
+app.use('/', pageRouter2);
 // app.set('view engine', 'handlebars');//// yiya hai pehle wale error ka solution lekin usse doosra error generate hogya
 
 // const mysqlConnection = mysql.createConnection({
