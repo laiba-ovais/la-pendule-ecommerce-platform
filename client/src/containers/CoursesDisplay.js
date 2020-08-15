@@ -45,14 +45,14 @@ export default class CourseDisplay extends Component {
                         <ResponsivePlayer url="G:\[FreeCourseSite.com] Udemy - The Complete Web Developer in 2020 Zero to Mastery\1. Introduction/1. Course Outline.mp4" />
                         </div>
                         <div className="my-3">
-                        <Link to="/">
+                        <Link to="/courses">
                           <ButtonContainer>
                             back to Courses
                           </ButtonContainer>
                         </Link>
                           <ButtonContainer 
                           className="ml-2"
-                            // disabled={filteredcourse[0].inCart?true:false}
+                           disabled={inCart?true:false}
                             onClick={()=>{
                                value.addToCart(_id);
                                value.openModal(_id);

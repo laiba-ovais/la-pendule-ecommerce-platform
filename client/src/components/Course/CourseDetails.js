@@ -9,6 +9,8 @@ export const CourseDetails = [
         price :200,
         inCart: false,
         info: "info of course"
+        ,total:0,
+         count:0
     },
     {
         _id:2,
@@ -21,6 +23,8 @@ export const CourseDetails = [
         price :200,
         inCart: false,
         info: "info of course"
+        ,total:0,
+         count:0
     },
     {
         _id:3,
@@ -33,6 +37,8 @@ export const CourseDetails = [
         price :200,
         inCart: false,
         info: "info of course"
+        ,total:0,
+         count:0
     }
 ];
 export const courseStored = 
@@ -46,6 +52,8 @@ export const courseStored =
     courseAuthor : 'fbkjdh',
     price :200,
     inCart: false,
-    info: "info of course"
+    info: "info of course",
+    total:0,
+    count:0
 };
 
