@@ -44,6 +44,18 @@ class ProductProvider extends Component {
       }
     )
   }
+  searchChange=(event)=>{
+  let searchField = event.target.value;
+   const filteredcourse= this.state.products.filter(CourseDetails=>{
+    return( 
+    this.state.products.courseTitle.toLowerCase().includes(searchField.toLowerCase()))
+                     })
+    console.log(filteredcourse);
+    this.setState(()=>{return {products:filteredcourse}})
+          
+  
+
+  }
 
   addToCart = (_id) => {
      let tempProducts = [...this.state.products];

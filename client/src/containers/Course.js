@@ -11,7 +11,7 @@ import "./Course.css";
 
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import SearchBar from '../components/Navbar/SearchBar';
-
+import {ProductConsumer} from '../components/Course/contex';
 
 class Course extends React.Component{
     constructor(props){
@@ -33,9 +33,6 @@ class Course extends React.Component{
         
     // }
 
-     onSearchChange = (event) =>{
-        this.setState({searchField: event.target.value})
-    }
     
     // on change wala hi hai ye sahi chal rha hai dekho./..input
 
@@ -45,25 +42,22 @@ class Course extends React.Component{
 
        
         
-         const   {searchField, searchChange} = this.state;
-            const filteredcourse = CourseDetails.filter(CourseDetails=>{
-                   return( 
-                    CourseDetails.courseTitle.toLowerCase().includes(this.state.searchField.toLowerCase()))
-                   })
-                //    this.setState({CourseDetails:filteredcourse}); 
-                   
-                   console.log(CourseDetails);
+     
                     
         return(
-            <div className ="container">
+            
+<ProductConsumer>
+        {
+          (value)=>{
+            return( <div className ="container">
             <div>
-            <SearchBar  searchChange={this.onSearchChange}>
-            </SearchBar>
             </div>
             <GridList cols={3} cellHeight={'auto'}> 
-            <CourseCardList CourseDetails={filteredcourse}/>  
+            <CourseCardList CourseDetails={value.products}/>  
             </GridList>
-             </div>
+             </div>)}}
+        </ProductConsumer>
+            
 
             
             

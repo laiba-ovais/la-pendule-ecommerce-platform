@@ -104,26 +104,14 @@ const useStyles = makeStyles((theme) => ({
         <ProductConsumer>
         {
           (value)=>{
-      const searchChange (event)=>{
-
-        const filteredcourse = value.products.filter(CourseDetails=>{
-          return( 
-          CourseDetails.courseTitle.toLowerCase().includes(this.state.searchField.toLowerCase()))
-                     })
-                  //    this.setState({CourseDetails:filteredcourse}); 
-                     
-
-      }
-      
-         console.log(CourseDetails);
-
+       
             return( <div className={classes.search}>
               <div className={classes.searchIcon}>
               <SearchIcon />
               </div>
               <InputBase
-                 onChange = {filteredcourse}
-                  courses = {filteredcourse}
+                onChange = {searchChange}
+                  
                 placeholder="Search…"
                 classes={{
                   root: classes.inputRoot,
