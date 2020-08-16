@@ -33,8 +33,7 @@ process.on('uncaughtException', function (err) {
 router.post('/submit' , function(req, res){
       var user = req.body;
       
-      const hashedpassword = encryptPWD(user.password)
-      console.log(hashedpassword);
+      const hashedpassword = encryptPWD(user.password);
       
       var Oneuser={
           email: user.email,
@@ -71,10 +70,20 @@ router.post('/auth', (req, res, next) => {
     password:user.password,
     first_name: user.firstname,
     last_name: user.lastname
-}
-    mysqlConnection.query('SELECT email, password FROM users WHERE email = ? AND password = ?', [Oneuser.email, Oneuser.password], 
+
+
+
+
+} 
+  const passdb=toString(mysqlConnection.query("SELECT password FROM users WHERE email=?",[Oneuser.email],(rows)=>rows.password));
+
+
+  console.log(passdb);
+ if(comparePWD(passdb,user.password)) // ye function hai jo encrypted password ko normal se compare krta hai or true bata ta hai agr encrypted = encrypted(normal)
+    {mysqlConnection.query('SELECT email, password FROM users WHERE email = ? AND password = ?', [Oneuser.email, Oneuser.password], 
     function(err, results)
     {
+
       if (err)throw err;
       if(results) {
       
@@ -82,7 +91,10 @@ router.post('/auth', (req, res, next) => {
       } else {
             res.json('user not found');
           }
-        });
+        });}
+        else{
+          res.json('user not found');
+        }
   
 
 });
