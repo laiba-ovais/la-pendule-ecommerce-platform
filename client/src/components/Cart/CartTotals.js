@@ -8,7 +8,15 @@ toast.configure();
 
 export default function CartTotals({value, history}) {
     const {cartSubTotal, cartTax, cartTotal, clearCart} = value;
-    const {product} = value; 
+    const { _id, courseTitle} = value;
+
+    var product = {
+        price: cartTotal,
+        name: courseTitle,
+        _id:_id
+    }
+
+
     console.log(product);
     async function handleToken(token, addresses) {
         const response = await axios.post("/checkout",
