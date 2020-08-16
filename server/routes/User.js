@@ -1,9 +1,16 @@
 const express = require('express');
 const mysql = require('mysql');
+var bodyParser = require('body-parser');
 
 const router = express.Router();
 const {encryptPWD,comparePWD} = require('../config/passwordCompare');
 
+router.use(bodyParser.json());
+router.use(
+    bodyParser.urlencoded({
+        extended:false
+    })
+)
 const mysqlConnection = mysql.createConnection({
   host: 'localhost',
   user:'root',
@@ -23,6 +30,8 @@ mysqlConnection.connect((err) =>{
   });}
   else
   console.log('connection failed \n Error: '+JSON.stringify(err, undefined, 2));
+  
+
   
 });
 process.on('uncaughtException', function (err) {
@@ -63,7 +72,7 @@ router.post('/submit' , function(req, res){
 
 
 
-router.post('/auth', async(req, res, next) => {
+router.post('/auth', (req, res) => {
   var user = req.body;
   var Oneuser={
     email: user.email,
@@ -72,13 +81,18 @@ router.post('/auth', async(req, res, next) => {
     last_name: user.lastname
 
 } 
-
+  console.log(req.body);
 // var passdb = [];
 
   mysqlConnection.query("SELECT password FROM users WHERE email=?",[req.email],function(err, rows,fields){
     if(err)throw err;
+
+    if(rows.length==0){
+      res.json('email not found');
+    }
+    else{
     console.log(rows);
-    var password=rows[0].password;
+    var password=rows.password;
     console.log(rows);
     
     if(comparePWD(req.password,password)) // ye function hai jo encrypted password ko normal se compare krta hai or true bata ta hai agr encrypted = encrypted(normal)
@@ -99,7 +113,7 @@ router.post('/auth', async(req, res, next) => {
           res.json('user not found');
         }
   
-
+}
   });
 
 //   function setValue(value) {
