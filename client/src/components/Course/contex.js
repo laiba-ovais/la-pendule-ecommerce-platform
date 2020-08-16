@@ -6,7 +6,7 @@ const ProductContext = React.createContext();
 
 class ProductProvider extends Component {
   state = {
-      products: [],
+      products: [],// yahan sab states hain  
       detailProduct: courseStored,
       cart: [],
       modalOpen: false,
@@ -21,21 +21,21 @@ class ProductProvider extends Component {
   }
 
   setProducts = () => {
-    let tempProducts = [];
+    let tempProducts = []; // yahan start up per products ki value set hoti hai
     CourseDetails.forEach(item=> {
       const singleItem = {...item};
       tempProducts = [...tempProducts, singleItem];
     })
     this.setState(()=> {
       return {products: tempProducts};
-    })
+    })  
   }
-
+//isse item return hota hai id k liye
   getItem = (_id) => {
     const product = this.state.products.find(item=>  item._id == _id);
     return product;
   }
-
+// isse details page per item ata hai
   handleDetail = (_id) => {
     const product = this.getItem(_id);
     this.setState(
@@ -44,19 +44,23 @@ class ProductProvider extends Component {
       }
     )
   }
+  // ye kaam nhi kir rha hai :(
   searchChange=(event)=>{
   let searchField = event.target.value;
-   const filteredcourse= this.state.products.filter(CourseDetails=>{
+   const filteredcourse= this.state.products.filter((CourseDetails)=>{
     return( 
-    this.state.products.courseTitle.toLowerCase().includes(searchField.toLowerCase()))
+      CourseDetails.courseTitle.toLowerCase().includes(searchField.toLowerCase()))
                      })
     console.log(filteredcourse);
+    if(searchField=="")
+    {
+      this.setProducts();
+    }
+    else
     this.setState(()=>{return {products:filteredcourse}})
-          
-  
 
-  }
-
+  }//agar yahan set horhi hai, tou uper wali value kahan se arhi hai
+// item cart mein jata hai
   addToCart = (_id) => {
      let tempProducts = [...this.state.products];
      const product = this.getItem(_id);
@@ -73,20 +77,20 @@ class ProductProvider extends Component {
        this.addTotals();
      })
   }
-
+/// ise pop up ata hai 
   openModal = (_id) => {
     const product = this.getItem(_id);
     this.setState(()=>{
       return {modalProduct: product, modalOpen:true};
     })
   }
-
+//isse pop jata hair
   closeModal = () => {
       this.setState(()=>{
           return {modalOpen: false};
       })
   }
-
+// isse items increase hosktay hain lekin zarorat nhi iski
   increment = (_id) => {
     let tempCart = [...this.state.cart];
     const selectedProduct = tempCart.find(item=>item._id === _id);
@@ -106,7 +110,7 @@ class ProductProvider extends Component {
       }
     );
   }
-
+// isse kam hotay hai cart mein
   decrement = (_id) => {
     let tempCart = [...this.state.cart];
     const selectedProduct = tempCart.find(item=>item._id === _id);
@@ -129,7 +133,7 @@ class ProductProvider extends Component {
       )
     }
   }
-
+//isse remove hptay hain
   removeItem = (_id) => {
     let tempProducts = [...this.state.products];
     let tempCart = [...this.state.cart];
@@ -151,7 +155,7 @@ class ProductProvider extends Component {
       this.addTotals();
     })
   }
-
+//isse cart clear
   clearCart = () => {
     this.setState(()=>{
       return {cart:[]};
@@ -160,7 +164,7 @@ class ProductProvider extends Component {
       this.addTotals(); 
     })
   }
-
+//total calculationya
   addTotals = () => {
       let subTotal = 0;
       this.state.cart.map(item => (subTotal += item.total));
@@ -187,7 +191,9 @@ class ProductProvider extends Component {
               increment: this.increment,
               decrement: this.decrement,
               removeItem: this.removeItem,
-              clearCart: this.clearCart
+              clearCart: this.clearCart,
+              searchChange: this.searchChange
+
           }
       }>
           {this.props.children}
