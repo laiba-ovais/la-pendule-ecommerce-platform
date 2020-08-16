@@ -8,13 +8,8 @@ toast.configure();
 
 export default function CartTotals({value, history}) {
     const {cartSubTotal, cartTax, cartTotal, clearCart} = value;
-    const { _id, courseTitle} = value;
-
-    var product = {
-        price: cartTotal,
-        name: courseTitle,
-        _id:_id
-    }
+    var product = value.product;
+       
 
 
     console.log(product);
