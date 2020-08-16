@@ -8,6 +8,7 @@ const bcrypt = require('bcrypt');
 const pageRouter = require('./routes/User');
 const pageRouter2 = require('./routes/Checkout');
 const pageRouter3 = require('./routes/Courses');
+//const pageRouter4 = require('./routes/Courses')
 
 app.use(cors(corsOptions));
 var corsOptions = {
@@ -22,6 +23,7 @@ app.use(
 
 app.use('/', pageRouter);
 app.use('/', pageRouter2);
+app.use('/api/courses', pageRouter3);
 // app.set('view engine', 'handlebars');//// yiya hai pehle wale error ka solution lekin usse doosra error generate hogya
 
 // const mysqlConnection = mysql.createConnection({

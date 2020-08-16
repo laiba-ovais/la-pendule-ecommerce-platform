@@ -1,10 +1,9 @@
 const Sequelize = require('sequelize')
 const database = {}
-<<<<<<< HEAD
-const sequelize = new Sequelize('mydatabse', 'root', 'chikorita1191', {
-=======
+
+// const sequelize = new Sequelize('mydatabse', 'root', 'chikorita1191', {
+
 const sequelize = new Sequelize('mydb', 'root', 'Palkia786', {
->>>>>>> 20ee67a2d02f2c4b93cf41c1ac33c56e57ccbada
   host: 'localhost',
   dialect: 'mysql',
   operatorsAliases: false,
