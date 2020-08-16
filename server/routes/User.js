@@ -63,7 +63,7 @@ router.post('/submit' , function(req, res){
 
 
 
-router.post('/auth', (req, res, next) => {
+router.post('/auth', async(req, res, next) => {
   var user = req.body;
   var Oneuser={
     email: user.email,
@@ -75,7 +75,32 @@ router.post('/auth', (req, res, next) => {
 
 // var passdb = [];
 
-//   mysqlConnection.query("SELECT password FROM users WHERE email=?",[Oneuser.email],function(err, rows){setValue (rows)});
+  mysqlConnection.query("SELECT password FROM users WHERE email=?",[req.email],function(err, rows,fields){
+    if(err)throw err;
+    console.log(rows);
+    var password=rows[0].password;
+    console.log(rows);
+    
+    if(comparePWD(req.password,password)) // ye function hai jo encrypted password ko normal se compare krta hai or true bata ta hai agr encrypted = encrypted(normal)
+    {
+    mysqlConnection.query('SELECT email, password FROM users WHERE email = ? AND password = ?', [Oneuser.email, Oneuser.password], 
+    function(err, results)
+    {
+
+      if (err)throw err;
+      if(results) {
+      
+        res.json({ status: req.body.email + ' is logged in!' }) 
+      } else {
+            res.json('user not found');
+          }
+        });}
+        else{
+          res.json('user not found');
+        }
+  
+
+  });
 
 //   function setValue(value) {
 //     passdb = value;
@@ -103,38 +128,38 @@ router.post('/auth', (req, res, next) => {
 // mysqlConnection.connect((err) =>{ //pehle isje baghair hi chala k dekha tha :) tb b nhi chala
 
 
-mysqlConnection.query("SELECT * FROM users WHERE email = '"+ Oneuser.email +"' ", function(err, rows, fields){
-  if(err){
-      console.log(err);
-  }
-  else{
-      if(rows.length <= 0){
-              res.json({ msg: 'Wrong Email' });
-      }
-      else{
-          var hash = "SELECT password FROM users WHERE email = '"+ Oneuser.email + "' ";
-          mysqlConnection.query(hash, function(err, result){
-              if(err){
-                  console.log(err);
-              }
-              bcryptjs.compare(Oneuser.password , hash, function(err, result) {
-                  if (err) { throw (err); }
-                  console.log(result);
-              });
-          });
-      }
-  }
-  if(err){
-      res.render('login',{
-          err,
-          email,
-          password
-      });}
+// mysqlConnection.query("SELECT * FROM users WHERE email = '"+ Oneuser.email +"' ", function(err, rows, fields){
+//   if(err){
+//       console.log(err);
+//   }
+//   else{
+//       if(rows.length === 0){
+//               res.json({ msg: 'Wrong Email' });
+//       }
+//       else{
+//           var hash = "SELECT password FROM users WHERE email = '"+ Oneuser.email + "' ";
+//           mysqlConnection.query(hash, function(err, result){
+//               if(err){
+//                   console.log(err);
+//               }
+//               bcryptjs.compare(Oneuser.password , hash, function(err, result) {
+//                   if (err) { throw (err); }
+//                   console.log(result);
+//               });
+//           });
+//       }
+//   }
+//   if(err){
+//       res.render('login',{
+//           err,
+//           email,
+//           password
+//       });}
    
   //else{
   //     res.render('Home', { name: name});
-  // }
-})
+//   // }
+// })
 })
 
 module.exports = router;
