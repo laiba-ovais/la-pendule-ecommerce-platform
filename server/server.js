@@ -7,6 +7,7 @@ const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
 const pageRouter = require('./routes/User');
 const pageRouter2 = require('./routes/Checkout');
+const pageRouter3 = require('./routes/Courses');
 
 app.use(cors(corsOptions));
 var corsOptions = {
@@ -106,6 +107,7 @@ app.use('/', pageRouter2);
 
 
 var Users = require('./routes/User')
+var Courses = require('./routes/Courses')
 //newcode
 // require('./routes/auth.routes')(app);
 // require('./routes/user.routes')(app);

@@ -7,13 +7,13 @@ const {encryptPWD,comparePWD} = require('../config/passwordCompare');
 const mysqlConnection = mysql.createConnection({
   host: 'localhost',
   user:'root',
-  password: 'Palkia786',
+  password: '28082000',
   database: 'mydb'
 });
 mysqlConnection.connect((err) =>{
   if(!err){
   console.log('DB connection successful');
-  var sql = "CREATE TABLE IF NOT EXISTS users (id INT(4),fname VARCHAR(255), lname VARCHAR(255) , email VARCHAR(255) ,password VARCHAR(255))  ";
+  var sql = "CREATE TABLE IF NOT EXISTS users (ID INT(4),first_name VARCHAR(255), last_name VARCHAR(255), password VARCHAR(255) , email VARCHAR(255))";
   mysqlConnection.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Table created");
@@ -75,6 +75,7 @@ router.post('/auth', (req, res, next) => {
 
 
 } 
+
 var passdb = [];
 
   mysqlConnection.query("SELECT password FROM users WHERE email=?",[Oneuser.email],function(err, rows){setValue (rows)});
@@ -92,7 +93,7 @@ var passdb = [];
       if (err)throw err;
       if(results) {
       
-        res.json({ status: req.body.email + ' is logined' }) 
+        res.json({ status: req.body.email + ' is logged in!' }) 
       } else {
             res.json('user not found');
           }
@@ -101,7 +102,45 @@ var passdb = [];
           res.json('user not found');
         }
   
+/*
+mysqlConnection.connect((err) =>{
+  if(!err){
+  console.log('DB connection successful');
 
-});
+mysqlConnection.query("SELECT * FROM users WHERE email = '"+ Oneuser.email +"' ", function(err, rows, fields){
+  if(err){
+      console.log(err);
+  }
+  else{
+      if(rows.length <= 0){
+              errors.push({ msg: 'Wrong Email' });
+      }
+      else{
+          var hash = "SELECT password FROM users WHERE email = '"+ Oneuser.email + "' ";
+          connection.query(hash, function(err, result){
+              if(err){
+                  console.log(err);
+              }
+              bcryptjs.compare(Oneuser.password , hash, function(err, result) {
+                  if (err) { throw (err); }
+                  console.log(result);
+              });
+          });
+      }
+  }
+  if(errors.length > 0){
+      res.render('login',{
+          errors,
+          email,
+          password
+      });}
+   
+  //else{
+  //     res.render('Home', { name: name});
+  // }
+})
+}})
+*/  
+})
 
 module.exports = router;
