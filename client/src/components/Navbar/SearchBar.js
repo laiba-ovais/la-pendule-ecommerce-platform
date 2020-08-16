@@ -110,7 +110,7 @@ const useStyles = makeStyles((theme) => ({
               <SearchIcon />
               </div>
               <InputBase
-                onChange = {value.searchChange}
+                onChange = {searchChange}
                   
                 placeholder="Search…"
                 classes={{

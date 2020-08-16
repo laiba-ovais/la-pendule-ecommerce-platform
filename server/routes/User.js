@@ -75,11 +75,16 @@ router.post('/auth', (req, res, next) => {
 
 
 } 
-  const passdb=toString(mysqlConnection.query("SELECT password FROM users WHERE email=?",[Oneuser.email],(rows)=>rows.password));
+var passdb = [];
 
+  mysqlConnection.query("SELECT password FROM users WHERE email=?",[Oneuser.email],function(err, rows){setValue (rows)});
 
-  console.log(passdb);
- if(comparePWD(passdb,user.password)) // ye function hai jo encrypted password ko normal se compare krta hai or true bata ta hai agr encrypted = encrypted(normal)
+  function setValue(value) {
+    passdb = value;
+    console.log(passdb[0].password)
+  }
+  console.log(passdb[0].password);
+ if(comparePWD(passdb[0].password,Oneuser.password)) // ye function hai jo encrypted password ko normal se compare krta hai or true bata ta hai agr encrypted = encrypted(normal)
     {mysqlConnection.query('SELECT email, password FROM users WHERE email = ? AND password = ?', [Oneuser.email, Oneuser.password], 
     function(err, results)
     {
