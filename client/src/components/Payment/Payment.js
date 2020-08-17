@@ -15,18 +15,4 @@ const Payment =()=>{
       </div>);
 
  }
-
-    // this.state= {
-    // name: "Tesla Roadster",
-    // price: 64998.67,
-    // description: "Cool car"
-    // }
-
-
-
-
-
-
-
-
 export default Payment;

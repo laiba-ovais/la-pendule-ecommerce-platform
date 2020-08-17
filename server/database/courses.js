@@ -12,3 +12,4 @@ const {Connection}  = require('./index');
     });
 }
 module.exports=all;
+//??? ye kia kr rha hai poora function? han bhaee mjhy tou bas query ka hi pata hai  :(

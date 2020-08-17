@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {CourseDetails,courseStored} from './CourseDetails';
 import { runInThisContext } from 'vm';
+import {Users, User} from '../Users/Users'
 
 const ProductContext = React.createContext();
 
@@ -14,11 +15,37 @@ class ProductProvider extends Component {
       cartSubTotal: 0,
       cartTax: 0,
       cartTotal: 0,
-      signedin:false
+      signedin:false,
+      user:[],
+      UserDetails: {}
   }
 
   componentDidMount(){
     this.setProducts();
+  }
+  setUsers=()=>{
+    let tempUser = []; // yahan start up per products ki value set hoti hai
+    Users.forEach(item=> {
+      const singleItem = {...item};
+      tempUser = [...tempUser, singleItem];
+    })
+    this.setState(()=> {
+      return {user: tempUser};
+    }) 
+  }
+
+  getUsers = (_id) => {
+    const user = this.state.user.find(item=>  item._id == _id);
+    return user;
+  }
+
+  handleUserDetail = (_id) => {
+    const user = this.getItem(_id);
+    this.setState(
+      ()=>{
+        return {UserDetails: user};
+      }
+    )
   }
 
   setProducts = () => {
