@@ -213,6 +213,7 @@ export default function Navbar() {
                   </Badge>
                   </IconButton>
                   </Link>
+                  
                     <IconButton aria-label="show 4 new mails" color="inherit">
                       <Badge badgeContent={4} color="secondary">
                         <MailIcon />
@@ -248,7 +249,7 @@ export default function Navbar() {
                   </div>
                 </Toolbar>
               </AppBar>
-              {renderMobileMenu}
+              {/* {renderMobileMenu} */}
               {renderMenu}
             </div>)}}
   </ProductConsumer>

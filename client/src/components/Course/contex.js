@@ -13,7 +13,8 @@ class ProductProvider extends Component {
       modalProduct: courseStored,
       cartSubTotal: 0,
       cartTax: 0,
-      cartTotal: 0
+      cartTotal: 0,
+      signedin:false
   }
 
   componentDidMount(){

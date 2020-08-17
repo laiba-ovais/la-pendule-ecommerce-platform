@@ -48,7 +48,8 @@ router.post('/submit' , function(req, res){
           email: user.email,
           password:user.password,
           first_name: user.firstname,
-          last_name: user.lastname
+          last_name: user.lastname,
+          time: Date.now()
       }
       mysqlConnection.query("SELECT * FROM users WHERE email = ?", [Oneuser.email], function(err,rows){
           if (err) {
@@ -56,7 +57,7 @@ router.post('/submit' , function(req, res){
               console.log(err);
           }
           if (!rows.length){
-              mysqlConnection.query("insert into users ( `first_name`,`last_name`, `password`, `email`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ hashedpassword +"', '"+ req.body.email+"');",function(err2,result){
+              mysqlConnection.query("insert into users ( `first_name`,`last_name`, `password`, `email`, `time`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ hashedpassword +"', '"+ req.body.email+"', '"+ Oneuser.time+"');",function(err2,result){
                   if(err2)  console.log(err2);
                   console.log(res.body , "data is saved");
                   res.json({ status: req.body.email + ' Registered!' }) });
