@@ -77,7 +77,9 @@ export default function SignIn() {
             label="Email Address"
             name="email"
             autoComplete="email"
+            onChange={value.onChange}
             autoFocus
+
           />
           <TextField
             variant="outlined"
@@ -89,6 +91,7 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={value.onChange}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
