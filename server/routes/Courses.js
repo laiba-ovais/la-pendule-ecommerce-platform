@@ -18,7 +18,7 @@ router.get('/api/courses',async(req,res)=>{
   
 })
 
-router.post('/addcourse',async(req,res)=>{
+router.post('/addcourse',(req,res)=>{
   const today= new Date();
 
   const newcourses={ 
@@ -32,13 +32,13 @@ router.post('/addcourse',async(req,res)=>{
   }
  
 
-  Courses.findAll({
+  Courses.findOne({
     where :{
       title: req.body.title
     }
   }).then(courses=>{
     if (!courses) {
-      courses.create(newcourses)
+      Courses.create(newcourses)
       .then(courses=>{
         res.json({ status: courses.title +' course saved '})
       }).catch(err => {
