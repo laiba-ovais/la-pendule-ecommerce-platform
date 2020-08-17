@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
+import {ProductConsumer} from '../../components/Course/contex';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -49,14 +49,16 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
+
+
 export default function SignIn() {
   const classes = useStyles();
-
-  
-
-
   return (
-    <Container className={classes.back} component="main" maxWidth="xs">
+    <ProductConsumer>
+      {(value)=>{
+      
+      return( <Container className={classes.back} component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -65,7 +67,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} action='/auth' method="POST" noValidate>
+        <form className={classes.form}  onSubmit={value.onSubmit} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -75,7 +77,9 @@ export default function SignIn() {
             label="Email Address"
             name="email"
             autoComplete="email"
+            onChange={value.onChange}
             autoFocus
+
           />
           <TextField
             variant="outlined"
@@ -87,6 +91,7 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={value.onChange}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -121,6 +126,11 @@ export default function SignIn() {
       <Box mt={8}>
         <Copyright />
       </Box>
-    </Container>
+    </Container>)
+ }
+
+      }
+    </ProductConsumer>
+   
   );
 }

@@ -1,6 +1,8 @@
 const express = require('express');
 const mysql = require('mysql');
 var bodyParser = require('body-parser');
+// const jwt = require('jsonwebtoken')
+// process.env.SECRET_KEY = 'secret'
 
 const router = express.Router();
 const {encryptPWD,comparePWD} = require('../config/passwordCompare');
@@ -85,18 +87,17 @@ router.post('/auth', (req, res) => {
   console.log(req.body);
 // var passdb = [];
 
-  mysqlConnection.query("SELECT password FROM users WHERE email=?",[req.email],function(err, rows,fields){
+  mysqlConnection.query("SELECT password FROM users WHERE email='"+req.body.email +"'",function(err, results,fields){
     if(err)throw err;
-
-    if(rows.length==0){
+    
+    if(results.length===0){
       res.json('email not found');
     }
     else{
-    console.log(rows);
-    var password=rows.password;
-    console.log(rows);
+    var password=results[0].password;
+    console.log(password);
     
-    if(comparePWD(req.password,password)) // ye function hai jo encrypted password ko normal se compare krta hai or true bata ta hai agr encrypted = encrypted(normal)
+    if(comparePWD(req.body.password,password)) // ye function hai jo encrypted password ko normal se compare krta hai or true bata ta hai agr encrypted = encrypted(normal)
     {
     mysqlConnection.query('SELECT email, password FROM users WHERE email = ? AND password = ?', [Oneuser.email, Oneuser.password], 
     function(err, results)
@@ -104,8 +105,12 @@ router.post('/auth', (req, res) => {
 
       if (err)throw err;
       if(results) {
-      
-        res.json({ status: req.body.email + ' is logged in!' }) 
+        // let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
+        //   expiresIn: 1440
+        // })
+       res.send({email:req.body.email})
+        
+       
       } else {
             res.json('user not found');
           }
@@ -116,6 +121,8 @@ router.post('/auth', (req, res) => {
   
 }
   });
+
+
 
 //   function setValue(value) {
 //     passdb = value;

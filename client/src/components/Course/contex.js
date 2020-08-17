@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {CourseDetails,courseStored} from './CourseDetails';
 import { runInThisContext } from 'vm';
 import {Users, User} from '../Users/Users'
+import axios from 'axios'
+import { Redirect } from 'react-router-dom';
 
 const ProductContext = React.createContext();
 
@@ -17,12 +19,19 @@ class ProductProvider extends Component {
       cartTotal: 0,
       signedin:false,
       user:[],
-      UserDetails: {}
+      UserDetails: {},
+      email:"",
+      password:''
   }
 
   componentDidMount(){
     this.setProducts();
   }
+  onChange=(e)=>{
+    this.setState({ [e.target.name]: e.target.value })
+
+  }
+
   setUsers=()=>{
     let tempUser = []; // yahan start up per products ki value set hoti hai
     Users.forEach(item=> {
@@ -34,13 +43,30 @@ class ProductProvider extends Component {
     }) 
   }
 
-  getUsers = (_id) => {
-    const user = this.state.user.find(item=>  item._id == _id);
+  onsubmit=(e)=>{
+    e.preventDefault();
+
+    axios.post(`/auth`,{
+      email: this.state.email,
+      password: this.state.password
+    })
+    .then(res => {
+      console.log(res);
+      console.log(res.data.email);
+      this.handleUserDetail(res.data.email);
+    }).then((res)=>{if (res) {
+      this.props.history.push(`/profile`)
+    }})
+
+  
+  }
+  getUsers = (email) => {
+    const user = this.state.user.find(item=>  item.email == email);
     return user;
   }
 
-  handleUserDetail = (_id) => {
-    const user = this.getItem(_id);
+  handleUserDetail = (email) => {
+    const user = this.getItem(email);
     this.setState(
       ()=>{
         return {UserDetails: user};
@@ -220,7 +246,12 @@ class ProductProvider extends Component {
               decrement: this.decrement,
               removeItem: this.removeItem,
               clearCart: this.clearCart,
-              searchChange: this.searchChange
+              searchChange: this.searchChange,
+              setUsers:this.setUsers,
+              getUsers:this.getUsers,
+              handleUserDetail:this.handleUserDetail,
+              onsubmit:this.onsubmit,
+              onChange:this.onChange
 
           }
       }>

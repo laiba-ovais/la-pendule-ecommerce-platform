@@ -5,6 +5,7 @@ const mysql = require('mysql');
 const app = express();
 const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
+var session = require('express-session');
 const pageRouter = require('./routes/User');
 const pageRouter2 = require('./routes/Checkout');
 const pageRouter3 = require('./routes/Courses');
@@ -14,12 +15,16 @@ app.use(cors(corsOptions));
 var corsOptions = {
     origin: "http://localhost:4000"
   };
-app.use(bodyParser.json());
-app.use(
-    bodyParser.urlencoded({
-        extended:false
-    })
-)
+
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended : true}));
+
 
 app.use('/', pageRouter);
 app.use('/', pageRouter2);

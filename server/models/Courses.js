@@ -24,17 +24,22 @@ module.exports = DB.sequelize.define(
       type: Sequelize.STRING
     },
     author_initial: {
-      type: Sequelize.DATE,
-      defaultValue: Sequelize.NOW
+      type: Sequelize.STRING,
+      
     },
     image: {
-      type: Sequelize.DATE,
-      defaultValue: Sequelize.NOW
+      type: Sequelize.STRING,
+      
     }
     ,
     img_title: {
-      type: Sequelize.DATE,
-      defaultValue: Sequelize.NOW
+      type: Sequelize.STRING,
+      
+    }
+    ,
+    info: {
+      type: Sequelize.STRING,
+      
     }
   },
   {

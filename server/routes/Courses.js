@@ -2,10 +2,11 @@ const DB = require('../database/database');
 //import DB from '../database';
 const express = require('express');
 const router = express.Router();
-const courses = require("../models/Courses")
+const Courses = require("../models/Courses");
+// const { DATE } = require('sequelize/types');
 router.get('/api/courses',async(req,res)=>{
 
-    courses.findAll({
+    Courses.findAll({
       
     }).then(courses=>{
       if (courses) {
@@ -14,61 +15,40 @@ router.get('/api/courses',async(req,res)=>{
                  res.send('courses does not exist')
             }
     })
-  // try
-  // {
-  //   let courses = await DB.courses.all();
-  //   res.json(courses);
-  // }
-  // catch(e){
-  //   console.log(e);
-  //   res.sendStatus(500);
-  // }
   
 })
 
-// users.get('/profile', (req, res) => {
-//   var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+router.post('/addcourse',(req,res)=>{
+  const today= new Date();
 
-//   User.findOne({
-//     where: {
-//       id: decoded.id
-//     }
-//   })
-//     .then(user => {
-//       if (user) {
-//         res.json(user)
-//       } else {
-//         res.send('User does not exist')
-//       }
-//     })
-//     .catch(err => {
-//       res.send('error: ' + err)
-//     })
-// })
+  const newcourses={ 
+    title:req.body.title,
+    instructor:req.body.instructor ,
+    upload_date: today,
+    price: req.body.price,
+    author_initial: req.body.author_initial,
+    image: req.body.image,
+    img_title:req.body.img_title ,
+    info: req.body.info
+  }
+ 
 
-// module.exports = users
+  Courses.findOne({
+    where :{
+      title: req.body.title
+    }
+  }).then(courses=>{
+    if (!courses) {
+      Courses.create(newcourses)
+      .then(courses=>{
+        res.json({ status: courses.title +' course saved '})
+      }).catch(err => {
+        res.send('error: ' + err)
+      })
+          }
+          else
+          res.json("error course already there")
+  })
 
-//export default courses;
-
+})
 module.exports = router;
-// const express = require('express');
-// const router = express.Router();
-
-// // router.get('/api/courses',async(req,res)=>{
-// var mysql = require('mysql');
-
-// var con = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "Palkia786",
-//   database: "mydb"
-// });
-
-// con.connect(function(err) {
-//   if (err) throw err;
-//   con.query("SELECT * FROM courses", function (err, result, fields) {
-//     if (err) throw err;
-//     console.log(result);
-//   });
-// });
-
