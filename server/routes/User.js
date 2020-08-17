@@ -108,7 +108,7 @@ router.post('/auth', (req, res) => {
         // let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
         //   expiresIn: 1440
         // })
-       res.redirect("/profile",data={ email:req.body.email , password:req.body.password})
+       res.redirect("/profile")
         
        
       } else {

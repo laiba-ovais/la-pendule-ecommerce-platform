@@ -51,10 +51,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
-  const {username ,setusername } = React.useState();
-  console.log(username);
-  axios.get('/profile')
-      .then(response => this.setusername({username: response.data.name}))
+
 
 
   return (
