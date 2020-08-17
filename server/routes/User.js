@@ -108,8 +108,9 @@ router.post('/auth', (req, res) => {
         // let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
         //   expiresIn: 1440
         // })
-        res.redirect("/")
-        res.json({ status: req.body.email + ' is logged in!' }) 
+       res.redirect("/profile",data={ email:req.body.email , password:req.body.password})
+        
+       
       } else {
             res.json('user not found');
           }
@@ -120,6 +121,8 @@ router.post('/auth', (req, res) => {
   
 }
   });
+
+
 
 //   function setValue(value) {
 //     passdb = value;
