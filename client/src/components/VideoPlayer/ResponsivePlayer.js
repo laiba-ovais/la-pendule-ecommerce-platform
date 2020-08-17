@@ -3,12 +3,13 @@ import React from 'react';
 import './ResponsivePlayer.css';
 
 const ResponsivePlayer =({url,onProgress})=> {
-    
+      
       return (
         <div className='player-wrapper'>
           <ReactPlayer
             className='react-player'
-            url={url}
+            url={"https://www.youtube.com/watch?v=3QllloITo34"}
+            light={true}
             width='100%'
             height='100%'
             controls ={true}

@@ -9,6 +9,7 @@ import MainPage from './containers/MainPage/MainPage';
 import Home from './containers/Home/Home';
 import Cart from './components/Cart';
 import Modal from './components/Cart/Modal';
+import Playist from './containers/Playlist/Playlist'
 
 function HomePage(props){
     return (
@@ -28,6 +29,7 @@ function HomePage(props){
         <Route exact path="/courses" component = {Course}/>
         <Route exact path="/register" component = {SignUp}/>
         <Route exact path="/signin" component = {SignIn}/>
+        <Route exact path="/playlist" component = {Playist}/>
         </Switch>
         <Modal />
         </div>
