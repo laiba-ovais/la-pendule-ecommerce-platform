@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {CourseDetails,courseStored} from './CourseDetails';
 import { runInThisContext } from 'vm';
 import {Users, User} from '../Users/Users'
+import axios from 'axios'
 
 const ProductContext = React.createContext();
 
@@ -33,14 +34,22 @@ class ProductProvider extends Component {
       return {user: tempUser};
     }) 
   }
-
-  getUsers = (_id) => {
-    const user = this.state.user.find(item=>  item._id == _id);
+  onsubmit=()=>{
+    axios.post(`/auth`)
+    .then(res => {
+      console.log(res);
+      console.log(res.data.email);
+      this.handleUserDetail(res.data.email);
+    })
+  
+  }
+  getUsers = (email) => {
+    const user = this.state.user.find(item=>  item.email == email);
     return user;
   }
 
-  handleUserDetail = (_id) => {
-    const user = this.getItem(_id);
+  handleUserDetail = (email) => {
+    const user = this.getItem(email);
     this.setState(
       ()=>{
         return {UserDetails: user};

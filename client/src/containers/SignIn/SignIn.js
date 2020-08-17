@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios'
+import {ProductConsumer} from '../Course/contex';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -49,13 +50,27 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
+
+
 export default function SignIn() {
   const classes = useStyles();
+const onsubmit=()=>{
+  axios.post(`/auth`, { user })
+  .then(res => {
+    console.log(res);
+    console.log(res.data);
+  })
 
+}
+  
 
 
   return (
-    <Container className={classes.back} component="main" maxWidth="xs">
+    <ProductConsumer>
+      {(value)=>{
+
+      return( <Container className={classes.back} component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -120,6 +135,11 @@ export default function SignIn() {
       <Box mt={8}>
         <Copyright />
       </Box>
-    </Container>
+    </Container>)
+ }
+
+      }
+    </ProductConsumer>
+   
   );
 }
