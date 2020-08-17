@@ -19,12 +19,19 @@ class ProductProvider extends Component {
       cartTotal: 0,
       signedin:false,
       user:[],
-      UserDetails: {}
+      UserDetails: {},
+      email:"",
+      password:''
   }
 
   componentDidMount(){
     this.setProducts();
   }
+  onChange=(e)=>{
+    this.setState({ [e.target.name]: e.target.value })
+
+  }
+
   setUsers=()=>{
     let tempUser = []; // yahan start up per products ki value set hoti hai
     Users.forEach(item=> {
@@ -36,13 +43,21 @@ class ProductProvider extends Component {
     }) 
   }
 
-  onsubmit=()=>{
-    axios.post(`/auth`)
+  onsubmit=(e)=>{
+    e.preventDefault();
+
+    axios.post(`/auth`,{
+      email: this.state.email,
+      password: this.state.password
+    })
     .then(res => {
       console.log(res);
       console.log(res.data.email);
       this.handleUserDetail(res.data.email);
-    }).then(Redirect("/profile"))
+    }).then((res)=>{if (res) {
+      this.props.history.push(`/profile`)
+    }})
+
   
   }
   getUsers = (email) => {
@@ -235,7 +250,8 @@ class ProductProvider extends Component {
               setUsers:this.setUsers,
               getUsers:this.getUsers,
               handleUserDetail:this.handleUserDetail,
-              onsubmit:this.onsubmit
+              onsubmit:this.onsubmit,
+              onChange:this.onChange
 
           }
       }>

@@ -21,6 +21,7 @@ function HomePage(props){
         <div >
         <Navbar></Navbar>
         <Switch>
+        <Route exact path="/profile" component={Home} />  
         <Route path="/cart" component={Cart} /> 
         <Route path="/courses/:id" component={CoursesDisplay} /> 
         <Route exact path="/" component={MainPage} /> 
