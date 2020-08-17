@@ -12,8 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import axios from 'axios'
-import {ProductConsumer} from '../Course/contex';
+import {ProductConsumer} from '../../components/Course/contex';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -55,21 +54,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
-const onsubmit=()=>{
-  axios.post(`/auth`, { user })
-  .then(res => {
-    console.log(res);
-    console.log(res.data);
-  })
-
-}
-  
-
-
   return (
     <ProductConsumer>
       {(value)=>{
-
+      
       return( <Container className={classes.back} component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -79,7 +67,7 @@ const onsubmit=()=>{
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} action='/auth' method="POST" noValidate>
+        <form className={classes.form}  onSubmit={value.onSubmit} noValidate>
           <TextField
             variant="outlined"
             margin="normal"

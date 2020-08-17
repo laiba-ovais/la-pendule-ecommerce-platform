@@ -3,6 +3,7 @@ import {CourseDetails,courseStored} from './CourseDetails';
 import { runInThisContext } from 'vm';
 import {Users, User} from '../Users/Users'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom';
 
 const ProductContext = React.createContext();
 
@@ -34,13 +35,14 @@ class ProductProvider extends Component {
       return {user: tempUser};
     }) 
   }
+
   onsubmit=()=>{
     axios.post(`/auth`)
     .then(res => {
       console.log(res);
       console.log(res.data.email);
       this.handleUserDetail(res.data.email);
-    })
+    }).then(Redirect("/profile"))
   
   }
   getUsers = (email) => {
@@ -229,7 +231,11 @@ class ProductProvider extends Component {
               decrement: this.decrement,
               removeItem: this.removeItem,
               clearCart: this.clearCart,
-              searchChange: this.searchChange
+              searchChange: this.searchChange,
+              setUsers:this.setUsers,
+              getUsers:this.getUsers,
+              handleUserDetail:this.handleUserDetail,
+              onsubmit:this.onsubmit
 
           }
       }>
