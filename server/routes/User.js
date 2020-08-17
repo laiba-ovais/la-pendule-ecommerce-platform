@@ -75,7 +75,7 @@ router.post('/submit' , function(req, res){
 
 
 
-router.post('/auth', (req, res) => {
+router.post('/signin', (req, res) => {
   var user = req.body;
   var Oneuser={
     email: user.email,

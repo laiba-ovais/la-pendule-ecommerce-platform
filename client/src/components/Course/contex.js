@@ -44,25 +44,30 @@ class ProductProvider extends Component {
     }) 
   }
 
-   onsubmit=(e)=>{
-    // e.preventDefault();
+   onsubmit=(event)=>{
+    event.preventDefault()
+    axios({
+      method: 'POST',
+      url: '/signin',
+      data: {
+        email    : this.state.email,
+        password : this.state.password
+      }
+    }).then((response=>{
+      if (response) {
+        console.log(response);
+        console.log(response.data.email);
+  
+        let tempUser = this.getUsers(response.data.email);
+  
+        this.setState(()=>{
+          return { loginedUser: tempUser};
+        })
+      
+        this.props.history.push(`/profile`)
+      }
+    }))
     
-    const response=  axios.post(`/auth`,{
-      email: this.state.email,
-      password: this.state.password
-    })
-    if (response) {
-      console.log(response);
-      console.log(response.data.email);
-
-      let tempUser = this.getUsers(response.data.email);
-
-      this.setState(()=>{
-        return { loginedUser: tempUser};
-      })
-    
-      this.props.history.push(`/profile`)
-    }
 
   
   }
