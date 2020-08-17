@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
-const database = {}
-const sequelize = new Sequelize('mydatabse', 'root', 'Palkia786', {
+const DB = {}
+const sequelize = new Sequelize('mydb', 'root', 'Palkia786', {
   host: 'localhost',
   dialect: 'mysql',
   operatorsAliases: false,
@@ -12,10 +12,10 @@ const sequelize = new Sequelize('mydatabse', 'root', 'Palkia786', {
     idle: 10000
   }
 })                          //CONNECTION BAN RAHA HAI YEH KAISAY PATA CHALAY GA
-database.sequelize = sequelize
-database.Sequelize = Sequelize
+DB.sequelize = sequelize
+DB.Sequelize = Sequelize
 
-module.exports = database;
+module.exports = DB;
 // var con = mysql.createConnection({
 //     host: "localhost",
 //     user: "root",
