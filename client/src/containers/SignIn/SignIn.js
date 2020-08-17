@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
+import axios from 'axios'
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -51,8 +51,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
-
-  
+  const {username ,setusername } = React.useState();
+  console.log(username);
+  axios.get('/profile')
+      .then(response => this.setusername({username: response.data.name}))
 
 
   return (

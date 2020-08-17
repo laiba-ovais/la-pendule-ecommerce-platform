@@ -1,6 +1,8 @@
 const express = require('express');
 const mysql = require('mysql');
 var bodyParser = require('body-parser');
+// const jwt = require('jsonwebtoken')
+// process.env.SECRET_KEY = 'secret'
 
 const router = express.Router();
 const {encryptPWD,comparePWD} = require('../config/passwordCompare');
@@ -103,7 +105,10 @@ router.post('/auth', (req, res) => {
 
       if (err)throw err;
       if(results) {
-      
+        // let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
+        //   expiresIn: 1440
+        // })
+        res.redirect("/")
         res.json({ status: req.body.email + ' is logged in!' }) 
       } else {
             res.json('user not found');
