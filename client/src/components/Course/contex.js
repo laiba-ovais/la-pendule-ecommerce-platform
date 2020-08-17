@@ -21,7 +21,8 @@ class ProductProvider extends Component {
       user:[],
       UserDetails: {},
       email:"",
-      password:''
+      password:'',
+      loginedUser:''
   }
 
   componentDidMount(){
@@ -44,8 +45,8 @@ class ProductProvider extends Component {
   }
 
   onsubmit=(e)=>{
-    e.preventDefault();
-
+    // e.preventDefault();
+    
     axios.post(`/auth`,{
       email: this.state.email,
       password: this.state.password
@@ -53,7 +54,11 @@ class ProductProvider extends Component {
     .then(res => {
       console.log(res);
       console.log(res.data.email);
-      this.handleUserDetail(res.data.email);
+      let tempUser = this.getUsers(res.data.email);
+
+      this.setState(()=>{
+        return { loginedUser: tempUser};
+      })
     }).then((res)=>{if (res) {
       this.props.history.push(`/profile`)
     }})
