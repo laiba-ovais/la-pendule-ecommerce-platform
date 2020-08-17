@@ -28,7 +28,8 @@ router.post('/addcourse',(req,res)=>{
     price: req.body.price,
     author_initial: req.body.author_initial,
     image: req.body.image,
-    img_title:req.body.img_title 
+    img_title:req.body.img_title ,
+    info: req.body.info
   }
  
 
@@ -45,6 +46,8 @@ router.post('/addcourse',(req,res)=>{
         res.send('error: ' + err)
       })
           }
+          else
+          res.json("error course already there")
   })
 
 })
