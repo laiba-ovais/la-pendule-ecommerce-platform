@@ -23,7 +23,7 @@ app.use(
 
 app.use('/', pageRouter);
 app.use('/', pageRouter2);
-app.use('/api/courses', pageRouter3);
+app.use('/', pageRouter3);
 // app.set('view engine', 'handlebars');//// yiya hai pehle wale error ka solution lekin usse doosra error generate hogya
 
 // const mysqlConnection = mysql.createConnection({
