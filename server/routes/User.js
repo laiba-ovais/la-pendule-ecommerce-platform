@@ -62,7 +62,7 @@ router.post('/submit' , function(req, res){
               mysqlConnection.query("insert into users ( `first_name`,`last_name`, `password`, `email`, `time`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ hashedpassword +"', '"+ req.body.email+"', '"+ Oneuser.time+"');",function(err2,result){
                   if(err2)  console.log(err2);
                   console.log(res.body , "data is saved");
-                  res.json({ status: req.body.email + ' Registered!' }) });
+                  res.send({email:req.body.email}) });
           }
           else{
               console.log("email already exist");

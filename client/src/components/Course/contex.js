@@ -40,7 +40,10 @@ class ProductProvider extends Component {
       UserDetails: {},
       email:"",
       password:'',
-      loginedUser:''
+      loginedUser:'',
+      first_name: '',
+      last_name: ''
+     
   }
     this.onChange = this.onChange.bind(this)
     this.onsubmit = this.onsubmit.bind(this)
@@ -93,12 +96,35 @@ class ProductProvider extends Component {
       }
     }))
     
-
+    
   
   }
   getUsers = (email) => {
     const user = this.state.user.find(item=>  item.email == email);
     return user;
+  }
+
+  
+  onRegister=(event)=>{ // ye function hai
+    event.preventDefault()
+    axios({  // isse post kr rhy hain email or password thk
+      method: 'POST',
+      url: '/submit',
+      data: {
+        email    : this.state.email,
+        password : this.state.password,
+        first_name:this.state.first_name,
+        last_name:this.state.last_name
+      }
+    }).then((response=>{
+      if (response) { // response ko phr se state mein daal rhy hain user ko find kr k states mein take profile mein show kara lein
+        console.log(response);
+        console.log(response.data.email);
+  
+          
+      this.props.history.push(`/signin`)
+      }
+    }))
   }
 
   handleUserDetail = (email) => {
