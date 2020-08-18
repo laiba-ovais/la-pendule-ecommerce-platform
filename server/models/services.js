@@ -19,7 +19,7 @@ module.exports = db.sequelize.define(
       type: Sequelize.STRING
     },
     tel: {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
     age: {
       type: Sequelize.INTEGER,

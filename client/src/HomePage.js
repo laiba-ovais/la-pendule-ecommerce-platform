@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Link, Router ,withRouter} from 'react-router-dom';
+import { BrowserRouter, Route, Link, Router, Switch ,withRouter} from 'react-router-dom';
 import CoursesDisplay from './containers/CoursesDisplay';
 import Course from './containers/Course';
 import Navbar from './components/Navbar/Navbar';
@@ -45,7 +45,7 @@ function HomePage(props){
         <Route exact path="/courses" component = {Course}/>
         <Route exact path="/register" component = {SignUp}/>
         <Route exact path="/signin" component = {SignIn}/>
-        <Route exact path="/playlist" component = {Playist}/>
+        {/* <Route exact path="/playlist" component = {Playist}/> */}
         </Switch>
 
         <Modal />
