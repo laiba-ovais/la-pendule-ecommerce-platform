@@ -3,7 +3,7 @@ import {CourseDetails,courseStored} from './CourseDetails';
 import { runInThisContext } from 'vm';
 import {Users, User} from '../Users/Users'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 const ProductContext = React.createContext(); //yahan use kiya hai contex api acha main agar is state mein number 0 kar deti uske baad function banta jis mein state change hoti? this.setstate karke? mjhy onclick functio
 // khair ab change krna hai sab tu login dekh lein? code dekhata hu mein
@@ -24,9 +24,9 @@ class ProductProvider extends Component {
   //     password:'',
   //     loginedUser:''
   // }
-  constructor() {
-    super()
-    this. state = {
+  constructor(props) {
+    super(props)
+    this.state = {
       products: [],// yahan sab states hain  
       detailProduct: courseStored,
       cart: [],
@@ -297,4 +297,4 @@ class ProductProvider extends Component {
 
 const ProductConsumer = ProductContext.Consumer; 
 
-export {ProductProvider, ProductConsumer};
+export  { ProductProvider,ProductConsumer};

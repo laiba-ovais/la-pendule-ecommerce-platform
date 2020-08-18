@@ -9,15 +9,11 @@ import 'tachyons';
 import {ProductProvider} from './components/Course/contex';
 
 ReactDOM.render(   // ye product provide top element hai isme se saray functions pass hongay...
- <Router>
-<ProductProvider>
-    <BrowserRouter>
-   <HomePage></HomePage>
-   </BrowserRouter>
-  </ProductProvider>  
-
- </Router>
  
+
+    <Router>
+   <HomePage></HomePage>
+   </Router>
    ,
   
   document.getElementById('root') 

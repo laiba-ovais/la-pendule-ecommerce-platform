@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter,Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter,Switch, Route, Link, Router ,withRouter} from 'react-router-dom';
 import CoursesDisplay from './containers/CoursesDisplay';
 import Course from './containers/Course';
 import Navbar from './components/Navbar/Navbar';
@@ -10,7 +10,7 @@ import Home from './containers/Home/Home';
 import Cart from './components/Cart';
 import Modal from './components/Cart/Modal';
 import CourseUpload from './containers/courseUpload/courseUpload';
-
+import {ProductProvider} from './components/Course/contex';
 function HomePage(props){
     return (
         
@@ -18,8 +18,9 @@ function HomePage(props){
         
         // <Route exact path="/home" component={Home} /> 
         // </Switch>
-       
-        <div >
+        <Router>
+            <div >
+        <ProductProvider {...this.props} >
         <Navbar></Navbar>
         <Switch>
         <Route exact path="/profile" component={Home} />  
@@ -33,10 +34,16 @@ function HomePage(props){
         <Route exact path="/courseUpload" component = {CourseUpload}/>
         </Switch>
         <Modal />
+        </ProductProvider>
+        
         </div>
+        </Router>
+        
+       
+        
         
        
     );
 }
 
-export default HomePage;
+export default withRouter(HomePage);
