@@ -83,7 +83,7 @@ class ProductProvider extends Component {
         password : this.state.password
       }
     }).then((response=>{
-      if (response) { // response ko phr se state mein daal rhy hain user ko find kr k states mein take profile mein show kara lein
+      if (response.data.email) { // response ko phr se state mein daal rhy hain user ko find kr k states mein take profile mein show kara lein
         console.log(response);
         console.log(response.data.email);
   
@@ -94,8 +94,17 @@ class ProductProvider extends Component {
         })
         this.setState(()=>{
           return { signedin: true};
+
         })   
       this.props.history.push(`/profile`)
+      }
+      if(response.data.error){
+        alert("User not found No registered")
+        this.props.history.push(`/register`)
+      }
+      if(response.data.error2){
+        alert("Incorrect email or password")
+        this.props.history.push(`/signin`)
       }
     }))
     

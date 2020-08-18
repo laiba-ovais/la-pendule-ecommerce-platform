@@ -91,7 +91,7 @@ router.post('/signin', (req, res) => {
     if(err)throw err;
     
     if(results.length===0){
-      res.json('email not found');
+      res.send({error:req.body.email});
     }
     else{
     var password=results[0].password;
@@ -112,7 +112,7 @@ router.post('/signin', (req, res) => {
         
        
       } else {
-            res.json('user not found');
+           res.send({error2:req.body.email})
           }
         });}
         else{
