@@ -4,7 +4,7 @@ import { runInThisContext } from 'vm';
 import {Users, User} from '../Users/Users'
 import axios from 'axios'
 import { Redirect, withRouter } from 'react-router-dom';
-
+import history from './history'
 const ProductContext = React.createContext(); //yahan use kiya hai contex api acha main agar is state mein number 0 kar deti uske baad function banta jis mein state change hoti? this.setstate karke? mjhy onclick functio
 // khair ab change krna hai sab tu login dekh lein? code dekhata hu mein
 class ProductProvider extends Component {
@@ -87,7 +87,16 @@ class ProductProvider extends Component {
           return { loginedUser: tempUser};
         })
       // isse redirect 
-        this.props.browserHistory.push(`/profile`)
+      // history.push("/profile");
+      // console.log(history);
+      return(<Redirect
+        to={{
+          pathname: "/home",
+          state: {
+            from:'',
+          },
+        }}
+      />)
       }
     }))
     

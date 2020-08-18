@@ -12,9 +12,8 @@ import Modal from './components/Cart/Modal';
 import CourseUpload from './containers/courseUpload/courseUpload';
 import {ProductProvider} from './components/Course/contex';
 // var createBrowserHistory = require('history/lib/createBrowserHistory');
-import {createBrowserHistory} from 'history';
+import history from './components/Course/history';
 
-const browserHistory = createBrowserHistory();
 
 function HomePage(props){
     return (
@@ -23,7 +22,7 @@ function HomePage(props){
         
         // <Route exact path="/home" component={Home} /> 
         // </Switch>
-        <BrowserRouter browserHistory={browserHistory} >
+        <BrowserRouter browserHistory={history} >
             <div >
         <ProductProvider  >
         <Navbar></Navbar>
