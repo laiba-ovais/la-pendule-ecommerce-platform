@@ -66,7 +66,7 @@ router.post('/submit' , function(req, res){
           }
           else{
               console.log("email already exist");
-              res.json("email exist");
+              res.send({exist:req.body.email});
 
           }
 })

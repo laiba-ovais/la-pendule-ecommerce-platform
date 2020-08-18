@@ -4,6 +4,8 @@ import { runInThisContext } from 'vm';
 import {Users, User} from '../Users/Users'
 import axios from 'axios'
 import { Redirect, withRouter } from 'react-router-dom';
+import { toast } from "react-toastify";
+toast.configure();
 
 const ProductContext = React.createContext(); //yahan use kiya hai contex api acha main agar is state mein number 0 kar deti uske baad function banta jis mein state change hoti? this.setstate karke? mjhy onclick functio
 // khair ab change krna hai sab tu login dekh lein? code dekhata hu mein
@@ -47,6 +49,7 @@ class ProductProvider extends Component {
   }
     this.onChange = this.onChange.bind(this)
     this.onsubmit = this.onsubmit.bind(this)
+    this.onRegister = this.onRegister.bind(this)
   }
 
   componentDidMount(){
@@ -117,12 +120,14 @@ class ProductProvider extends Component {
         last_name:this.state.last_name
       }
     }).then((response=>{
-      if (response) { // response ko phr se state mein daal rhy hain user ko find kr k states mein take profile mein show kara lein
+      if (response.data.email) { // response ko phr se state mein daal rhy hain user ko find kr k states mein take profile mein show kara lein
         console.log(response);
-        console.log(response.data.email);
-  
-          
-      this.props.history.push(`/signin`)
+        console.log(response.data.email);    
+        this.props.history.push(`/signin`)
+      }
+      if(response.data.exist){
+        alert("Email user already exist");
+        this.props.history.push(`/register`)
       }
     }))
   }
@@ -313,7 +318,8 @@ class ProductProvider extends Component {
               getUsers:this.getUsers,
               handleUserDetail:this.handleUserDetail,
               onsubmit:this.onsubmit,
-              onChange:this.onChange
+              onChange:this.onChange,
+              onRegister:this.onRegister
 
           }
       }>

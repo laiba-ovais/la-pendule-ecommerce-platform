@@ -169,7 +169,8 @@ function Navbar() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <Link to="/profile"><p>Profile</p></Link>
+        
       </MenuItem>
     </Menu>
   );
