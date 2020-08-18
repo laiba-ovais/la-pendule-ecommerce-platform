@@ -54,8 +54,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
-  return (
-    <ProductConsumer>
+  return (// ye top element hai isky props mein hai sab states and functions value naam hai prop ka
+    <ProductConsumer> 
       {(value)=>{
       
       return( <Container className={classes.back} component="main" maxWidth="xs">
@@ -66,8 +66,8 @@ export default function SignIn() {
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign in
-        </Typography>
-        <form noValidate className={classes.form}  onSubmit={value.onSubmit} >
+        </Typography> 
+        <form noValidate className={classes.form}  onSubmit={value.onsubmit} >
           <TextField
             variant="outlined"
             margin="normal"

@@ -5,10 +5,28 @@ import {Users, User} from '../Users/Users'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom';
 
-const ProductContext = React.createContext();
-
+const ProductContext = React.createContext(); //yahan use kiya hai contex api acha main agar is state mein number 0 kar deti uske baad function banta jis mein state change hoti? this.setstate karke? mjhy onclick functio
+// khair ab change krna hai sab tu login dekh lein? code dekhata hu mein
 class ProductProvider extends Component {
-  state = {
+  // state = {
+  //     products: [],// yahan sab states hain  
+  //     detailProduct: courseStored,
+  //     cart: [],
+  //     modalOpen: false,
+  //     modalProduct: courseStored,
+  //     cartSubTotal: 0,
+  //     cartTax: 0,
+  //     cartTotal: 0,
+  //     signedin:false,
+  //     user:[],
+  //     UserDetails: {},
+  //     email:"",
+  //     password:'',
+  //     loginedUser:''
+  // }
+  constructor() {
+    super()
+    this. state = {
       products: [],// yahan sab states hain  
       detailProduct: courseStored,
       cart: [],
@@ -24,11 +42,16 @@ class ProductProvider extends Component {
       password:'',
       loginedUser:''
   }
+    this.onChange = this.onChange.bind(this)
+    this.onsubmit = this.onsubmit.bind(this)
+  }
 
   componentDidMount(){
     this.setProducts();
   }
+  // isse input field mein type honay wali value states ko assign hojati hai
   onChange=(e)=>{
+    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value })
 
   }
@@ -44,9 +67,9 @@ class ProductProvider extends Component {
     }) 
   }
 
-   onsubmit=(event)=>{
+   onsubmit=(event)=>{ // ye function hai
     event.preventDefault()
-    axios({
+    axios({  // isse post kr rhy hain email or password thk
       method: 'POST',
       url: '/signin',
       data: {
@@ -54,7 +77,7 @@ class ProductProvider extends Component {
         password : this.state.password
       }
     }).then((response=>{
-      if (response) {
+      if (response) { // response ko phr se state mein daal rhy hain user ko find kr k states mein take profile mein show kara lein
         console.log(response);
         console.log(response.data.email);
   
@@ -63,7 +86,7 @@ class ProductProvider extends Component {
         this.setState(()=>{
           return { loginedUser: tempUser};
         })
-      
+      // isse redirect 
         this.props.history.push(`/profile`)
       }
     }))
@@ -248,7 +271,7 @@ class ProductProvider extends Component {
     return (
       <ProductContext.Provider value={
           {
-              ...this.state, 
+              ...this.state, // yahan states ko deconstruct kiya hai or value mein store kiya hai or sab functions
               handleDetail: this.handleDetail,
               addToCart: this.addToCart,
               openModal: this.openModal,
@@ -272,6 +295,6 @@ class ProductProvider extends Component {
   }
 }
 
-const ProductConsumer = ProductContext.Consumer;
+const ProductConsumer = ProductContext.Consumer; 
 
 export {ProductProvider, ProductConsumer};
