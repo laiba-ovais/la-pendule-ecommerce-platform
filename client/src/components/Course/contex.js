@@ -24,8 +24,8 @@ class ProductProvider extends Component {
   //     password:'',
   //     loginedUser:''
   // }
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       products: [],// yahan sab states hain  
       detailProduct: courseStored,
@@ -87,7 +87,7 @@ class ProductProvider extends Component {
           return { loginedUser: tempUser};
         })
       // isse redirect 
-        this.props.history.push(`/profile`)
+        this.props.browserHistory.push(`/profile`)
       }
     }))
     
