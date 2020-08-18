@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Course from './containers/Course';
@@ -8,12 +7,8 @@ import HomePage from './HomePage';
 import 'tachyons';
 import {ProductProvider} from './components/Course/contex';
 
-ReactDOM.render(
-  <ProductProvider>
-    <BrowserRouter>
+ReactDOM.render(   // ye product provide top element hai isme se saray functions pass hongay...
    <HomePage></HomePage>
-   </BrowserRouter>
-  </ProductProvider>  
    ,
   
   document.getElementById('root') 

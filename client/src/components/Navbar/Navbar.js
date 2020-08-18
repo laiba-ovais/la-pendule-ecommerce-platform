@@ -14,7 +14,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import {Link} from 'react-router-dom';
+import {Link ,withRouter} from 'react-router-dom';
 import SearchBar from './SearchBar';
 import './Navbar.css';
 import {ButtonContainer} from "../Button/Button"
@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Navbar() {
+function Navbar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -169,7 +169,8 @@ export default function Navbar() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <Link to="/profile"><p>Profile</p></Link>
+        
       </MenuItem>
     </Menu>
   );
@@ -256,3 +257,4 @@ export default function Navbar() {
     
   );
 }
+export default Navbar;

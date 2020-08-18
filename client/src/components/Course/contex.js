@@ -3,12 +3,32 @@ import {CourseDetails,courseStored} from './CourseDetails';
 import { runInThisContext } from 'vm';
 import {Users, User} from '../Users/Users'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
+import { toast } from "react-toastify";
+toast.configure();
 
-const ProductContext = React.createContext();
-
+const ProductContext = React.createContext(); //yahan use kiya hai contex api acha main agar is state mein number 0 kar deti uske baad function banta jis mein state change hoti? this.setstate karke? mjhy onclick functio
+// khair ab change krna hai sab tu login dekh lein? code dekhata hu mein
 class ProductProvider extends Component {
-  state = {
+  // state = {
+  //     products: [],// yahan sab states hain  
+  //     detailProduct: courseStored,
+  //     cart: [],
+  //     modalOpen: false,
+  //     modalProduct: courseStored,
+  //     cartSubTotal: 0,
+  //     cartTax: 0,
+  //     cartTotal: 0,
+  //     signedin:false,
+  //     user:[],
+  //     UserDetails: {},
+  //     email:"",
+  //     password:'',
+  //     loginedUser:''
+  // }
+  constructor(props) {
+    super(props)
+    this.state = {
       products: [],// yahan sab states hain  
       detailProduct: courseStored,
       cart: [],
@@ -21,13 +41,23 @@ class ProductProvider extends Component {
       user:[],
       UserDetails: {},
       email:"",
-      password:''
+      password:'',
+      loginedUser:'',
+      first_name: '',
+      last_name: ''
+     
+  }
+    this.onChange = this.onChange.bind(this)
+    this.onsubmit = this.onsubmit.bind(this)
+    this.onRegister = this.onRegister.bind(this)
   }
 
   componentDidMount(){
     this.setProducts();
   }
+  // isse input field mein type honay wali value states ko assign hojati hai
   onChange=(e)=>{
+    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value })
 
   }
@@ -43,26 +73,72 @@ class ProductProvider extends Component {
     }) 
   }
 
-  onsubmit=(e)=>{
-    e.preventDefault();
+   onsubmit=(event)=>{ // ye function hai
+    event.preventDefault()
+    axios({  // isse post kr rhy hain email or password thk
+      method: 'POST',
+      url: '/signin',
+      data: {
+        email    : this.state.email,
+        password : this.state.password
+      }
+    }).then((response=>{
+      if (response.data.email) { // response ko phr se state mein daal rhy hain user ko find kr k states mein take profile mein show kara lein
+        console.log(response);
+        console.log(response.data.email);
+  
+        let tempUser = this.getUsers(response.data.email);
 
-    axios.post(`/auth`,{
-      email: this.state.email,
-      password: this.state.password
-    })
-    .then(res => {
-      console.log(res);
-      console.log(res.data.email);
-      this.handleUserDetail(res.data.email);
-    }).then((res)=>{if (res) {
+        this.setState(()=>{
+          return { loginedUser: tempUser};
+        })
+        this.setState(()=>{
+          return { signedin: true};
+
+        })   
       this.props.history.push(`/profile`)
-    }})
-
+      }
+      if(response.data.error){
+        alert("User not found No registered")
+        this.props.history.push(`/register`)
+      }
+      if(response.data.error2){
+        alert("Incorrect email or password")
+        this.props.history.push(`/signin`)
+      }
+    }))
+    
+    
   
   }
   getUsers = (email) => {
     const user = this.state.user.find(item=>  item.email == email);
     return user;
+  }
+
+  
+  onRegister=(event)=>{ // ye function hai
+    event.preventDefault()
+    axios({  // isse post kr rhy hain email or password thk
+      method: 'POST',
+      url: '/submit',
+      data: {
+        email    : this.state.email,
+        password : this.state.password,
+        first_name:this.state.first_name,
+        last_name:this.state.last_name
+      }
+    }).then((response=>{
+      if (response.data.email) { // response ko phr se state mein daal rhy hain user ko find kr k states mein take profile mein show kara lein
+        console.log(response);
+        console.log(response.data.email);    
+        this.props.history.push(`/signin`)
+      }
+      if(response.data.exist){
+        alert("Email user already exist");
+        this.props.history.push(`/register`)
+      }
+    }))
   }
 
   handleUserDetail = (email) => {
@@ -237,7 +313,7 @@ class ProductProvider extends Component {
     return (
       <ProductContext.Provider value={
           {
-              ...this.state, 
+              ...this.state, // yahan states ko deconstruct kiya hai or value mein store kiya hai or sab functions
               handleDetail: this.handleDetail,
               addToCart: this.addToCart,
               openModal: this.openModal,
@@ -251,7 +327,8 @@ class ProductProvider extends Component {
               getUsers:this.getUsers,
               handleUserDetail:this.handleUserDetail,
               onsubmit:this.onsubmit,
-              onChange:this.onChange
+              onChange:this.onChange,
+              onRegister:this.onRegister
 
           }
       }>
@@ -261,6 +338,6 @@ class ProductProvider extends Component {
   }
 }
 
-const ProductConsumer = ProductContext.Consumer;
+export const ProductConsumer = ProductContext.Consumer; 
 
-export {ProductProvider, ProductConsumer};
+export  default withRouter(ProductProvider);

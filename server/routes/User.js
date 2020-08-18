@@ -62,11 +62,11 @@ router.post('/submit' , function(req, res){
               mysqlConnection.query("insert into users ( `first_name`,`last_name`, `password`, `email`, `time`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ hashedpassword +"', '"+ req.body.email+"', '"+ Oneuser.time+"');",function(err2,result){
                   if(err2)  console.log(err2);
                   console.log(res.body , "data is saved");
-                  res.json({ status: req.body.email + ' Registered!' }) });
+                  res.send({email:req.body.email}) });
           }
           else{
               console.log("email already exist");
-              res.json("email exist");
+              res.send({exist:req.body.email});
 
           }
 })
@@ -75,7 +75,7 @@ router.post('/submit' , function(req, res){
 
 
 
-router.post('/auth', (req, res) => {
+router.post('/signin', (req, res) => {
   var user = req.body;
   var Oneuser={
     email: user.email,
@@ -91,7 +91,7 @@ router.post('/auth', (req, res) => {
     if(err)throw err;
     
     if(results.length===0){
-      res.json('email not found');
+      res.send({error:req.body.email});
     }
     else{
     var password=results[0].password;
@@ -112,7 +112,7 @@ router.post('/auth', (req, res) => {
         
        
       } else {
-            res.json('user not found');
+           res.send({error2:req.body.email})
           }
         });}
         else{
