@@ -10,6 +10,7 @@ import Home from './containers/Home/Home';
 import Cart from './components/Cart';
 import Modal from './components/Cart/Modal';
 import Playist from './containers/Playlist/Playlist'
+import ServiceRegister from './components/ServiceRegisteration/ServiceRegister';
 
 function HomePage(props){
     return (
@@ -23,6 +24,7 @@ function HomePage(props){
         <Navbar></Navbar>
         <Switch>
         <Route exact path="/profile" component={Home} />  
+        <Route exact path="/serviceRegistration" component={ServiceRegister} />
         <Route path="/cart" component={Cart} /> 
         <Route path="/courses/:id" component={CoursesDisplay} /> 
         <Route exact path="/" component={MainPage} /> 

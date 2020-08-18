@@ -16,13 +16,13 @@ router.use(
 const mysqlConnection = mysql.createConnection({
   host: 'localhost',
   user:'root',
-  password: 'Palkia786',
+  password: '28082000',
   database: 'mydb'
 });
 mysqlConnection.connect((err) =>{
   if(!err){
   console.log('DB connection successful');
-  var sql = "CREATE TABLE IF NOT EXISTS users (ID INT(4),first_name VARCHAR(255), last_name VARCHAR(255), password VARCHAR(255) , email VARCHAR(255))";
+  var sql = "CREATE TABLE IF NOT EXISTS users (ID INT(4),first_name VARCHAR(255), last_name VARCHAR(255), password VARCHAR(255) , email VARCHAR(255), PRIMARY KEY(ID))";
   mysqlConnection.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Table created");

@@ -6,7 +6,7 @@ import {ButtonContainer} from '../components/Button/Button'
 import {CourseDetails} from '../components/Course/CourseDetails'
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import ResponsivePlayer from '../components/VideoPlayer/ResponsivePlayer';
+//import ResponsivePlayer from '../components/VideoPlayer/ResponsivePlayer';
 
 
 export default class CourseDisplay extends Component {
@@ -42,7 +42,7 @@ export default class CourseDisplay extends Component {
                         <img src={courseImage} className="img-fluid" alt="product"/>
                         </div>
                         <div className=" container-fluid text-capitalize ">
-                        <ResponsivePlayer url="G:\[FreeCourseSite.com] Udemy - The Complete Web Developer in 2020 Zero to Mastery\1. Introduction/1. Course Outline.mp4" />
+                        {/* <ResponsivePlayer url="G:\[FreeCourseSite.com] Udemy - The Complete Web Developer in 2020 Zero to Mastery\1. Introduction/1. Course Outline.mp4" /> */}
                         </div>
                         <div className="my-3">
                         <Link to="/courses">
