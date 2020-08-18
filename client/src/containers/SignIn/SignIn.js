@@ -57,6 +57,9 @@ export default function SignIn() {
   return (// ye top element hai isky props mein hai sab states and functions value naam hai prop ka
     <ProductConsumer> 
       {(value)=>{
+      if(value.SignIn){
+        this.props.history.push(`/profile`)
+      }
       
       return( <Container className={classes.back} component="main" maxWidth="xs">
       <CssBaseline />

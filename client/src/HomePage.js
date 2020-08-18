@@ -22,9 +22,9 @@ function HomePage(props){
         
         // <Route exact path="/home" component={Home} /> 
         // </Switch>
-        <BrowserRouter browserHistory={history} >
+        <BrowserRouter history={history} >
             <div >
-        <ProductProvider  >
+        <ProductProvider {...props} >
         <Navbar></Navbar>
         
         <Route exact path="/profile" component={Home} />  
