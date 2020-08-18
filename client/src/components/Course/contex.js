@@ -87,16 +87,8 @@ class ProductProvider extends Component {
           return { loginedUser: tempUser};
         })
       // isse redirect 
-      // history.push("/profile");
-      // console.log(history);
-      return(<Redirect
-        to={{
-          pathname: "/home",
-          state: {
-            from:'',
-          },
-        }}
-      />)
+      window.location = "/profile"
+      
       }
     }))
     
