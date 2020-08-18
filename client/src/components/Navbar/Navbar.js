@@ -256,4 +256,4 @@ function Navbar() {
     
   );
 }
-export default withRouter(Navbar);
+export default Navbar;

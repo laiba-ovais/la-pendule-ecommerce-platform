@@ -24,8 +24,8 @@ class ProductProvider extends Component {
   //     password:'',
   //     loginedUser:''
   // }
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       products: [],// yahan sab states hain  
       detailProduct: courseStored,

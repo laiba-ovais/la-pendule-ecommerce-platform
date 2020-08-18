@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter,Switch, Route, Link, Router ,withRouter} from 'react-router-dom';
+import { BrowserRouter, Route, Link, Router ,withRouter} from 'react-router-dom';
 import CoursesDisplay from './containers/CoursesDisplay';
 import Course from './containers/Course';
 import Navbar from './components/Navbar/Navbar';
@@ -11,6 +11,7 @@ import Cart from './components/Cart';
 import Modal from './components/Cart/Modal';
 import CourseUpload from './containers/courseUpload/courseUpload';
 import {ProductProvider} from './components/Course/contex';
+// var createBrowserHistory = require('history/lib/createBrowserHistory');
 function HomePage(props){
     return (
         
@@ -18,11 +19,11 @@ function HomePage(props){
         
         // <Route exact path="/home" component={Home} /> 
         // </Switch>
-        <Router>
+        <BrowserRouter  >
             <div >
-        <ProductProvider {...this.props} >
+        <ProductProvider  >
         <Navbar></Navbar>
-        <Switch>
+        
         <Route exact path="/profile" component={Home} />  
         <Route path="/cart" component={Cart} /> 
         <Route path="/courses/:id" component={CoursesDisplay} /> 
@@ -32,18 +33,14 @@ function HomePage(props){
         <Route exact path="/register" component = {SignUp}/>
         <Route exact path="/signin" component = {SignIn}/>
         <Route exact path="/courseUpload" component = {CourseUpload}/>
-        </Switch>
+        
         <Modal />
         </ProductProvider>
         
         </div>
-        </Router>
-        
-       
-        
-        
+        </BrowserRouter> 
        
     );
 }
 
-export default withRouter(HomePage);
+export default withRouter(HomePage)  ;
