@@ -82,6 +82,7 @@ class ProductProvider extends Component {
         console.log(response.data.email);
   
         let tempUser = this.getUsers(response.data.email);
+
         this.setState(()=>{
           return { loginedUser: tempUser};
         })
@@ -296,6 +297,6 @@ class ProductProvider extends Component {
   }
 }
 
-const ProductConsumer = ProductContext.Consumer; 
+export const ProductConsumer = ProductContext.Consumer; 
 
-export  { ProductProvider,ProductConsumer};
+export  default withRouter(ProductProvider);

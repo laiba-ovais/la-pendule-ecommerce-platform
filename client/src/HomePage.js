@@ -6,11 +6,12 @@ import Navbar from './components/Navbar/Navbar';
 import SignUp from './containers/SignUp/SignUp';
 import SignIn from './containers/SignIn/SignIn';
 import MainPage from './containers/MainPage/MainPage';
+import Profile from './components/Users/Profile'
 import Home from './containers/Home/Home';
 import Cart from './components/Cart';
 import Modal from './components/Cart/Modal';
 import CourseUpload from './containers/courseUpload/courseUpload';
-import {ProductProvider} from './components/Course/contex';
+import ProductProvider from './components/Course/contex';
 // var createBrowserHistory = require('history/lib/createBrowserHistory');
 import history from './components/Course/history';
 
@@ -22,12 +23,12 @@ function HomePage(props){
         
         // <Route exact path="/home" component={Home} /> 
         // </Switch>
-        <BrowserRouter history={history} >
+        <BrowserRouter  >
             <div >
-        <ProductProvider {...props} >
+        <ProductProvider>
         <Navbar></Navbar>
         
-        <Route exact path="/profile" component={Home} />  
+        <Route exact path="/profile" component={Profile} />  
         <Route path="/cart" component={Cart} /> 
         <Route path="/courses/:id" component={CoursesDisplay} /> 
         <Route exact path="/" component={MainPage} /> 
