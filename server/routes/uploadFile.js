@@ -30,10 +30,12 @@ var upload = multer({ storage: storage }).array('file')
 router.post('/upload',function(req, res) {
     
     upload(req, res, function (err) {
-     
+        console.log(err)
         if (err instanceof multer.MulterError) {
+          
             return res.status(500).json(err)
           // A Multer error occurred when uploading.
+          
         } else if (err) {
             return res.status(500).json(err)
           // An unknown error occurred when uploading.
