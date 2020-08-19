@@ -1,8 +1,19 @@
-
+const express = require("express");
+var bodyParser = require('body-parser');
+const router = express.Router();
 var multer = require('multer')
 
-const router = express.Router();
+router.use(bodyParser.json());
+router.use(
+    bodyParser.urlencoded({
+        extended:false
+    })
+)
 
+
+router.get('/upload',function(req,res){
+    return res.send('Hello Server upload')
+})
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, 'public')
@@ -12,8 +23,9 @@ var storage = multer.diskStorage({
     }
   })
   
-  var upload = multer({ storage: storage }).array('file')
+var upload = multer({ storage: storage }).array('file')
   
+
 
 router.post('/upload',function(req, res) {
     
@@ -32,3 +44,4 @@ router.post('/upload',function(req, res) {
       })
 });
 
+module.exports = router;
