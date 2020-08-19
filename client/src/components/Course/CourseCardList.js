@@ -3,18 +3,21 @@ import CourseCard from './CourseCard';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import {ProductConsumer} from './contex'
 
+
 const CourseCardList = ({ CourseDetails }) => {
     CourseDetails.map((course,i) => {
       return( 
       
-      <Link to={{ pathname: '/courses/' + CourseDetails[i]._id, state: CourseDetails[i]._id , key:CourseDetails[i]._id }}    ><CourseCard
+      <Link to={{ pathname: '/courses/' + CourseDetails[i]._id, state: CourseDetails[i]._id , key:CourseDetails[i]._id }}    >
+        <CourseCard
         courseId = { CourseDetails[i]._id }
-        authorInitial  = { CourseDetails[i].authorInitial }
-        courseTitle = { CourseDetails[i].courseTitle }
-        uploadDate = { CourseDetails[i].uploadDate }
+        Service  = { CourseDetails[i].Service }
+        // courseTitle = { CourseDetails[i].courseTitle }
+        // uploadDate = { CourseDetails[i].uploadDate }
         courseImage = { CourseDetails[i].courseImage }
         imageTitle = { CourseDetails[i].imageTitle }
-        courseAuthor = { CourseDetails[i].courseAuthor }
+        // courseAuthor = { CourseDetails[i].courseAuthor }
+        price = {CourseDetails[i].price}
         /> </Link>);
     });
     return (
