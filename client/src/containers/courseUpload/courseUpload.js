@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import FileUpload from './fileUpload';
 
 
 
@@ -48,6 +49,7 @@ export default function CourseUpload() {
         <Typography component="h1" variant="h5">
           Courses Upload
         </Typography>
+        <FileUpload></FileUpload>
         <form className={classes.form} method="post" action ="/submit" >
              <Grid container spacing={2}> 
             <Grid item xs={12} sm={6}>
