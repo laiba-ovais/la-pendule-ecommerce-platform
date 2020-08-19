@@ -69,8 +69,10 @@ class ProductProvider extends Component {
       tempUser = [...tempUser, singleItem];
     })
     this.setState(()=> {
+
       return {user: tempUser};
     }) 
+    localStorage.setItem("users", JSON.stringify(tempUser) + ',');
   }
 
    onsubmit=(event)=>{ // ye function hai
@@ -95,7 +97,8 @@ class ProductProvider extends Component {
         this.setState(()=>{
           return { signedin: true};
 
-        })   
+        }) 
+        localStorage.setItem("user", JSON.stringify(tempUser));  
       this.props.history.push(`/profile`)
       }
       if(response.data.error){
@@ -158,7 +161,8 @@ class ProductProvider extends Component {
     })
     this.setState(()=> {
       return {products: tempProducts};
-    })  
+    }) 
+    localStorage.setItem("products", JSON.stringify(tempProducts)); 
   }
 //isse item return hota hai id k liye
   getItem = (_id) => {
