@@ -18,8 +18,7 @@ import CourseUpload from './containers/courseUpload/courseUpload';
 import ProductProvider from './components/Course/contex';
 // var createBrowserHistory = require('history/lib/createBrowserHistory');
 import history from './components/Course/history';
-
-
+import courseUpload from "./containers/courseUpload/courseUpload"
 
 function HomePage(props){
     return (
@@ -35,8 +34,8 @@ function HomePage(props){
         <Switch>
         <Route exact path="/profile" component={Home} />  
         <Route exact path="/serviceRegistration" component={ServiceRegister} />
-        
-        <Route exact path="/profile" component={Profile} />  
+        <Route exact path="/profile" component={Home} />  
+        <Route exact path="/courseUpload" component={courseUpload} />  
 
         <Route path="/cart" component={Cart} /> 
         <Route path="/courses/:id" component={CoursesDisplay} /> 
