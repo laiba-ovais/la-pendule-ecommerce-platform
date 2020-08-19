@@ -38,8 +38,8 @@ class ProductProvider extends Component {
       cartTax: 0,
       cartTotal: 0,
       signedin:false,
-      user:[],
-      UserDetails: {},
+      user: {},
+      UserDetails: Users,
       email:"",
       password:'',
       loginedUser:'',
@@ -53,7 +53,14 @@ class ProductProvider extends Component {
   }
 
   componentDidMount(){
-    this.setProducts();
+    if(!localStorage.user){
+      this.setUsers()
+    }
+    if(!localStorage.products){
+      this.setProducts();
+    }
+    
+    
   }
   // isse input field mein type honay wali value states ko assign hojati hai
   onChange=(e)=>{
@@ -73,6 +80,7 @@ class ProductProvider extends Component {
       return {user: tempUser};
     }) 
     localStorage.setItem("users", JSON.stringify(tempUser) + ',');
+    console.log(localStorage.users);
   }
 
    onsubmit=(event)=>{ // ye function hai
