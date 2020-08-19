@@ -184,8 +184,9 @@ function Navbar() {
             const {cart} = value;
             console.log(cart.lenght)
             return( <div className={classes.grow}>
-              <AppBar position="static">
-                <Toolbar>
+              <div>
+              <AppBar display="block" position="static" width="100" >
+                <Toolbar> 
                   <IconButton
                     edge="start"
                     className={classes.menuButton}
@@ -250,6 +251,8 @@ function Navbar() {
                   </div>
                 </Toolbar>
               </AppBar>
+              </div>
+              
               {/* {renderMobileMenu} */}
               {renderMenu}
             </div>)}}

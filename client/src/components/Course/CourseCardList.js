@@ -31,10 +31,13 @@ const CourseCardList = ({ CourseDetails }) => {
             onClick= {()=>value.handleDetail(product._id)}
             ><Link to={{ pathname: '/courses/' + product._id }}>
             <CourseCard
-            courseId = { product._id }
+            _id = { product._id }
             authorInitial  = { product.authorInitial }
             courseTitle = { product.courseTitle }
+            Service = {product.Service}
             uploadDate = { product.uploadDate }
+            info = { product.info}
+            price = {product.price}
             courseImage = { product.courseImage }
             imageTitle = { product.imageTitle }
             courseAuthor = { product.courseAuthor }

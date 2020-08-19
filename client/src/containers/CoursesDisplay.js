@@ -27,25 +27,17 @@ export default class CourseDisplay extends Component {
               <ProductConsumer >
                 {
                (value)=>{
-            const {_id, courseAuthor, courseImage , info, price, courseTitle, inCart} = 
+            const {_id, Service, courseImage , info, price, courseTitle, inCart} = 
             value.detailProduct;
               return(
-            <Container className="bg-white" >
-                  <div className="col-10 mx-auto text-center  text-blue pt-4 my-5 ss">
-                    <h1 className="font-weight-bolder">
-                      {courseTitle}
-                    </h1>
-                  </div>
+            <Container className="mt-5 con-bod" >
                   <div className="row">
-                  <div className="ml-5">
+                  <div className="col-md-4">
                   <div className=" mx-auto my-3 text-capitalize relative">
-                        <img src={courseImage} className="img-fluid" alt="product"/>
-                        </div>
-                        <div className=" container-fluid text-capitalize ">
-                        {/* <ResponsivePlayer url="G:\[FreeCourseSite.com] Udemy - The Complete Web Developer in 2020 Zero to Mastery\1. Introduction/1. Course Outline.mp4" /> */}
+                        <img src={require(`../static/images/services/${_id}.png`)} width="500px" height="500px" alt="product"/>
                         </div>
                         <div className="my-3">
-                        <Link to="/courses">
+                        <Link to="/courses"> 
                           <ButtonContainer>
                             back to Courses
                           </ButtonContainer>
@@ -66,19 +58,18 @@ export default class CourseDisplay extends Component {
                   </div>
                     
                     <div className="col-10 mx-auto col-md-8 my-3 text-capitalize inline-block ">
-                      <h3 className="font-weight-bold">Course Title: {courseTitle}</h3>
-                      <h3 className="font-weight-bold text-capitalize mt-3 mb-2">
-                        Instructor : <span className="text-capitalize">{courseAuthor}</span>
+                      <h3>Course Title: {courseTitle}</h3>
+                      <h3>
+                        <span className="text-capitalize">{Service}</span>
                       </h3>
-                      <h4 className="text-blue">
-                        <strong>
+                      <h4 >
                           price: <span>$</span> {price}
-                        </strong>
                       </h4>
-                      <div className="  mt-3 mb-0">
-                        <h3 className="text-capitalize font-weight-bold"> Course Details:</h3>
                       
-                      <p className="font-weight-bold">
+                      <div className="  mt-3 mb-0">
+                        <h4 > Course Details:</h4>
+                      
+                      <p>
                         {info}
                       </p>
                       </div>

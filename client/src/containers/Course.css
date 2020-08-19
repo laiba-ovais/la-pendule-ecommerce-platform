@@ -1,24 +1,5 @@
-:root{
-    --mainBlue: #2a2a72;
-    --lightBlue: #009ffd;
-    --mainWhite: #f3f3f3;
-    --mainDark: #232528;
-    --mainYellow: #ffa400;
-}
-
-body{
-    font-family:"Oswald",sans-serif !important;
-    
-}
-.text-title
-{ font-family: 'Permanent Marker', cursive;
-  letter-spacing: 0.rem;
-  text-transform: uppercase;
-
-}
-.text-blue{
-    color: var(--mainBlue); 
-}
-.text-bright{
-    color: var(--lightBlue); 
-}
+.con-bod{
+    color: white;
+    border-radius: 15px 15px 15px 15px;
+    background: linear-gradient(90deg, rgba(44,11,61,1) 0%, rgba(9,51,111,1) 0%, rgba(42,150,166,0.9752275910364145) 0%, rgba(8,74,76,1) 0%, rgba(11,67,105,1) 0%, rgba(43,97,147,1) 0%, rgba(7,42,57,1) 0%, rgba(22,172,150,1) 50%, rgba(7,41,54,1) 100%, rgba(7,41,51,1) 100%, rgba(7,40,47,1) 100%);
+ }

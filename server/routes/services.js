@@ -13,7 +13,7 @@ router.use(
 const mysqlConnection = mysql.createConnection({
     host: 'localhost',
     user:'root',
-    password: 'chikorita1191',
+    password: '28082000',
     database: 'mydb'
   });
   mysqlConnection.connect((err) =>{

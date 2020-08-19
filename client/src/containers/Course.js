@@ -50,8 +50,6 @@ class Course extends React.Component{
         {
           (value)=>{
             return( <div className ="container">
-            <div>
-            </div>
             <GridList cols={3} cellHeight={'auto'}> 
             <CourseCardList CourseDetails={value.products}/>  
             </GridList>
