@@ -69,7 +69,7 @@ export default function SignUp() {
                 <Typography component="h1" variant="h5">
                   Sign up
                 </Typography>
-                <form noValidate className={classes.form} onSubmit={value.onRegister} >
+                <form className={classes.form} onSubmit={value.onRegister} >
                   <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                       <TextField

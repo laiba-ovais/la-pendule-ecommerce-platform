@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {CourseDetails,courseStored} from './CourseDetails';
 import { runInThisContext } from 'vm';
 import {Users, User} from '../Users/Users'
+import { CourseUpload } from '../../containers/courseUpload/courseUpload'
 import axios from 'axios'
 import { Redirect, withRouter } from 'react-router-dom';
 import { toast } from "react-toastify";
@@ -53,14 +54,14 @@ class ProductProvider extends Component {
   }
 
   componentDidMount(){
-    if(!localStorage.user){
-      this.setUsers()
-    }
-    if(!localStorage.products){
-      this.setProducts();
-    }
-    
-    
+    // if(!localStorage.user){
+    //   this.setUsers()
+    // }
+    // if(!localStorage.products){
+    //   this.setProducts();
+    // }
+    this.setProducts();
+    this.setUsers()
   }
   // isse input field mein type honay wali value states ko assign hojati hai
   onChange=(e)=>{
@@ -79,8 +80,8 @@ class ProductProvider extends Component {
 
       return {user: tempUser};
     }) 
-    localStorage.setItem("users", JSON.stringify(tempUser) + ',');
-    console.log(localStorage.users);
+   // localStorage.setItem("users", JSON.stringify(tempUser) + ',');
+    //console.log(localStorage.users);
   }
 
    onsubmit=(event)=>{ // ye function hai
@@ -106,7 +107,7 @@ class ProductProvider extends Component {
           return { signedin: true};
 
         }) 
-        localStorage.setItem("user", JSON.stringify(tempUser));  
+        //localStorage.setItem("user", JSON.stringify(tempUser));  
       this.props.history.push(`/profile`)
       }
       if(response.data.error){
@@ -161,6 +162,24 @@ class ProductProvider extends Component {
     )
   }
 
+  addProduct=(event)=>{ // ye function hai
+    event.preventDefault()
+    axios({  // isse post kr rhy hain email or password thk
+      method: 'POST',
+      url: '/productAdded',
+      data: {
+        product_name: this.state.product_name,
+        company : this.state.company,
+        info:this.state.info,
+        price:this.state.price,
+        stock: this.state.stock
+      }
+    }).then((response=>{
+        this.props.history.push(`/courses`)
+      }))
+}
+
+
   setProducts = () => {
     let tempProducts = []; // yahan start up per products ki value set hoti hai
     CourseDetails.forEach(item=> {
@@ -170,8 +189,9 @@ class ProductProvider extends Component {
     this.setState(()=> {
       return {products: tempProducts};
     }) 
-    localStorage.setItem("products", JSON.stringify(tempProducts)); 
+    //  localStorage.setItem("products", JSON.stringify(tempProducts)); 
   }
+
 //isse item return hota hai id k liye
   getItem = (_id) => {
     const product = this.state.products.find(item=>  item._id == _id);

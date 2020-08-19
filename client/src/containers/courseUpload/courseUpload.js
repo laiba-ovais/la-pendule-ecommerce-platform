@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import FileUpload from './fileUpload';
+import {ProductConsumer} from '../../components/Course/contex';
 
 
 
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   back:{
-      backgroundColor: 'transparent'
+      backgroundColor: 'white'
   }
 }));
 
@@ -42,7 +43,11 @@ export default function CourseUpload() {
   
 
   return (
-    <Container className={classes.back} component="main" maxWidth="xs">
+    <ProductConsumer>
+        {(value)=>
+          {
+            return(
+              <Container className={classes.back} component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
        
@@ -50,18 +55,19 @@ export default function CourseUpload() {
           ADD PRODUCT
         </Typography>
         <FileUpload></FileUpload>
-        <form className={classes.form} method="post" action ="/submit" >
+        <form className={classes.form} method="post" action="/productAdded" onSubmit={value.addProduct} >
              <Grid container spacing={2}> 
             <Grid item xs={12} sm={6}>
               <TextField
                 
-                name="Product Name"
+                name="product_name"
                 variant="outlined"
                 required
                 fullWidth
-                id="Product Name"
+                id="product_name"
                 label="Product Name"
                 autoFocus
+                onChange={value.onChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -69,10 +75,10 @@ export default function CourseUpload() {
                 variant="outlined"
                 required
                 fullWidth
-                id="Price"
+                id="price"
                 label="Price"
-                name="Price"
-                
+                name="price"
+                onChange={value.onChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -80,29 +86,44 @@ export default function CourseUpload() {
                 variant="outlined"
                 required
                 fullWidth
-                id="company_name"
+                id="company"
                 label="Company Name"
-                name="company_name"
-                
+                name="company"
+                onChange={value.onChange}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
+              rows="4"
+              multiline={true}
                 variant="outlined"
                 required
                 fullWidth
                 name="info"
                 label="Product Info"
                 id="info"
+                onChange={value.onChange}
                 />
              </Grid>
-            
+             <Grid item xs={12}>
+             <TextField
+                type="number"
+                name="stock"
+                variant="outlined"
+                required
+                fullWidth
+                id="stock"
+                label="Stock"
+                autoFocus
+                onChange={value.onChange}
+              />
+          </Grid>
           
           <button
             type="submit"
             fullWidth
             variant="contained"
-           
+            autoFocus
             className="btn btn-success btn-block"
           >
              Upload
@@ -112,7 +133,13 @@ export default function CourseUpload() {
           </form>
           </div>
           </Container>
-      );
-      }
+            )
+          
+    
       
- 
+        }
+        }
+      </ProductConsumer>
+      )
+      
+ }

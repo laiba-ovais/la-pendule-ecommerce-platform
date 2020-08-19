@@ -100,7 +100,7 @@ onChangeHandler=event=>{
                 <input type="file" class="form-control" multiple onChange={this.onChangeHandler}/>
               </div>  
               <div class="form-group">
-              <ToastContainer />
+              
               <Progress max="100" color="success" value={this.state.loaded} >{Math.round(this.state.loaded,2) }%</Progress>
         
               </div> 
