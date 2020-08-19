@@ -38,8 +38,8 @@ class ProductProvider extends Component {
       cartTax: 0,
       cartTotal: 0,
       signedin:false,
-      user:[],
-      UserDetails: {},
+      user: {},
+      UserDetails: Users,
       email:"",
       password:'',
       loginedUser:'',
@@ -53,7 +53,14 @@ class ProductProvider extends Component {
   }
 
   componentDidMount(){
-    this.setProducts();
+    if(!localStorage.user){
+      this.setUsers()
+    }
+    if(!localStorage.products){
+      this.setProducts();
+    }
+    
+    
   }
   // isse input field mein type honay wali value states ko assign hojati hai
   onChange=(e)=>{
@@ -69,8 +76,11 @@ class ProductProvider extends Component {
       tempUser = [...tempUser, singleItem];
     })
     this.setState(()=> {
+
       return {user: tempUser};
     }) 
+    localStorage.setItem("users", JSON.stringify(tempUser) + ',');
+    console.log(localStorage.users);
   }
 
    onsubmit=(event)=>{ // ye function hai
@@ -95,7 +105,8 @@ class ProductProvider extends Component {
         this.setState(()=>{
           return { signedin: true};
 
-        })   
+        }) 
+        localStorage.setItem("user", JSON.stringify(tempUser));  
       this.props.history.push(`/profile`)
       }
       if(response.data.error){
@@ -158,7 +169,8 @@ class ProductProvider extends Component {
     })
     this.setState(()=> {
       return {products: tempProducts};
-    })  
+    }) 
+    localStorage.setItem("products", JSON.stringify(tempProducts)); 
   }
 //isse item return hota hai id k liye
   getItem = (_id) => {

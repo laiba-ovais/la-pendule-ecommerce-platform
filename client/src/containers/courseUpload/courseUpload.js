@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import FileUpload from './fileUpload';
 
 
 
@@ -46,19 +47,20 @@ export default function CourseUpload() {
       <div className={classes.paper}>
        
         <Typography component="h1" variant="h5">
-          Courses Upload
+          ADD PRODUCT
         </Typography>
+        <FileUpload></FileUpload>
         <form className={classes.form} method="post" action ="/submit" >
              <Grid container spacing={2}> 
             <Grid item xs={12} sm={6}>
               <TextField
                 
-                name="Title"
+                name="Product Name"
                 variant="outlined"
                 required
                 fullWidth
-                id="Title"
-                label="Title"
+                id="Product Name"
+                label="Product Name"
                 autoFocus
               />
             </Grid>
@@ -67,9 +69,9 @@ export default function CourseUpload() {
                 variant="outlined"
                 required
                 fullWidth
-                id="instructor"
-                label="instructor"
-                name="instructor"
+                id="Price"
+                label="Price"
+                name="Price"
                 
               />
             </Grid>
@@ -78,9 +80,9 @@ export default function CourseUpload() {
                 variant="outlined"
                 required
                 fullWidth
-                id="author_initial"
-                label="Author Initial"
-                name="author_initial"
+                id="company_name"
+                label="Company Name"
+                name="company_name"
                 
               />
             </Grid>
@@ -90,22 +92,22 @@ export default function CourseUpload() {
                 required
                 fullWidth
                 name="info"
-                label="Course Info"
+                label="Product Info"
                 id="info"
                 />
              </Grid>
             
-          <Link to ='/submit'>
-          <Button
+          
+          <button
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
-            className={classes.submit}
+           
+            className="btn btn-success btn-block"
           >
              Upload
-          </Button>
-          </Link>
+          </button>
+          
           </Grid>
           </form>
           </div>
