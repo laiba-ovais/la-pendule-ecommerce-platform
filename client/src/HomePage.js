@@ -11,7 +11,7 @@ import Home from './containers/Home/Home';
 import Cart from './components/Cart';
 import Modal from './components/Cart/Modal';
 import GridWatches from './containers/GridWatches/GridWatches'
-
+import PersonList from './components/getUser/getUser'
 
 import ServiceRegister from './components/ServiceRegisteration/ServiceRegister';
 
@@ -20,6 +20,7 @@ import ProductProvider from './components/Course/contex';
 // var createBrowserHistory = require('history/lib/createBrowserHistory');
 import history from './components/Course/history';
 import courseUpload from "./containers/courseUpload/courseUpload"
+//import PersonList from './components/getUser/getUser';
 
 function HomePage(props){
     return (
@@ -46,6 +47,7 @@ function HomePage(props){
         <Route exact path="/register" component = {SignUp}/>
         <Route exact path="/signin" component = {SignIn}/>
         <Route exact path="/grid" component = {GridWatches}/>
+        <Route exact path="/user" component = {PersonList}/>
         {/* <Route exact path="/playlist" component = {Playist}/> */}
         </Switch>
 
