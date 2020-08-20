@@ -208,15 +208,16 @@ fetchProductData(){
   .catch(error => console.log('parsing failed', error)) 
 }
   setProducts = () => {
-    let tempProducts = []; // yahan start up per products ki value set hoti hai
-    CourseDetails.forEach(item=> {
-      const singleItem = {...item};
-      tempProducts = [...tempProducts, singleItem];
-    })
-    this.setState(()=> {
-      return {products: tempProducts};
-    }) 
-     localStorage.setItem("products", JSON.stringify(tempProducts)); 
+    // let tempProducts = []; // yahan start up per products ki value set hoti hai
+    // CourseDetails.forEach(item=> {
+    //   const singleItem = {...item};
+    //   tempProducts = [...tempProducts, singleItem];
+    // })
+    // this.setState(()=> {
+    //   return {products: tempProducts};
+    // }) 
+    //  localStorage.setItem("products", JSON.stringify(tempProducts)); 
+    this.fetchProductData();
   }
 
 //isse item return hota hai id k liye

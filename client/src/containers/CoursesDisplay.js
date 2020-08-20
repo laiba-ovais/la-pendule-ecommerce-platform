@@ -29,7 +29,7 @@ export default class CourseDisplay extends Component {
               <ProductConsumer >
                 { //yw wala
                (value)=>{
-            const {_id, Service, courseImage, courseTitle , info, price, inCart} = 
+            const {productID, Service, courseImage, courseTitle , info, price, inCart} = 
             value.detailProduct;
               return(
                 <div>
@@ -37,7 +37,7 @@ export default class CourseDisplay extends Component {
                   <div className="row">
                   <div className="col-md-4">
                   <div className=" mx-auto my-3 text-capitalize relative">
-                        <img src={require(`../static/images/services/${_id}.png`)} width="500px" height="500px" alt="product"/>
+                        <img src={require(`../static/images/services/${productID}.png`)} width="500px" height="500px" alt="product"/>
                         </div>
                         <div className="my-3">
                         <Link to="/courses"> 

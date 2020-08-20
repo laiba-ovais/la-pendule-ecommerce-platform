@@ -41,15 +41,8 @@ process.on('uncaughtException', function (err) {
   router.post('/productAdded' , function(req, res){
         var user = req.body;
         
-        // var Oneuser={
-        //     email: user.email,
-        //     password:user.password,
-        //     first_name: user.firstname,
-        //     last_name: user.lastname,
-        //     time: Date.now()
-        // }
-        
-                mysqlConnection.query("insert into products ( `product_name`,`company`, `info`, `price`, `stock`) values('"+ req.body.product_name +"', '"+req.body.comany +"', '"+ req.body.info +"', '"+ req.body.price+"', '"+ req.body.stock+"');"
+     
+                mysqlConnection.query("insert into products ( `product_name`,`company`, `info`, `price`, `stock`) values('"+ req.body.product_name +"', '"+req.body.company +"', '"+ req.body.info +"', '"+ req.body.price+"', '"+ req.body.stock+"');"
                 ,function(err2,result){
                     if(err2)  console.log(err2);
                     console.log(req.body , "data is saved");
@@ -58,6 +51,16 @@ process.on('uncaughtException', function (err) {
             
                 
   })
+  router.get('/getproduct', (req, res) => {
+    
+    // var passdb = [];
+     mysqlConnection.query("SELECT * FROM products",function(err, results,fields){
+        if(err)throw err;
+        if(results){
+          res.json({results:results});
+        }
+        
+      });})
 
   module.exports = router;
   

@@ -39,7 +39,7 @@ function HomePage(props){
         <Route exact path="/profile" component={Home} />  
         <Route exact path="/serviceRegistration" component={ServiceRegister} />
         <Route exact path="/profile" component={Home} />  
-        <Route exact path="/courseUpload" component={courseUpload} />  
+        <Route exact path="/addproducts" component={courseUpload} />  
 
         <Route path="/cart" component={Cart} /> 
         <Route path="/courses/:id" component={CoursesDisplay} /> 
