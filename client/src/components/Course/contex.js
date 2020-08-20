@@ -58,7 +58,30 @@ class ProductProvider extends Component {
     this.onRegister = this.onRegister.bind(this)
     this.addProduct = this.addProduct.bind(this)
   }
+  componentWillMount() {
+    localStorage.getItem('products') && localStorage.getItem('user') && this.setState({
+        user: JSON.parse(localStorage.getItem('user')),
+        products: JSON.parse(localStorage.getItem('products'))
+    })   
+}
 
+fetchData(){
+  axios.get("/getuser")
+  .then(response => response.data.results.map(user => (
+     {
+        id: user.id,
+        email: user.email,
+        first_name: user.first_name,
+        last_name: user.last_name
+        
+      }
+  )))
+  .then(user => this.setState({
+      user :user
+  }))
+  .catch(error => console.log('parsing failed', error))
+  console.log(this.state.user);
+}
   componentDidMount(){
     // if(!localStorage.user){
     //   this.setUsers()
@@ -67,7 +90,8 @@ class ProductProvider extends Component {
     //   this.setProducts();
     // }
     this.setProducts();
-    this.setUsers()
+    this.setUsers();
+    console.log(this.state.user);
   }
   // isse input field mein type honay wali value states ko assign hojati hai
   onChange=(e)=>{
@@ -77,17 +101,9 @@ class ProductProvider extends Component {
   }
 
   setUsers=()=>{
-    let tempUser = []; // yahan start up per products ki value set hoti hai
-    Users.forEach(item=> {
-      const singleItem = {...item};
-      tempUser = [...tempUser, singleItem];
-    })
-    this.setState(()=> {
-
-      return {user: tempUser};
-    }) 
-   // localStorage.setItem("users", JSON.stringify(tempUser) + ',');
-    //console.log(localStorage.users);
+    this.fetchData();
+    localStorage.setItem("users", JSON.stringify(this.state.user) + ',');
+   
   }
 
    onsubmit=(event)=>{ // ye function hai
@@ -113,7 +129,7 @@ class ProductProvider extends Component {
           return { signedin: true};
 
         }) 
-        //localStorage.setItem("user", JSON.stringify(tempUser));  
+        localStorage.setItem("user", JSON.stringify(tempUser));  
       this.props.history.push(`/profile`)
       }
       if(response.data.error){
@@ -195,7 +211,7 @@ class ProductProvider extends Component {
     this.setState(()=> {
       return {products: tempProducts};
     }) 
-    //  localStorage.setItem("products", JSON.stringify(tempProducts)); 
+     localStorage.setItem("products", JSON.stringify(tempProducts)); 
   }
 
 //isse item return hota hai id k liye
