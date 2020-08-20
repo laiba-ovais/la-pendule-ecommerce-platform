@@ -62,26 +62,25 @@ class ProductProvider extends Component {
     localStorage.getItem('products') && localStorage.getItem('user') && this.setState({
         user: JSON.parse(localStorage.getItem('user')),
         products: JSON.parse(localStorage.getItem('products'))
-    })
+    })   
 }
+
 fetchData(){
   axios({  // isse post kr rhy hain email or password thk
     method: 'GET',
     url: '/getuser',
   })
-  .then(response => response.json())
   .then(parsedJSON => parsedJSON.results.map(user => (
       {
-        id: res.results.id,
-        email: res.results.email,
-        first_name: res.results.first_name,
-        last_name: res.results.last_name
+        id: user.id,
+        email: user.email,
+        first_name: user.first_name,
+        last_name: user.last_name
         
       }
   )))
-  .then(contacts => this.setState({
-      contacts,
-      isLoading: false
+  .then(user => this.setState({
+      user 
   }))
   .catch(error => console.log('parsing failed', error))
   
@@ -94,7 +93,9 @@ fetchData(){
     //   this.setProducts();
     // }
     this.setProducts();
-    this.setUsers()
+    this.setUsers();
+   
+    console.log(this.state.user);
   }
   // isse input field mein type honay wali value states ko assign hojati hai
   onChange=(e)=>{
@@ -104,16 +105,8 @@ fetchData(){
   }
 
   setUsers=()=>{
-    let tempUser = []; // yahan start up per products ki value set hoti hai
-    Users.forEach(item=> {
-      const singleItem = {...item};
-      tempUser = [...tempUser, singleItem];
-    })
-    this.setState(()=> {
-
-      return {user: tempUser};
-    }) 
-    localStorage.setItem("users", JSON.stringify(tempUser) + ',');
+    this.fetchData();
+    localStorage.setItem("users", JSON.stringify(this.state.user) + ',');
    
   }
 
