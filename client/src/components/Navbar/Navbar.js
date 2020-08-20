@@ -144,22 +144,32 @@ function Navbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      {/* <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="secondary">
             <MailIcon />
           </Badge>
         </IconButton>
         <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
+      </MenuItem> */}
+      {/* <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
           <Badge badgeContent={11} color="secondary">
             <NotificationsIcon />
           </Badge>
         </IconButton>
         <p>Notifications</p>
-      </MenuItem>
+      </MenuItem> */}
+      <MenuItem>
+                  <Link to= '/register' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
+                   SIGNUP  
+                  </Typography></Link>
+                  </MenuItem>
+                  <MenuItem>
+                  <Link to= '/signin' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
+                   SIGN IN   
+                  </Typography></Link>
+                  </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -195,16 +205,31 @@ function Navbar() {
                   >
                     <MenuIcon />
                   </IconButton>
-                 <Link to= '/home' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
+                 <Link to= '/' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
                    HOME   
                   </Typography></Link> 
-                  <Link to= '/courses' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
-                   COURSES   
+                  {/* <MenuItem>
+                  <Link to= '/About' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
+                   ABOUT   
                   </Typography></Link>
+                  </MenuItem> */}
                   {/* <AutoComplete ></AutoComplete> */}
                   <SearchBar searchChange={value.searchChange} ></SearchBar>
                   <div className={classes.grow} />
                   <div className={classes.sectionDesktop}>
+
+
+                  <MenuItem>
+                  <Link to= '/register' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
+                   SIGNUP  
+                  </Typography></Link>
+                  </MenuItem>
+                  <MenuItem>
+                  <Link to= '/signin' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
+                   SIGN IN   
+                  </Typography></Link>
+                  </MenuItem>
+                  
                   <Link to= '/cart'>
                   <IconButton
                     color="inherit"
@@ -215,8 +240,12 @@ function Navbar() {
                   </Badge>
                   </IconButton>
                   </Link>
+
+
                   
-                    <IconButton aria-label="show 4 new mails" color="inherit">
+
+                  
+                    {/* <IconButton aria-label="show 4 new mails" color="inherit">
                       <Badge badgeContent={4} color="secondary">
                         <MailIcon />
                       </Badge>
@@ -225,7 +254,8 @@ function Navbar() {
                       <Badge badgeContent={17} color="secondary">
                         <NotificationsIcon />
                       </Badge>
-                    </IconButton>
+                    </IconButton> */}
+
                     <IconButton
                       edge="end"
                       aria-label="account of current user"

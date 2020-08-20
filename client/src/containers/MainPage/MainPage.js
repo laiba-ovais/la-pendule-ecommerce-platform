@@ -25,7 +25,7 @@ export default function MainPage (){
     <Carousel.Caption>
       <h3>The Essence of Pefect Time</h3>
       
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      <p>The architect of time</p>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -42,7 +42,7 @@ export default function MainPage (){
 
     <Carousel.Caption>
       <h3>For Classy Times</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>A time to watch. A time to tell.</p>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -57,7 +57,7 @@ export default function MainPage (){
     </a>
     <Carousel.Caption>
       <h3>Get Stylish, Get Watch</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      <p>The ones to watch.</p>
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
