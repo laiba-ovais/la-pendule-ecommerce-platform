@@ -29,13 +29,13 @@ const CourseCardList = ({ CourseDetails }) => {
             return( 
             <div
             onClick= {()=>value.handleDetail(product.productID)}
-            ><Link to={{ pathname: '/courses/' + product[0].productID }}>
+            ><Link to={{ pathname: '/courses/' + product.productID }}>
             <CourseCard
-            productID = { product[0].productID }
-            company  = { product[0].company }
-            product_name = { product[0].product_name }
-            info = { product[0].info}
-            price = {product[0].price}
+            productID = { product.productID }
+            company  = { product.company }
+            product_name = { product.product_name }
+            info = { product.info}
+            price = {product.price}
             /></Link></div>
             )}))}}
         </ProductConsumer>

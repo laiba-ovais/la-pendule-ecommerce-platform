@@ -198,6 +198,7 @@ fetchProductData(){
   fetch("http://localhost:4000/getproduct").then(response => response.json())
    .then(parsedJSON =>parsedJSON.results.map(product => (
     {
+      productID: `${product.productID}`,
         product_name: `${product.product_name}`,
         company: `${product.company}`,
         price: `${product.price}`,
@@ -229,7 +230,7 @@ fetchProductData(){
   }
 // isse details page per item ata hai
   handleDetail = (_id) => {
-    const product = this.getItem(_id);
+    const product = this.products.getItem(_id);
     this.setState(
       ()=>{
         return {detailProduct: product};
