@@ -8,7 +8,7 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import {CourseDetails} from '../../components/Course/CourseDetails'
 import Container from 'react-bootstrap/Container'
 import {ProductConsumer} from '../../components/Course/contex'
-import {Link} from "react-router"
+import {Link} from "react-router";
 const useStyles = makeStyles((theme) => ({
   root: {
     color:'white',
@@ -67,7 +67,7 @@ export default function GridWatches({_id, courseTitle, courseImage, price}) {
             //yahan hoga naa?kya
             <Link to={{ pathname: '/courses/' + product._id, state: CourseDetails[i]._id , key:CourseDetails[i]._id }}    >
           <GridListTile onClick={value.handleDetail(CourseDetails[i]._id)} key={tile._id}>
-            <img src={require(`../../static/images/services/${i+1}.png`)} alt={tile.courseTitle} />
+            <img src={require(`../../static/images/services/${i+1}.png`)} alt={title.courseTitle} />
             <GridListTileBar
               title={tile.courseTitle}
               classes={{

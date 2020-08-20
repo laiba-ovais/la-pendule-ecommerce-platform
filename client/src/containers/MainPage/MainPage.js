@@ -9,7 +9,7 @@ export default function MainPage (){
     
     <img
       className="d-block w-100 h-100 op"
-      src={require("../../static/images/1.jpg")}
+      src={require("../../static/images/1.png")}
       alt="First slide"
     />
     <button id = "btn" class="btn btn-primary" type="button"><b>Get Started!</b>  </button>
@@ -24,7 +24,7 @@ export default function MainPage (){
   <Carousel.Item>
     <img
       className="d-block w-100 h-100 op"
-      src={require("../../static/images/2.jpg")}
+      src={require("../../static/images/2.png")}
       alt="Third slide"
     />
     <button id = "btn" class="btn btn-primary" type="button"><b>Get Started!</b>  </button>
@@ -37,7 +37,7 @@ export default function MainPage (){
   <Carousel.Item>
     <img
       className="d-block w-100 h-100 op"
-      src={require("../../static/images/3.jpg")}
+      src={require("../../static/images/3.png")}
       alt="Third slide"
     />
     <button id = "btn" class="btn btn-primary" type="button"><b>Get Started!</b>  </button>
