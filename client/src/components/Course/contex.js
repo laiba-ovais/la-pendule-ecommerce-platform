@@ -66,20 +66,16 @@ class ProductProvider extends Component {
 }
 
 fetchData(){
-  axios.get("/getuser")
-   .then(response =>console.log(response.data)
-  // response.data.results.map(user => (
-  //    {
-  //       id: user.id,
-  //       email: user.email,
-  //       first_name: user.first_name,
-  //       last_name: user.last_name
-        
-  //     }                          
-  // ))
-  )
-  .then(user => this.setState({
-      user:user
+  var tempUser=[] 
+  fetch("http://localhost:4000/getuser").then(response => response.json())
+   .then(parsedJSON =>parsedJSON.results.map(user => (
+    {
+        name: `${user.first_name} ${user.last_name}`,
+        email: `${user.email}`,
+       
+    }
+))).then((user) => this.setState({
+      user
   }))
   .catch(error => console.log('parsing failed', error))
   console.log(this.state.user);
