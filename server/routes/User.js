@@ -16,7 +16,7 @@ router.use(
 const mysqlConnection = mysql.createConnection({
   host: 'localhost',
   user:'root',
-  password: 'chikorita1191',
+  password: 'Palkia786',
   database: 'mydb'
 });
 mysqlConnection.connect((err) =>{
@@ -128,7 +128,7 @@ router.get('/getuser', (req, res) => {
    mysqlConnection.query("SELECT * FROM users",function(err, results,fields){
       if(err)throw err;
       if(results){
-        res.send({results});
+        res.json({results});
       }
       
     });})

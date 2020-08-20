@@ -60,24 +60,26 @@ class ProductProvider extends Component {
   }
   componentWillMount() {
     localStorage.getItem('products') && localStorage.getItem('user') && this.setState({
-        user: JSON.parse(localStorage.getItem('user')),
+        // user: JSON.parse(localStorage.getItem('user')),
         products: JSON.parse(localStorage.getItem('products'))
     })   
 }
 
 fetchData(){
   axios.get("/getuser")
-  .then(response => response.data.results.map(user => (
-     {
-        id: user.id,
-        email: user.email,
-        first_name: user.first_name,
-        last_name: user.last_name
+   .then(response =>console.log(response.data)
+  // response.data.results.map(user => (
+  //    {
+  //       id: user.id,
+  //       email: user.email,
+  //       first_name: user.first_name,
+  //       last_name: user.last_name
         
-      }
-  )))
+  //     }                          
+  // ))
+  )
   .then(user => this.setState({
-      userj:user
+      user:user
   }))
   .catch(error => console.log('parsing failed', error))
   console.log(this.state.user);
@@ -86,12 +88,14 @@ fetchData(){
     // if(!localStorage.user){
     //   this.setUsers()
     // }
-    // if(!localStorage.products){
-    //   this.setProducts();
-    // }
-    this.setProducts();
+    if(!localStorage.products){
+      this.setProducts();
+    }
+    else
+    this.setState()
+    // this.setProducts();
     this.setUsers();
-    console.log(this.state.user);
+    // console.log(this.state.user);
   }
   // isse input field mein type honay wali value states ko assign hojati hai
   onChange=(e)=>{
