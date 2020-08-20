@@ -5,7 +5,6 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import {CourseDetails} from '../../components/Course/CourseDetails'
 import Container from 'react-bootstrap/Container'
 import {ProductConsumer} from '../../components/Course/contex'
 import {Link} from "react-router";
@@ -56,32 +55,42 @@ export default function GridWatches({_id, courseTitle, courseImage, price}) {
   return (
     <ProductConsumer >
     {(value)=>{
-        
-        
+
     return(
     <Container className="mt-3 mb-5" >
     <div className={classes.root}>
     <h1>More Watches</h1>
       <GridList  className={classes.gridList} cols={2.5}> 
+<<<<<<< HEAD
         {value.products.map((product) => (
             //yahan hoga naa?kya
             <Link to={{ pathname: '/courses/' + product._id, state: CourseDetails[i]._id , key:CourseDetails[i]._id }}    >
           <GridListTile onClick={value.handleDetail(CourseDetails[i]._id)} key={tile._id}>
             <img src={require(`../../static/images/services/${i+1}.png`)} alt={title.courseTitle} />
+=======
+        {value.products.map((product,i) => (
+           
+           
+          <GridListTile onClick={()=>value.handleDetail(product._id)} key={product._id}>
+             <Link to={{ pathname: '/courses/' + product._id }} >
+            <img src={require(`../../static/images/services/${i+1}.png`)} alt={product.courseTitle} />
+>>>>>>> ce055e8f0eb6876ff3c738061c318af0b0b1c6ed
             <GridListTileBar
-              title={tile.courseTitle}
+              title={product.courseTitle}
               classes={{
                 root: classes.titleBar,
                 title: classes.title,
               }}
               actionIcon={
-                <IconButton aria-label={`star ${tile.title}`}>
+                <IconButton aria-label={`star ${product.title}`}>
                   <StarBorderIcon className={classes.title} />
                 </IconButton>
               }
             />
+             </Link>
           </GridListTile>
-          </Link>
+          
+          
         ))}
       </GridList>
     </div>
