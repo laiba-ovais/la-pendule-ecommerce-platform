@@ -13,24 +13,10 @@ router.use(
         extended:false
     })
 )
-const createUnixSocketPool = async (config) => {
-  const dbSocketPath = process.env.DB_SOCKET_PATH || "/cloudsql"
-
-  // Establish a connection to the database
-  return await mysql.createPool({
-    user: process.env.DB_USER, // e.g. 'my-db-user'
-    password: process.env.DB_PASS, // e.g. 'my-db-password'
-    database: process.env.DB_NAME, // e.g. 'my-database'
-    // If connecting via unix domain socket, specify the path
-    socketPath: `${dbSocketPath}/${process.env.INSTANCE_CONNECTION_NAME}`,
-    // Specify additional properties here.
-    ...config
-  });
-}
 const mysqlConnection = mysql.createConnection({
-  host: '34.93.86.122:graphite-sphere-286919:asia-south1:weprojectdb',
+  host: 'localhost',
   user:'root',
-  password: '28082000',
+  password: 'Palkia786',
   database: 'mydb'
 });
 mysqlConnection.connect((err) =>{
@@ -73,7 +59,7 @@ router.post('/submit' , function(req, res){
               console.log(err);
           }
           if (!rows.length){
-              mysqlConnection.query("insert into users ( `first_name`,`last_name`, `password`, `email`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ hashedpassword +"', '"+ req.body.email+"');",function(err2,result){
+              mysqlConnection.query("insert into users ( `first_name`,`last_name`, `password`, `email`, `time`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ hashedpassword +"', '"+ req.body.email+"', '"+ Oneuser.time+"');",function(err2,result){
                   if(err2)  console.log(err2);
                   console.log(res.body , "data is saved");
                   res.send({email:req.body.email}) });

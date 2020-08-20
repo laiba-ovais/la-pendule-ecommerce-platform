@@ -12,16 +12,16 @@ export default class PersonList extends React.Component {
       .then(res => {
         // const users = res.data;
        // console.log(users);
-        this.setState({ users});
-        var user1 = [];
-        res.data.map((user,i)=>{
-          var temUser = user[i];
-          user1[i]= temUser;  
+        this.setState({ users: res.data});
+        // var user1 = [];
+        // res.data.map((user,i)=>{
+        //   var temUser = user[i];
+        //   user1[i]= temUser;  
          
         })
-        
 
-      })
+
+      //})
   }
 
   render() {
