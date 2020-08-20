@@ -16,7 +16,7 @@ router.use(
 const mysqlConnection = mysql.createConnection({
   host: 'localhost',
   user:'root',
-  password: '28082000',
+  password: 'Palkia786',
   database: 'mydb'
 });
 mysqlConnection.connect((err) =>{
@@ -120,68 +120,17 @@ router.post('/signin', (req, res) => {
         }
   
 }
-  });
+  });})
 
-
-
-//   function setValue(value) {
-//     passdb = value;
-//     console.log(passdb[0].password)
-//   }
-//   console.log(passdb[0].password);
-//  if(comparePWD(passdb[0].password,Oneuser.password)) // ye function hai jo encrypted password ko normal se compare krta hai or true bata ta hai agr encrypted = encrypted(normal)
-//     {mysqlConnection.query('SELECT email, password FROM users WHERE email = ? AND password = ?', [Oneuser.email, Oneuser.password], 
-//     function(err, results)
-//     {
-
-//       if (err)throw err;
-//       if(results) {
+router.get('/getuser', (req, res) => {
+    
+  // var passdb = [];
+   mysqlConnection.query("SELECT * FROM users",function(err, results,fields){
+      if(err)throw err;
+      if(results){
+        res.json({results});
+      }
       
-//         res.json({ status: req.body.email + ' is logged in!' }) 
-//       } else {
-//             res.json('user not found');
-//           }
-//         });}
-//         else{
-//           res.json('user not found');
-//         }
+    });})
   
-// /*
-// mysqlConnection.connect((err) =>{ //pehle isje baghair hi chala k dekha tha :) tb b nhi chala
-
-
-// mysqlConnection.query("SELECT * FROM users WHERE email = '"+ Oneuser.email +"' ", function(err, rows, fields){
-//   if(err){
-//       console.log(err);
-//   }
-//   else{
-//       if(rows.length === 0){
-//               res.json({ msg: 'Wrong Email' });
-//       }
-//       else{
-//           var hash = "SELECT password FROM users WHERE email = '"+ Oneuser.email + "' ";
-//           mysqlConnection.query(hash, function(err, result){
-//               if(err){
-//                   console.log(err);
-//               }
-//               bcryptjs.compare(Oneuser.password , hash, function(err, result) {
-//                   if (err) { throw (err); }
-//                   console.log(result);
-//               });
-//           });
-//       }
-//   }
-//   if(err){
-//       res.render('login',{
-//           err,
-//           email,
-//           password
-//       });}
-   
-  //else{
-  //     res.render('Home', { name: name});
-//   // }
-// })
-})
-
 module.exports = router;

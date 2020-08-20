@@ -61,8 +61,30 @@ class ProductProvider extends Component {
   componentWillMount() {
     localStorage.getItem('products') && localStorage.getItem('user') && this.setState({
         user: JSON.parse(localStorage.getItem('user')),
-        products: JSON.parse(localStorage.getItem('products')),
+        products: JSON.parse(localStorage.getItem('products'))
     })
+}
+fetchData(){
+  axios({  // isse post kr rhy hain email or password thk
+    method: 'GET',
+    url: '/getuser',
+  })
+  .then(response => response.json())
+  .then(parsedJSON => parsedJSON.results.map(user => (
+      {
+        id: res.results.id,
+        email: res.results.email,
+        first_name: res.results.first_name,
+        last_name: res.results.last_name
+        
+      }
+  )))
+  .then(contacts => this.setState({
+      contacts,
+      isLoading: false
+  }))
+  .catch(error => console.log('parsing failed', error))
+  
 }
   componentDidMount(){
     // if(!localStorage.user){
