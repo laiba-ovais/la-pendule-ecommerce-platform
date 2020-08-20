@@ -45,12 +45,18 @@ class ProductProvider extends Component {
       password:'',
       loginedUser:'',
       first_name: '',
-      last_name: ''
+      last_name: '',
+      product_name: '',
+      price: '',
+      company: '',
+      info: '',
+      stock: ''
      
   }
     this.onChange = this.onChange.bind(this)
     this.onsubmit = this.onsubmit.bind(this)
     this.onRegister = this.onRegister.bind(this)
+    this.addProduct = this.addProduct.bind(this)
   }
 
   componentDidMount(){
@@ -360,7 +366,8 @@ class ProductProvider extends Component {
               handleUserDetail:this.handleUserDetail,
               onsubmit:this.onsubmit,
               onChange:this.onChange,
-              onRegister:this.onRegister
+              onRegister:this.onRegister,
+              addProduct:this.addProduct
 
           }
       }>

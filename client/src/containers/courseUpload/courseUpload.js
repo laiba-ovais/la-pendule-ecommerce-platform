@@ -55,7 +55,7 @@ export default function CourseUpload() {
           ADD PRODUCT
         </Typography>
         <FileUpload></FileUpload>
-        <form className={classes.form} method="post" action="/productAdded" onSubmit={value.addProduct} >
+        <form className={classes.form}  onSubmit={value.addProduct} >
              <Grid container spacing={2}> 
             <Grid item xs={12} sm={6}>
               <TextField
