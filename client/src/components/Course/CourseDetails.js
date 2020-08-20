@@ -1,14 +1,13 @@
 export const CourseDetails = [
     {   _id:1,
          Service :'Mechanic', 
-        courseTitle : 'WEB DEVELOPMENT', 
-       
-        courseImage : "../../static/images/Mechanic.png",
+        courseTitle : 'Sky-dweller', 
         imageTitle : 'xyz',
-        courseAuthor : 'fbkjdh',
         price :200,
+        company: 'Rolex',
         inCart: false,
-        info: "info of course"
+        info: `The Oyster Perpetual Sky-Dweller is a timepiece with a unique design that blends technological sophistication and ease of use.
+        It features an innovative annual calendar called Saros and a dual time zone display, making it the ideal watch for world travellers.`
         ,total:0,
          count:0,
     },
@@ -71,6 +70,7 @@ export const CourseDetails = [
          count:0
     }    
 ];
+
 export const courseStored = 
 {
     _id:5,

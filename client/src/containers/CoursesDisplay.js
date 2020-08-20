@@ -6,6 +6,8 @@ import {ButtonContainer} from '../components/Button/Button'
 import {CourseDetails} from '../components/Course/CourseDetails'
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import GridWatches from '../containers/GridWatches/GridWatches'
+import 'react-bootstrap'
 //import ResponsivePlayer from '../components/VideoPlayer/ResponsivePlayer';
 
 
@@ -25,11 +27,12 @@ export default class CourseDisplay extends Component {
               
             return (
               <ProductConsumer >
-                {
+                { //yw wala
                (value)=>{
-            const {_id, Service, courseImage , info, price, courseTitle, inCart} = 
+            const {_id, Service, courseImage, courseTitle , info, price, inCart} = 
             value.detailProduct;
               return(
+                <div>
             <Container className="mt-5 con-bod" >
                   <div className="row">
                   <div className="col-md-4">
@@ -38,12 +41,13 @@ export default class CourseDisplay extends Component {
                         </div>
                         <div className="my-3">
                         <Link to="/courses"> 
-                          <ButtonContainer>
+                          <ButtonContainer className="btn mr-5" style={{background: 'orange'}}>
                             back to Courses
                           </ButtonContainer>
                         </Link>
-                          <ButtonContainer 
-                          className="ml-2"
+                          <ButtonContainer
+                           style={{background: 'orange'}}
+                          className="ml-4 btn"
                            disabled={inCart?true:false}
                             onClick={()=>{
                                value.addToCart(_id);
@@ -58,16 +62,16 @@ export default class CourseDisplay extends Component {
                   </div>
                     
                     <div className="col-10 mx-auto col-md-8 my-3 text-capitalize inline-block ">
-                      <h3>Course Title: {courseTitle}</h3>
+                      <h3>{courseTitle}</h3>
                       <h3>
-                        <span className="text-capitalize">{Service}</span>
+                        <span className="text-capitalize">Rolex</span>
                       </h3>
                       <h4 >
                           price: <span>$</span> {price}
                       </h4>
                       
                       <div className="  mt-3 mb-0">
-                        <h4 > Course Details:</h4>
+                        <h4 >Details:</h4>
                       
                       <p>
                         {info}
@@ -75,8 +79,10 @@ export default class CourseDisplay extends Component {
                       </div>
                     </div>
                   </div>
-                
-            </Container>  
+                  
+            </Container> 
+            <GridWatches></GridWatches> 
+            </div>
               )
                           }
                 }

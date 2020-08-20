@@ -88,8 +88,8 @@ import Container from 'react-bootstrap/Container'
 
  const CourseCard = ({ courseImage, Service, price,info, _id   }) =>{
   return(
-    <Container>
-    <div className=" dib br3 ma2 grow bw2 shadow-5 ">
+    
+    <div  className=" dib br3 ma2 grow bw2 shadow-5 ">
     <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src={require(`../../static/images/services/${_id}.png`)} />
   <Card.Body>
@@ -101,7 +101,7 @@ import Container from 'react-bootstrap/Container'
   </Card.Body>
 </Card>
     </div>
-    </Container>
+    
     
     
   )

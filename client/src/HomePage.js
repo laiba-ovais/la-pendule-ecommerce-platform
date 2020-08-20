@@ -10,6 +10,7 @@ import Profile from './components/Users/Profile'
 import Home from './containers/Home/Home';
 import Cart from './components/Cart';
 import Modal from './components/Cart/Modal';
+import GridWatches from './containers/GridWatches/GridWatches'
 
 
 import ServiceRegister from './components/ServiceRegisteration/ServiceRegister';
@@ -44,6 +45,7 @@ function HomePage(props){
         <Route exact path="/courses" component = {Course}/>
         <Route exact path="/register" component = {SignUp}/>
         <Route exact path="/signin" component = {SignIn}/>
+        <Route exact path="/grid" component = {GridWatches}/>
         {/* <Route exact path="/playlist" component = {Playist}/> */}
         </Switch>
 
