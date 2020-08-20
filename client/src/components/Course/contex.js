@@ -77,7 +77,7 @@ fetchData(){
       }
   )))
   .then(user => this.setState({
-      user :user
+      userj:user
   }))
   .catch(error => console.log('parsing failed', error))
   console.log(this.state.user);
