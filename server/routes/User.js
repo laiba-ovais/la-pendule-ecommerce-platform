@@ -13,8 +13,22 @@ router.use(
         extended:false
     })
 )
+const createUnixSocketPool = async (config) => {
+  const dbSocketPath = process.env.DB_SOCKET_PATH || "/cloudsql"
+
+  // Establish a connection to the database
+  return await mysql.createPool({
+    user: process.env.DB_USER, // e.g. 'my-db-user'
+    password: process.env.DB_PASS, // e.g. 'my-db-password'
+    database: process.env.DB_NAME, // e.g. 'my-database'
+    // If connecting via unix domain socket, specify the path
+    socketPath: `${dbSocketPath}/${process.env.INSTANCE_CONNECTION_NAME}`,
+    // Specify additional properties here.
+    ...config
+  });
+}
 const mysqlConnection = mysql.createConnection({
-  host: 'localhost',
+  host: '34.93.86.122:graphite-sphere-286919:asia-south1:weprojectdb',
   user:'root',
   password: 'Palkia786',
   database: 'mydb'
