@@ -128,7 +128,7 @@ router.get('/getuser', (req, res) => {
    mysqlConnection.query("SELECT * FROM users",function(err, results,fields){
       if(err)throw err;
       if(results){
-        res.json({results});
+        res.send({results});
       }
       
     });})

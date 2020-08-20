@@ -66,12 +66,9 @@ class ProductProvider extends Component {
 }
 
 fetchData(){
-  axios({  // isse post kr rhy hain email or password thk
-    method: 'GET',
-    url: '/getuser',
-  })
-  .then(parsedJSON => parsedJSON.results.map(user => (
-      {
+  axios.get("/getuser")
+  .then(response => response.data.results.map(user => (
+     {
         id: user.id,
         email: user.email,
         first_name: user.first_name,
@@ -80,10 +77,10 @@ fetchData(){
       }
   )))
   .then(user => this.setState({
-      user 
+      user :user
   }))
   .catch(error => console.log('parsing failed', error))
-  
+  console.log(this.state.user);
 }
   componentDidMount(){
     // if(!localStorage.user){
@@ -94,7 +91,6 @@ fetchData(){
     // }
     this.setProducts();
     this.setUsers();
-   
     console.log(this.state.user);
   }
   // isse input field mein type honay wali value states ko assign hojati hai
