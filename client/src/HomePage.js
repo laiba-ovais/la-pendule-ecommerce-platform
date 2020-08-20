@@ -11,8 +11,12 @@ import Home from './containers/Home/Home';
 import Cart from './components/Cart';
 import Modal from './components/Cart/Modal';
 import GridWatches from './containers/GridWatches/GridWatches'
+<<<<<<< HEAD
 import FooterPage from './components/FooterPage/FooterPage';
 
+=======
+import PersonList from './components/getUser/getUser'
+>>>>>>> 142f57a4f0ed8385ab8c6c8edfbdd1f6df553aac
 
 import ServiceRegister from './components/ServiceRegisteration/ServiceRegister';
 
@@ -21,6 +25,7 @@ import ProductProvider from './components/Course/contex';
 // var createBrowserHistory = require('history/lib/createBrowserHistory');
 import history from './components/Course/history';
 import courseUpload from "./containers/courseUpload/courseUpload"
+//import PersonList from './components/getUser/getUser';
 
 function HomePage(props){
     return (
@@ -47,7 +52,11 @@ function HomePage(props){
         <Route exact path="/register" component = {SignUp}/>
         <Route exact path="/signin" component = {SignIn}/>
         <Route exact path="/grid" component = {GridWatches}/>
+<<<<<<< HEAD
         
+=======
+        <Route exact path="/user" component = {PersonList}/>
+>>>>>>> 142f57a4f0ed8385ab8c6c8edfbdd1f6df553aac
         {/* <Route exact path="/playlist" component = {Playist}/> */}
         </Switch>
         <FooterPage></FooterPage>
