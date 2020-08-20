@@ -18,7 +18,6 @@ import {Link ,withRouter} from 'react-router-dom';
 import SearchBar from './SearchBar';
 import './Navbar.css';
 import {ButtonContainer} from "../Button/Button"
-import { CourseDetails } from '../Course/CourseDetails';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {ProductConsumer} from '../Course/contex';
 import AutoComplete from './AutoComplete'
@@ -95,7 +94,6 @@ function Navbar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const [coursesFilter , setcoursesFilter] = React.useState([CourseDetails]);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);

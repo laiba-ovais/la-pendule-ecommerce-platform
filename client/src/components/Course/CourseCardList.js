@@ -28,19 +28,14 @@ const CourseCardList = ({ CourseDetails }) => {
             return( value.products.map(product=>{
             return( 
             <div
-            onClick= {()=>value.handleDetail(product._id)}
-            ><Link to={{ pathname: '/courses/' + product._id }}>
+            onClick= {()=>value.handleDetail(product.productID)}
+            ><Link to={{ pathname: '/courses/' + product[0].productID }}>
             <CourseCard
-            _id = { product._id }
-            authorInitial  = { product.authorInitial }
-            courseTitle = { product.courseTitle }
-            Service = {product.Service}
-            uploadDate = { product.uploadDate }
-            info = { product.info}
-            price = {product.price}
-            courseImage = { product.courseImage }
-            imageTitle = { product.imageTitle }
-            courseAuthor = { product.courseAuthor }
+            productID = { product[0].productID }
+            company  = { product[0].company }
+            product_name = { product[0].product_name }
+            info = { product[0].info}
+            price = {product[0].price}
             /></Link></div>
             )}))}}
         </ProductConsumer>

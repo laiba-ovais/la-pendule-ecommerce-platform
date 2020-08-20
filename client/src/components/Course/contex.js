@@ -40,7 +40,7 @@ class ProductProvider extends Component {
       cartTotal: 0,
       signedin:false,
       user: [],
-      product:[],
+    
       UserDetails: Users,
       email:"",
       password:'',
@@ -82,7 +82,6 @@ fetchUserData(){
   componentDidMount(){
    
     this.setProducts();
-
     this.setUsers();
     
   }
@@ -191,9 +190,12 @@ fetchUserData(){
         this.props.history.push(`/courses`)
       }))
 }
+componentDidUpdate=()=>{
 
+  console.log(this.state.products)
+}
 fetchProductData(){
-  fetch("http://localhost:4000/getproducts").then(response => response.json())
+  fetch("http://localhost:4000/getproduct").then(response => response.json())
    .then(parsedJSON =>parsedJSON.results.map(product => (
     {
         product_name: `${product.product_name}`,
@@ -203,8 +205,8 @@ fetchProductData(){
         stock: `${product.stock}`
        
     }
-))).then((product) => { localStorage.setItem("products", JSON.stringify(product) + ',');
-  return(this.setState({product:product}))})
+))).then((product) => { 
+  return(this.setState({products:product}))})
   .catch(error => console.log('parsing failed', error)) 
 }
   setProducts = () => {
@@ -239,7 +241,7 @@ fetchProductData(){
   let searchField = event.target.value;
    const filteredcourse= this.state.products.filter((CourseDetails)=>{
     return( 
-      CourseDetails.courseTitle.toLowerCase().includes(searchField.toLowerCase()))
+      CourseDetails.product_name.toLowerCase().includes(searchField.toLowerCase()))
                      })
     console.log(filteredcourse);
     if(searchField=="")

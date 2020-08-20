@@ -29,7 +29,7 @@ export default class CourseDisplay extends Component {
               <ProductConsumer >
                 { //yw wala
                (value)=>{
-            const {productID, Service, courseImage, courseTitle , info, price, inCart} = 
+            const {productID, product_name, stock, company , info, price, inCart} = 
             value.detailProduct;
               return(
                 <div>
@@ -50,8 +50,8 @@ export default class CourseDisplay extends Component {
                           className="ml-4 btn"
                            disabled={inCart?true:false}
                             onClick={()=>{
-                               value.addToCart(_id);
-                               value.openModal(_id);
+                               value.addToCart(productID);
+                               value.openModal(productID);
                            }}
                             
                           >
@@ -62,9 +62,9 @@ export default class CourseDisplay extends Component {
                   </div>
                     
                     <div className="col-10 mx-auto col-md-8 my-3 text-capitalize inline-block ">
-                      <h3>{courseTitle}</h3>
+                      <h3>{product_name}</h3>
                       <h3>
-                        <span className="text-capitalize">Rolex</span>
+                        <span className="text-capitalize">{company}</span>
                       </h3>
                       <h4 >
                           price: <span>$</span> {price}

@@ -73,16 +73,16 @@ export const CourseDetails = [
 
 export const courseStored = 
 {
-    _id:5,
-    Service : 'Chef', 
-    courseTitle : 'WEB DEVELOPMENT', 
+    productID:5,
+    product_name : 'Enticer MTP-1314SG-1AV Golden Silver Men’s Wrist Watch', 
+    company : 'Casio', 
     uploadDate : '09 September, 2020', 
     courseImage : "../../static/images/chef.png",
     imageTitle : 'xyz',
-    courseAuthor : 'fbkjdh',
+    stock : 60,
     price :200,
     inCart: false,
-    info: "info of course"
+    info: "MTP-1314SG-1AV Watch Features:\n50-meter water resistance\nDate display at 3 o’clock\nLarge, easy-to-read Arabic numerals\nA simple, easy-to-use design\nCase / bezel: Ion plated\nTriple-fold Clasp\nStainless Steel Band\nMineral Glass\nDate display\nRegular timekeeping\nAnalog: 3 hands (hour, minute, second)\nAccuracy: ±20 seconds per month\nApprox. battery life: 3 years on SR626SW\nSize of case : 50×44.9×9.4mm\nTotal weight : 126g"
     ,total:0,
      count:0
 };
