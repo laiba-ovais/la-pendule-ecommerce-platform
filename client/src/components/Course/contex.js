@@ -39,7 +39,8 @@ class ProductProvider extends Component {
       cartTax: 0,
       cartTotal: 0,
       signedin:false,
-      user: {},
+      user: [],
+      product:[],
       UserDetails: Users,
       email:"",
       password:'',
@@ -59,14 +60,14 @@ class ProductProvider extends Component {
     this.addProduct = this.addProduct.bind(this)
   }
   componentWillMount() {
-    localStorage.getItem('products') && localStorage.getItem('user') && this.setState({
-        // user: JSON.parse(localStorage.getItem('user')),
-        products: JSON.parse(localStorage.getItem('products'))
-    })   
+    // localStorage.getItem('products') && localStorage.getItem('user') && this.setState({
+    //     user: JSON.parse(localStorage.getItem('user')),
+    //     products: JSON.parse(localStorage.getItem('products'))
+    // })   
 }
 
-fetchData(){
-  var tempUser=[] 
+fetchUserData(){
+  
   fetch("http://localhost:4000/getuser").then(response => response.json())
    .then(parsedJSON =>parsedJSON.results.map(user => (
     {
@@ -74,24 +75,16 @@ fetchData(){
         email: `${user.email}`,
        
     }
-))).then((user) => this.setState({
-      user
-  }))
-  .catch(error => console.log('parsing failed', error))
-  console.log(this.state.user);
+))).then((user) => { localStorage.setItem("users", JSON.stringify(user) + ',');
+  return(this.setState({user:user}))})
+  .catch(error => console.log('parsing failed', error)) 
 }
   componentDidMount(){
-    // if(!localStorage.user){
-    //   this.setUsers()
-    // }
-    if(!localStorage.products){
-      this.setProducts();
-    }
-    else
-    this.setState()
-    // this.setProducts();
+   
+    this.setProducts();
+
     this.setUsers();
-    // console.log(this.state.user);
+    
   }
   // isse input field mein type honay wali value states ko assign hojati hai
   onChange=(e)=>{
@@ -101,9 +94,7 @@ fetchData(){
   }
 
   setUsers=()=>{
-    this.fetchData();
-    localStorage.setItem("users", JSON.stringify(this.state.user) + ',');
-   
+    this.fetchUserData()
   }
 
    onsubmit=(event)=>{ // ye function hai
@@ -201,7 +192,21 @@ fetchData(){
       }))
 }
 
-
+fetchProductData(){
+  fetch("http://localhost:4000/getproducts").then(response => response.json())
+   .then(parsedJSON =>parsedJSON.results.map(product => (
+    {
+        product_name: `${product.product_name}`,
+        company: `${product.company}`,
+        price: `${product.price}`,
+        info: `${product.info}`,
+        stock: `${product.stock}`
+       
+    }
+))).then((product) => { localStorage.setItem("products", JSON.stringify(product) + ',');
+  return(this.setState({product:product}))})
+  .catch(error => console.log('parsing failed', error)) 
+}
   setProducts = () => {
     let tempProducts = []; // yahan start up per products ki value set hoti hai
     CourseDetails.forEach(item=> {
