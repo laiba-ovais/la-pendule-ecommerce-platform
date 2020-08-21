@@ -1,30 +1,48 @@
-import React from 'react';
-import ImageUploader from 'react-images-upload';
- 
-class ImageUpload extends React.Component {
- 
-    constructor(props) {
-        super(props);
-         this.state = { pictures: [] };
-         this.onDrop = this.onDrop.bind(this);
-    }
- 
-    onDrop(picture) {
-        this.setState({
-            pictures: this.state.pictures.concat(picture),
-        });
-    }
- 
-    render() {
-        return (
-            <ImageUploader
-                withIcon={true}
-                buttonText='Choose images'
-                onChange={this.onDrop}
-                imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                maxFileSize={5242880}
-            />
-        );
-    }
+import React, {useState, useEffect} from 'react';
+import { CloudinaryContext, Image } from "cloudinary-react";
+import { fetchPhotos, openUploadWidget } from "./CloudinaryService";
+
+
+function ImageUpload() {
+  const [images, setImages] = useState([])
+
+  const beginUpload = tag => {
+    const uploadOptions = {
+      cloudName: "dkhk36rek",
+      tags: [tag, 'anImage'],
+      uploadPreset: "kwrmjq9x"
+    };
+    openUploadWidget(uploadOptions, (error, photos) => {
+      if (!error) {
+        console.log(photos);
+        if(photos.event === 'success'){
+          setImages([...images, photos.info.public_id])
+        }
+      } else {
+        console.log(error);
+      }
+    })
+  }
+
+  useEffect( () => {
+    fetchPhotos("image", setImages);
+  }, [])
+
+  return (
+   <CloudinaryContext cloudName="dkhk36rek">
+      <div className="App">
+        <button onClick={() => beginUpload("image")}>Upload Image</button>
+      <section>
+        {images.map(i => <Image
+              key={i}
+              publicId={i}
+              fetch-format="auto"
+              quality="auto"
+            />)}
+      </section>
+    </div>
+   </CloudinaryContext>
+  );
 }
+
 export default ImageUpload;
