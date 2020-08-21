@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ProductConsumer } from "./contex";
 import PropTypes from 'prop-types'
 import { CloudinaryContext, Image } from "cloudinary-react";
+import { response } from "../../../../server/server";
 
 export default class Product extends Component {
   render() {
@@ -18,13 +19,7 @@ export default class Product extends Component {
                   onClick= {()=>value.handleDetail(productID)}
                 >
                   <Link to={{ pathname: '/courses/' + productID }}>
-                  <Image
-              key={productID}
-              publicId={productID}
-              fetch-format="auto"
-              quality="auto"
-            />
-                    {/* <img src={require(`../../static/images/services/${productID}.png`)} alt="product" className="card-img-top" /> */}
+                    <img src={'http://localhost:4000/static/1.png'} alt="product" className="card-img-top" />
                   </Link>
 
                   <button

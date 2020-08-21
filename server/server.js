@@ -28,7 +28,7 @@ app.use(session({
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended : true}));
 
-
+app.use('/static', express.static('public'))
 app.use('/', pageRouter);
 app.use('/', pageRouter2);
 app.use('/', pageRouter3);
