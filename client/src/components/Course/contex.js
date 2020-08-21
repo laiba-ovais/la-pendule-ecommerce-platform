@@ -60,10 +60,9 @@ class ProductProvider extends Component {
     this.addProduct = this.addProduct.bind(this)
   }
   componentWillMount() {
-    // localStorage.getItem('products') && localStorage.getItem('user') && this.setState({
-    //     user: JSON.parse(localStorage.getItem('user')),
-    //     products: JSON.parse(localStorage.getItem('products'))
-    // })   
+    localStorage.getItem('cart')&& this.setState({
+      cart: JSON.parse(localStorage.getItem('cart'))
+   })   
 }
 
 fetchUserData(){
@@ -185,6 +184,7 @@ fetchUserData(){
         info:this.state.info,
         price:this.state.price,
         stock: this.state.stock
+        
       }
     }).then((response=>{
         this.props.history.push(`/courses`)
@@ -198,15 +198,18 @@ fetchProductData(){
   fetch("http://localhost:4000/getproduct").then(response => response.json())
    .then(parsedJSON =>parsedJSON.results.map(product => (
     {
-      productID: `${product.productID}`,
+        productID: product.productID,
         product_name: `${product.product_name}`,
         company: `${product.company}`,
         price: `${product.price}`,
         info: `${product.info}`,
-        stock: `${product.stock}`
+        stock: `${product.stock}`,
+        inCart:false,
+        total:0,
+        count:0
        
     }
-))).then((product) => { 
+))).then((product) => {  console.log(product)
   return(this.setState({products:product}))})
   .catch(error => console.log('parsing failed', error)) 
 }
@@ -224,13 +227,13 @@ fetchProductData(){
   }
 
 //isse item return hota hai id k liye
-  getItem = (_id) => {
-    const product = this.state.products.find(item=>  item._id == _id);
+  getItem = (productID) => {
+    const product = this.state.products.find(item=>  item.productID === productID);
     return product;
   }
 // isse details page per item ata hai
-  handleDetail = (_id) => {
-    const product = this.products.getItem(_id);
+  handleDetail = (productID) => {
+    const product = this.getItem(productID);
     this.setState(
       ()=>{
         return {detailProduct: product};
@@ -254,15 +257,15 @@ fetchProductData(){
 
   }//agar yahan set horhi hai, tou uper wali value kahan se arhi hai
 // item cart mein jata hai
-  addToCart = (_id) => {
+  addToCart = (productID) => {
      let tempProducts = [...this.state.products];
-     const product = this.getItem(_id);
+     const product = this.getItem(productID);
      const index = tempProducts.indexOf(product);
      product.inCart = true;
      product.count = 1;
      const price = product.price;
      product.total = price;
-
+     localStorage.setItem("cart", JSON.stringify([...this.state.cart, product]));
      this.setState(()=>{
        return {products:tempProducts, cart:[...this.state.cart, product]}
      },
@@ -284,16 +287,16 @@ fetchProductData(){
       })
   }
 // isse items increase hosktay hain lekin zarorat nhi iski
-  increment = (_id) => {
+  increment = (productID) => {
     let tempCart = [...this.state.cart];
-    const selectedProduct = tempCart.find(item=>item._id === _id);
+    const selectedProduct = tempCart.find(item=>item.productID === productID);
 
     const index = tempCart.indexOf(selectedProduct);
     const product = tempCart[index];
 
     product.count = product.count + 1;
     product.total = product.count * product.price;
-    
+    localStorage.setItem("cart", JSON.stringify(tempCart));
     this.setState(
       ()=> {
         return {cart: [...tempCart]};
