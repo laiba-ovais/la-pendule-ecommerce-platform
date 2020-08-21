@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt');
 var session = require('express-session');
 const pageRouter = require('./routes/User');
 const pageRouter2 = require('./routes/Checkout');
-const pageRouter3 = require('./routes/services');
+//const pageRouter3 = require('./routes/services');
 const pageRouter4 = require('./routes/uploadFile');
 //const pageRouter4 = require('./routes/Courses')
 
@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({extended : true}));
 
 app.use('/', pageRouter);
 app.use('/', pageRouter2);
-app.use('/', pageRouter3);
+//app.use('/', pageRouter3);
 app.use('/', pageRouter4);
 // app.set('view engine', 'handlebars');//// yiya hai pehle wale error ka solution lekin usse doosra error generate hogya
 
@@ -116,7 +116,7 @@ app.use('/', pageRouter4);
 
 
 var Users = require('./routes/User')
-var services = require('./routes/services')
+//var services = require('./routes/services')
 //newcode
 // require('./routes/auth.routes')(app);
 // require('./routes/user.routes')(app);

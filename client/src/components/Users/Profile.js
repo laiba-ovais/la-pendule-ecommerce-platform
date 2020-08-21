@@ -18,8 +18,10 @@ export class Profile extends Component {
                     return(
                       <div className="col-md-10 d-flex justify-content-center">
                       <Container className="d-flex justify-content-center bg-washed-green">
-                      <h1 className="dot">{"Bisma".charAt(0).toUpperCase()}</h1><br></br><br></br>
-                      <h2 className="block">{`${first_name.toUpperCase()} ${last_name.toUpperCase()}`}</h2>
+                        <div>
+                      <h1 className="dot d-flex justify-content-center">{"Bisma".charAt(0).toUpperCase()}<br /></h1><br></br><br></br>
+                      </div>
+                      <h1 className="block d-flex justify-content-center"><br />{`${first_name.toUpperCase()} ${last_name.toUpperCase()}`}</h1>
                       </Container>
                         
                       </div>
