@@ -36,7 +36,7 @@ function HomePage(props){
         <ProductProvider>
         <Navbar></Navbar>
         <Switch>
-        <Route exact path="/profile" component={Home} />  
+        <Route exact path="/profile" component={Profile} />  
         <Route exact path="/serviceRegistration" component={ServiceRegister} />
         <Route exact path="/profile" component={Home} />  
         <Route exact path="/addproducts" component={courseUpload} />  

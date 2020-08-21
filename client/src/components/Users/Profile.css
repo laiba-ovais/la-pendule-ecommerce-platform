@@ -1,0 +1,8 @@
+.dot {
+    justify-content: center;
+    /* height: 25px;
+    width: 25px; */
+    background-color: turquoise;
+    border-radius: 50%;
+   display: block;
+  }

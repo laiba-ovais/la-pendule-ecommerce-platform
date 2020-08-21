@@ -44,7 +44,7 @@ class ProductProvider extends Component {
       UserDetails: Users,
       email:"",
       password:'',
-      loginedUser:'',
+      loggedInUser:{},
       first_name: '',
       last_name: '',
       product_name: '',
@@ -115,7 +115,7 @@ fetchUserData(){
         let tempUser = this.getUsers(response.data.email);
 
         this.setState(()=>{
-          return { loginedUser: tempUser};
+          return { loggedInUser: tempUser};
         })
         this.setState(()=>{
           return { signedin: true};
