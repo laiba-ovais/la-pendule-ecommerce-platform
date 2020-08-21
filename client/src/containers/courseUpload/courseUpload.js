@@ -15,7 +15,7 @@ import Container from '@material-ui/core/Container';
 import FileUpload from './fileUpload';
 import {ProductConsumer} from '../../components/Course/contex';
 
-import ImageUpload from './imgupload'
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -54,8 +54,8 @@ export default function CourseUpload() {
         <Typography component="h1" variant="h5">
           ADD PRODUCT
         </Typography>
+        
         <FileUpload></FileUpload>
-  
         <form className={classes.form}  onSubmit={value.addProduct} >
              <Grid container spacing={2}> 
             <Grid item xs={12} sm={6}>
