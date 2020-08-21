@@ -67,7 +67,16 @@ class ProductProvider extends Component {
       cartSubTotal: JSON.parse(localStorage.getItem('cartSubTotal'))
    })   
 }
+fetchimg(productID){
+  axios({  // isse post kr rhy hain email or password thk
+    method: 'GET',
+    url: '/getimg',
+    data: {
+      id:productID
+    }
+  }).then(response=>console.log(response));
 
+}
 fetchUserData(){
   
   fetch("http://localhost:4000/getuser").then(response => response.json())
@@ -85,7 +94,7 @@ fetchUserData(){
    
     this.setProducts();
     this.setUsers();
-    
+    this.fetchimg();
   }
   // isse input field mein type honay wali value states ko assign hojati hai
   onChange=(e)=>{
