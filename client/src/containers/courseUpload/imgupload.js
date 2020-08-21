@@ -10,7 +10,8 @@ function ImageUpload() {
     const uploadOptions = {
       cloudName: "dkhk36rek",
       tags: [tag, 'anImage'],
-      uploadPreset: "kwrmjq9x"
+      uploadPreset: "kwrmjq9x",
+      public_id:"watches"
     };
     openUploadWidget(uploadOptions, (error, photos) => {
       if (!error) {
