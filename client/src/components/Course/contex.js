@@ -60,7 +60,7 @@ class ProductProvider extends Component {
     this.addProduct = this.addProduct.bind(this)
   }
   componentWillMount() {
-    localStorage.getItem('cart')&& this.setState({
+    localStorage.getItem('cart') &&localStorage.getItem('cartTax') && localStorage.getItem('cartTotal') && localStorage.getItem('cartSubTotal')&&this.setState({
       cart: JSON.parse(localStorage.getItem('cart'))
    })   
 }
@@ -191,7 +191,7 @@ fetchUserData(){
       }))
 }
 componentDidUpdate=()=>{
-
+  localStorage.setItem("cart", JSON.stringify([...this.state.cart]));
   console.log(this.state.products)
 }
 fetchProductData(){
@@ -299,6 +299,7 @@ fetchProductData(){
     localStorage.setItem("cart", JSON.stringify(tempCart));
     this.setState(
       ()=> {
+        
         return {cart: [...tempCart]};
       },
       ()=> {
@@ -307,16 +308,16 @@ fetchProductData(){
     );
   }
 // isse kam hotay hai cart mein
-  decrement = (_id) => {
+  decrement = (productID) => {
     let tempCart = [...this.state.cart];
-    const selectedProduct = tempCart.find(item=>item._id === _id);
+    const selectedProduct = tempCart.find(item=>item.productID === productID);
 
     const index = tempCart.indexOf(selectedProduct);
     const product = tempCart[index];
     product.count = product.count -1;
 
     if(product.count === 0){
-      this.removeItem(_id);
+      this.removeItem(productID);
     }else {
       product.total = product.count * product.price;
       this.setState(
@@ -343,6 +344,7 @@ fetchProductData(){
     removedProduct.total = 0;
 
     this.setState(()=>{
+
       return {
         cart: [...tempCart],
         products: [...tempProducts]
@@ -356,6 +358,7 @@ fetchProductData(){
     this.setState(()=>{
       return {cart:[]};
     }, ()=>{
+      localStorage.removeItem("cart");
       this.setProducts();
       this.addTotals(); 
     })
@@ -368,7 +371,11 @@ fetchProductData(){
       const tax = parseFloat(tempTax.toFixed(2));
       const total = subTotal + tax;
       this.setState(()=>{
-        return {
+             localStorage.setItem("cartSubTotal", JSON.stringify(subTotal));
+             localStorage.setItem("cartTax", JSON.stringify(tax));
+             localStorage.setItem("cartTotal", JSON.stringify(total));
+
+             return {
           cartSubTotal: subTotal,
           cartTax: tax,
           cartTotal: total
