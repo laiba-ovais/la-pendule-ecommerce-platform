@@ -86,7 +86,7 @@ import 'tachyons'
 //import './CourseCard.css'
 import Container from 'react-bootstrap/Container'
 
- const CourseCard = ({ productID, company, price    }) =>{
+ const CourseCard = ({ productID, company, price  , inCart  }) =>{
   return(
     
     <div  className=" dib br3 ma2 grow bw2 shadow-5 ">

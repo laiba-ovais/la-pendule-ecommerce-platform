@@ -2,6 +2,7 @@ import React from 'react';
 import CourseCard from './CourseCard';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import {ProductConsumer} from './contex'
+import Product from './productCard'
 
 
 const CourseCardList = ({ CourseDetails }) => {
@@ -21,28 +22,33 @@ const CourseCardList = ({ CourseDetails }) => {
         /> </Link>);
     });
     return (
-      <div>
+      <React.Fragment>
+      <div className="py-5">
+        <div className="container">
+         
+          <div className="row">
         <ProductConsumer>
         {
           (value)=>{
             return( value.products.map(product=>{
-            return( 
-            <div
-            onClick= {()=>value.handleDetail(product.productID)}
-            ><Link to={{ pathname: '/courses/' + product.productID }}>
-            <CourseCard
-            productID = { product.productID }
-            company  = { product.company }
-            product_name = { product.product_name }
-            info = { product.info}
-            price = {product.price}
-            /></Link></div>
+            return( <Product key={product.productID} product={product}/>
+            // <div
+            // onClick= {()=>value.handleDetail(product.productID)}
+            // ><Link to={{ pathname: '/courses/' + product.productID }}>
+            // <CourseCard
+            // productID = { product.productID }
+            // company  = { product.company }
+            // product_name = { product.product_name }
+            // info = { product.info}
+            // price = {product.price}
+            // /></Link></div>
             )}))}}
         </ProductConsumer>
        
-        
-     
-      </div>
+        </div>
+              </div>
+            </div>
+        </React.Fragment>
     );
       
 
