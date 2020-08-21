@@ -84,7 +84,7 @@ fetchUserData(){
    
     this.setProducts();
     this.setUsers();
-    this.fetchimg();
+  
   }
   // isse input field mein type honay wali value states ko assign hojati hai
   onChange=(e)=>{
