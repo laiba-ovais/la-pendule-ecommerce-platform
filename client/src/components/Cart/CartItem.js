@@ -36,7 +36,7 @@ export default function CartItem({ item, value }) {
         </div>
       </div>
       <div className="col-10 mx-auto col-lg-2">
-        <div className="cart-icon" onClick={() => removeItem(productID)}>
+        <div className="cart-icon" onClick={() => value.removeItem(productID)}>
           <i className="fas fa-trash" />
         </div>
       </div>
