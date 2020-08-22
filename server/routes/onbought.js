@@ -19,9 +19,9 @@ const mysqlConnection = mysql.createConnection({
 
   
   router.post('/onbaught' , function(req, res){
-    var user = req.body;
+    var product = req.body;
     
-       mysqlConnection.query("insert into baught ( `productID`,`user_id`) values('"+ req.body.productID +"', '"+req.body.UserID +"');"
+       mysqlConnection.query("insert into baught ( `productID`,`user_id`) values('"+ product.productID +"', '"+product.UserID +"');"
         ,function(err2,result){
                 if(err2)  console.log(err2);
                 console.log(req.body , "data is saved");
