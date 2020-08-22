@@ -21,10 +21,10 @@ router.post("/checkout", async (req, res) => {
       source: token.id
     });
 
-    const idempotency_key = uuidv4();
+    const idempotencyKey = uuidv4();
     const charge = await stripe.charges.create(
       {
-        amount: product.price,
+        amount: product.price* 100,
         currency: "usd",
         customer: customer.id,
         receipt_email: token.email,
