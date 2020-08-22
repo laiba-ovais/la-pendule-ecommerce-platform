@@ -113,6 +113,7 @@ export default function CartTotals({value}) {
                     onClick={onbaught}
                     stripeKey="pk_test_51H3QTXHzmFQ3IEpHb5AQsUscXQoZEINiF2zi8ApZ7gelluyKvuKD2QTSVVYdiSYZWkPYD4up4fuBUcjV7xW8ee4m00eTpjdSaA"
                     token={handleToken}
+                    email={user.email}
                     amount={cartTotal*100}
                     name="Course Payments"
                     billingAddress
