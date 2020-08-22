@@ -3,7 +3,7 @@ const stripe = require("stripe")("sk_test_51H3QTXHzmFQ3IEpH6Rx6NKRr6RH6qBW5LiqW4
 const { v4: uuidv4 } = require('uuid');
 const router = express.Router();
 var nodemailer = require('nodemailer');
-
+const xoauth2 = require('xoauth2');
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -69,16 +69,26 @@ router.post("/checkout", async (req, res) => {
     );
     console.log("Charge:", { charge });
     status = "success";
-    var smtpPool = require('nodemailer-smtp-pool');
-    var transporter = nodemailer.createTransport(smtpPool({
-      service: 'Gmail',
+    var transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: false,
       auth: {
-        user: 'weprojectnodemailer@gmail.com',
-        pass: 'Palkia786'
-      },
-      maxConnections: 5,
-      maxMessages: 10
-    }));
+       
+        user: "weprojectnodemailer@gmail.com",
+        pass:"Palkia786",}
+    });
+    // var transporter = nodemailer.createTransport({
+    //   service: 'Gmail',
+    //   auth: {
+    //     xoauth2: xoauth2.createXOAuth2Generator({
+    //     user: 'snuhhh786@gmail.com',
+    //     clientId:"355752174601-mga3ejapvffe2e117qehbe6a1eujdlsh.apps.googleusercontent.com",
+        
+    //     clientSecret:"uxb6OeLWlgq5osSlt1CVBp1i",
+    //     refreshToken:"1//04Pxdc91zNNIsCgYIARAAGAQSNwF-L9IrQuzJWRs-gioThjJ6G0RNNeOeGaI_cYMm80jeTCbUzxb9N1dQ07H5pUNkssVnmr-vaTY"
+    //    }) }
+    //    } );
     var mailOptions = {
       from: 'syednuhhashmi786@gmail.com',
       to: token.email,
