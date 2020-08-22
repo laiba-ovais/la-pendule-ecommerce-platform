@@ -69,22 +69,23 @@ router.post("/checkout", async (req, res) => {
     );
     console.log("Charge:", { charge });
     status = "success";
-    
-    var transporter = nodemailer.createTransport("SMTP",{
+    var smtpPool = require('nodemailer-smtp-pool');
+    var transporter = nodemailer.createTransport(smtpPool({
       service: 'Gmail',
       auth: {
-        user: 'Weprojectnodemailer@gmail.com',
+        user: 'weprojectnodemailer@gmail.com',
         pass: 'Palkia786'
-      }
-    });
-
+      },
+      maxConnections: 5,
+      maxMessages: 10
+    }));
     var mailOptions = {
       from: 'syednuhhashmi786@gmail.com',
       to: token.email,
       subject: `Payment Success payment id ${token.id}`,
       text: `Order has been placed of payment id ${token.id} of ${product.name} and will be deilvered at ${charge.address} shortly in 3 days `
     };
-
+    
     transporter.sendMail(mailOptions, function(error, info){
       if (error) {
         console.log(error);
