@@ -123,14 +123,14 @@ fetchUserData(){
   }
   onbaught=()=> {
    
-  
-    this.cart.forEach(element => {
+    let tempCart = [...this.state.cart]
+    tempCart.forEach(element => {
         axios({  // isse post kr rhy hain email or password thk
             method: 'POST',
             url: '/onbaught',
             data: {
               productID    : element.productID,
-              userid : this.loggedInUser.id
+              userid : this.state.loggedInUser.id
             }}).then(response=>{
                 console.log(response);
             } )
