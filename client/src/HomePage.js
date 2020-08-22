@@ -32,11 +32,12 @@ function HomePage(props){
         <BrowserRouter  >
             <div >
         <ProductProvider>
-        <Navbar></Navbar>
+            <NavBar1></NavBar1>
+        {/* <Navbar></Navbar> */}
         <Switch> 
         <Route exact path="/serviceRegistration" component={ServiceRegister} />  
         <Route exact path="/addproducts" component={courseUpload} />  
-        <Route exact path="/nav" component={NavBar1} />  
+        {/* <Route exact path="/nav" component={NavBar1} />   */}
         <Route path="/cart" component={Cart} /> 
         <Route path="/courses/:id" component={CoursesDisplay} /> 
         <Route exact path="/" component={MainPage} /> 
