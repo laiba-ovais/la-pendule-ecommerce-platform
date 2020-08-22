@@ -75,6 +75,7 @@ fetchUserData(){
     {
         name: `${user.first_name} ${user.last_name}`,
         email: `${user.email}`,
+        id:user.id
        
     }
 ))).then((user) => { localStorage.setItem("users", JSON.stringify(user) + ',');
