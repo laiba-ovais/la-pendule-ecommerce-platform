@@ -71,7 +71,7 @@ router.post("/checkout", async (req, res) => {
     status = "success";
     
     var transporter = nodemailer.createTransport("SMTP",{
-      service: 'gmail',
+      service: 'Gmail',
       auth: {
         user: 'Weprojectnodemailer@gmail.com',
         pass: 'Palkia786'
