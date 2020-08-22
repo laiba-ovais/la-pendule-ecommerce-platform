@@ -40,7 +40,7 @@ class ProductProvider extends Component {
       cartTotal: 0,
       signedin:false,
       user: [],
-    
+      CartProduct:{},
       UserDetails: Users,
       email:"",
       password:'',
@@ -61,12 +61,19 @@ class ProductProvider extends Component {
     this.onLoggout = this.onLoggout.bind(this)
   }
   componentWillMount() {
-    localStorage.getItem('cart') &&localStorage.getItem('cartTax') && localStorage.getItem('cartTotal') && localStorage.getItem('cartSubTotal')&&this.setState({
+    localStorage.getItem('signedin')&&localStorage.getItem('cart')&&localStorage.getItem('products') &&localStorage.getItem('cartTax') && localStorage.getItem('cartTotal') && localStorage.getItem('cartSubTotal')&&this.setState({
       cart: JSON.parse(localStorage.getItem('cart')),
+      products: JSON.parse(localStorage.getItem('products')),
       cartTax: JSON.parse(localStorage.getItem('cartTax')),
       cartTotal: JSON.parse(localStorage.getItem('cartTotal')),
-      cartSubTotal: JSON.parse(localStorage.getItem('cartSubTotal'))
+      cartSubTotal: JSON.parse(localStorage.getItem('cartSubTotal')),
+      signedin:JSON.parse(localStorage.getItem('signedin'))
+     
    })   
+   localStorage.getItem('loggedInUser')&&this.setState({
+    loggedInUser:JSON.parse(localStorage.getItem('loggedInUser')),
+
+   })
 }
 fetchUserData(){
   
@@ -86,15 +93,15 @@ fetchUserData(){
    
     this.setProducts();
     this.setUsers();
-    if(this.state.cart&& this.state.products){
-    this.state.products.forEach(element => {
-      this.state.cart.product.forEach(product=>{
-        if(element.productID===product.productID){
-          element.inCart=true
-        }
-      })
+    // if(this.state.cart&& this.state.products){
+    // this.state.products.forEach(element => {
+    //   this.state.cart.product.forEach(product=>{
+    //     if(element.productID===product.productID){
+    //       element.inCart=true
+    //     }
+    //   })
       
-    });}// yaar esa krna hai k jo cart mein products ho uski incart property true hojaye...
+    // });}// yaar esa krna hai k jo cart mein products ho uski incart property true hojaye...
   
   }
   // isse input field mein type honay wali value states ko assign hojati hai
@@ -109,6 +116,8 @@ fetchUserData(){
       loggedInUser:{},
       signedin:false
     })
+    localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("signedin");
     this.props.history.push('/signin');
   }
 
@@ -139,7 +148,8 @@ fetchUserData(){
           return { signedin: true};
 
         }) 
-        localStorage.setItem("user", JSON.stringify(tempUser));  
+        localStorage.setItem("user", JSON.stringify(tempUser)); 
+        localStorage.setItem("loggedInUser", JSON.stringify(tempUser)); 
       this.props.history.push(`/profile`)
       }
       if(response.data.error){
@@ -216,6 +226,22 @@ componentDidUpdate=()=>{
   localStorage.setItem("cartSubTotal", JSON.stringify(this.state.cartSubTotal));
   localStorage.setItem("cartTax", JSON.stringify(this.state.cartTax));
   localStorage.setItem("cartTotal", JSON.stringify(this.state.cartTotal));
+  localStorage.setItem("signedin", JSON.stringify(this.state.signedin));
+  localStorage.setItem("loggedInUser", JSON.stringify(this.state.loggedInUser));
+
+
+
+
+  
+  // if(this.state.cart)
+  // {
+  // var tempcartname =this.state.cart.product.map((product,i)=>{
+  //   return product[i].product_name
+  // })
+  // console.log(tempcartname)
+// }
+
+
   console.log(this.state.products)
 }
 fetchProductData(){
@@ -233,7 +259,9 @@ fetchProductData(){
         count:0
        
     }
-))).then((product) => {  console.log(product)
+))).then((product) => {  
+  localStorage.setItem("products", JSON.stringify(this.state.products));
+  console.log(product)
   return(this.setState({products:product}))})
   .catch(error => console.log('parsing failed', error)) 
 }
