@@ -6,7 +6,7 @@ function FooterPage ()  {
     <MDBFooter color="white" className="font-small pt-4 mt-4">
       
       
-      <div  className="footer-copyright text-center py-3">
+      <div style={{background: '#343a40'}} className="footer-copyright text-center py-3">
         <MDBContainer fluid color="white">
           &copy; {new Date().getFullYear()} Copyright: <a href="/" > WatchME</a>
         </MDBContainer>
