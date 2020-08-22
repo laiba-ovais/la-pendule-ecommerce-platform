@@ -58,6 +58,7 @@ class ProductProvider extends Component {
     this.onsubmit = this.onsubmit.bind(this)
     this.onRegister = this.onRegister.bind(this)
     this.addProduct = this.addProduct.bind(this)
+    this.onLoggout = this.onLoggout.bind(this)
   }
   componentWillMount() {
     localStorage.getItem('cart') &&localStorage.getItem('cartTax') && localStorage.getItem('cartTotal') && localStorage.getItem('cartSubTotal')&&this.setState({
@@ -100,6 +101,14 @@ fetchUserData(){
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value })
 
+  }
+  onLoggout=(e)=>{
+    e.preventDefault()
+    this.setState({
+      loggedInUser:{},
+      signedin:false
+    })
+    this.props.history.push('/signin');
   }
 
   setUsers=()=>{
@@ -280,6 +289,7 @@ fetchProductData(){
      const price = product.price;
      product.total = price;
      localStorage.setItem("cart", JSON.stringify([...this.state.cart, product]));
+     
      this.setState(()=>{
        return {products:tempProducts, cart:[...this.state.cart, product]}
      },
@@ -413,6 +423,7 @@ fetchProductData(){
               onChange:this.onChange,
               onRegister:this.onRegister,
               addProduct:this.addProduct,
+              onLoggout:this.onLoggout
 
 
           }

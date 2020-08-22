@@ -12,18 +12,18 @@ export class Profile extends Component {
           <ProductConsumer>
               {
                 (value)=>{
-                  var first_name="Bisma" ;
-                  var last_name="Mansoor"
-                  if(!value.signedin){
+                  // var first_name="Bisma" ;
+                  // var last_name="Mansoor"
+                  if(value.signedin){
                     return(
                       <div className="col-md-10 d-flex justify-content-center">
                       <Container className="d-flex justify-content-center bg-washed-green">
                         <div>
                       <h1 className="dot d-flex justify-content-center">{"Bisma".charAt(0).toUpperCase()}<br /></h1><br></br><br></br>
                       </div>
-                      <h1 className="block d-flex justify-content-center"><br />{`${first_name.toUpperCase()} ${last_name.toUpperCase()}`}</h1>
+                      <h1 className="block d-flex justify-content-center"><br />{`${value.loggedInUser.name.toUpperCase()}`}</h1>
                       </Container>
-                        
+                      <button type='button' onClick={value.onLoggout}   ></button>
                       </div>
                    )}
                    else{

@@ -10,7 +10,7 @@ const pageRouter = require('./routes/User');
 const pageRouter2 = require('./routes/Checkout');
 const pageRouter3 = require('./routes/services');
 const pageRouter4 = require('./routes/uploadFile');
-const pageRouter5 = require('./routes/getimg');
+const pageRouter5 = require('./routes/onbought');
 
 //const pageRouter4 = require('./routes/Courses')
 
@@ -33,6 +33,7 @@ app.use('/', pageRouter);
 app.use('/', pageRouter2);
 app.use('/', pageRouter3);
 app.use('/', pageRouter4);
+app.use('/', pageRouter5);
 
 
 
