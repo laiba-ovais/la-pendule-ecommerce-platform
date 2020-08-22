@@ -10,14 +10,14 @@ toast.configure();
 
 export default function CartTotals({value}) {
     const {cartSubTotal, cartTax, cartTotal, clearCart} = value;
-    var {cart} = value.cart;
+    var {cart} = value;
     var user = value.loggedInUser;
     // if(cart)
     // {
-        console.log("CART" + value.cart)
-    var name= value.cart.map((product,i)=>{
+        //yeh kch show nhi kar rha
+    var name= cart.map((product)=>{
         //console.log(product)
-        return product[i].product_name
+        return `${product.product_name} ammount = ${product.count}`
     }).join(" and ")
     console.log(name)
 

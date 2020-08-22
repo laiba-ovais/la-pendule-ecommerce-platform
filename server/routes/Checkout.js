@@ -41,7 +41,7 @@ router.post("/checkout", async (req, res) => {
         }
       },
       {
-        idempotency_key
+        idempotencyKey
       }
     );
     console.log("Charge:", { charge });
