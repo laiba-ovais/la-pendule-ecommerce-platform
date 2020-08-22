@@ -20,8 +20,7 @@ import './Navbar.css';
 import {ButtonContainer} from "../Button/Button"
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {ProductConsumer} from '../Course/contex';
-import AutoComplete from './AutoComplete'
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -191,7 +190,9 @@ function Navbar() {
 <ProductConsumer>
         {
           (value)=>{
-           
+            const {cart} = value;
+            console.log(cart.length)
+
             return( <div className={classes.grow}>
               <div>
               <AppBar display="block" position="static" width="100" >
@@ -219,7 +220,7 @@ function Navbar() {
                   {value.signedin?(
                     <MenuItem>
                     <Typography  onClick={value.onLoggout} className={classes.title} variant="h6" noWrap>
-                    LOGGOUT
+                    LOGOUT
                     </Typography>
                     </MenuItem>
                     // <Button type="button" onClick={value.onLoggout}  className="btn btn-primary">loggOut</Button>
@@ -254,7 +255,7 @@ function Navbar() {
                     color="inherit"
                     aria-label="cart"
                   >
-                  <Badge badgeContent={value.cart.lenght} color="secondary">
+                  <Badge badgeContent={value.cart.length} color="secondary">
                   <ShoppingCartIcon  style={ { fontSize: 30 , color: "white"}}/>
                   </Badge>
                   </IconButton>

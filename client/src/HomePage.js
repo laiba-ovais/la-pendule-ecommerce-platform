@@ -6,13 +6,11 @@ import Navbar from './components/Navbar/Navbar';
 import SignUp from './containers/SignUp/SignUp';
 import SignIn from './containers/SignIn/SignIn';
 import MainPage from './containers/MainPage/MainPage';
-import Profile from './components/Users/Profile'
-import Home from './containers/Home/Home';
 import Cart from './components/Cart';
 import Modal from './components/Cart/Modal';
 import GridWatches from './containers/GridWatches/GridWatches'
 import FooterPage from './components/FooterPage/FooterPage';
-
+import NavBar1 from './components/Navbar/NavBar1';
 import PersonList from './components/getUser/getUser'
 
 import ServiceRegister from './components/ServiceRegisteration/ServiceRegister';
@@ -35,16 +33,13 @@ function HomePage(props){
             <div >
         <ProductProvider>
         <Navbar></Navbar>
-        <Switch>
-        <Route exact path="/profile" component={Profile} />  
-        <Route exact path="/serviceRegistration" component={ServiceRegister} />
-        <Route exact path="/profile" component={Home} />  
+        <Switch> 
+        <Route exact path="/serviceRegistration" component={ServiceRegister} />  
         <Route exact path="/addproducts" component={courseUpload} />  
-
+        <Route exact path="/nav" component={NavBar1} />  
         <Route path="/cart" component={Cart} /> 
         <Route path="/courses/:id" component={CoursesDisplay} /> 
         <Route exact path="/" component={MainPage} /> 
-        <Route exact path="/home" component={Home} /> 
         <Route exact path="/courses" component = {Course}/>
         <Route exact path="/register" component = {SignUp}/>
         <Route exact path="/signin" component = {SignIn}/>
