@@ -5,8 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,88,1) 42%, rgba(0,212,255,1) 100%) !important ;
-  }
+  /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,88,1) 42%, rgba(0,212,255,1) 100%) !important ; */
+  /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,31,9,1) 100%, rgba(0,212,255,1) 100%); */
+  /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,9,121,1) 100%, rgba(0,212,255,1) 100%); */
+   background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);  
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

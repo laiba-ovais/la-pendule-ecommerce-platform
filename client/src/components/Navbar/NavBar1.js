@@ -6,8 +6,9 @@ import {ProductConsumer} from '../Course/contex';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import { MDBIcon } from "mdbreact";
-
-
+import {Link} from 'react-router-dom'
+import Typography from '@material-ui/core/Typography';
+import MenuItem from '@material-ui/core/MenuItem';
 
 function Navbar1() {
  return(
@@ -22,19 +23,49 @@ return(
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
   <Nav className="mr-auto">
-    <Nav.Link href="/">Home</Nav.Link>
-    <Nav.Link href="/courses">Store</Nav.Link>
-    <Nav.Link href="/about">About</Nav.Link>
+    <Nav.Link href="/"><Typography style={ { color: "white"}} variant="h6" noWrap>
+                       Home  
+                  </Typography></Nav.Link>
+    <Nav.Link href="/courses">
+    <Typography style={ { color: "white"}} variant="h6" noWrap>
+                      Store  
+                  </Typography></Nav.Link>
+    <Nav.Link href="/about"><Typography style={ { color: "white"}} variant="h6" noWrap>
+                      About 
+                  </Typography></Nav.Link>
   </Nav>
   <Nav >
-      <Nav.Link href="/cart">Cart 🛒 </Nav.Link>
+      {/* <Nav.Link href="/cart">Cart 🛒 </Nav.Link> */}
+      <div>
+      <Link to= '/cart'>
+                  <IconButton
+                    color="inherit"
+                    aria-label="cart"
+                  >
+                  <Badge badgeContent={value.cart.length} color="secondary">
+                  <ShoppingCartIcon  style={ { fontSize: 30 , color: "white"}} />
+                  </Badge>
+                  </IconButton>
+                  </Link>
+                  </div>
       {value.signedin ?
       (
         <Nav.Link onClick={value.onLoggout}>Log Out</Nav.Link>
       ): (
         <Nav>
-        <Nav.Link href="/signIn">Sign In</Nav.Link>
-      <Nav.Link href="/register">Sign Up</Nav.Link>
+        {/* <Nav.Link href="/signIn">Sign In</Nav.Link>
+      <Nav.Link href="/register">Sign Up</Nav.Link> */}
+
+                  <MenuItem>
+                  <Link to= '/register' id='titleatag' className='zoom' ><Typography style={ { color: "white"}} variant="h6" noWrap>
+                   Sign Up  
+                  </Typography></Link>
+                  </MenuItem>
+                  <MenuItem>
+                  <Link to= '/signin' id='titleatag' className='zoom' ><Typography style={ {  color: "white"}}  variant="h6" noWrap>
+                   Sign In   
+                  </Typography></Link>
+                  </MenuItem>
         </Nav>
       
       )}
