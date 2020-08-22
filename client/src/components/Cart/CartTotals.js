@@ -11,7 +11,7 @@ export default function CartTotals({value, history}) {
     var product = value.cart.product;
     var cart = value.cart;
     var user = value.loggedInUser;
-       
+   
 
 
     console.log(product);
