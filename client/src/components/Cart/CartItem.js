@@ -8,7 +8,7 @@ export default function CartItem({ item, value }) {
     <div className="row my-2 text-capitalize text-center">
       <div className="col-10 mx-auto col-lg-2">
         <img
-          src={require(`../../static/images/services/${productID}.png`)}
+          src={`http://localhost:4000/static/${productID}.png`}
           style={{ widht: "5rem", height: "5rem" }}
           className="img-fluid"
           alt="product"
@@ -36,7 +36,7 @@ export default function CartItem({ item, value }) {
         </div>
       </div>
       <div className="col-10 mx-auto col-lg-2">
-        <div className="cart-icon" onClick={() => value.removeItem(productID)}>
+        <div className="cart-icon" onClick={() => removeItem(productID)}>
           <i className="fas fa-trash" />
         </div>
       </div>

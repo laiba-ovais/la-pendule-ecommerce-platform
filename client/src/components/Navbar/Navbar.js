@@ -20,6 +20,11 @@ import './Navbar.css';
 import {ButtonContainer} from "../Button/Button"
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {ProductConsumer} from '../Course/contex';
+<<<<<<< HEAD
+=======
+import AutoComplete from './AutoComplete'
+import Button from 'react-bootstrap/Button'
+>>>>>>> cfcd3b8306aff76a9e1239ae07bd43b9c8fcb857
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -189,20 +194,24 @@ function Navbar() {
 <ProductConsumer>
         {
           (value)=>{
+<<<<<<< HEAD
             const {cart} = value;
             console.log(cart.length)
+=======
+           
+>>>>>>> cfcd3b8306aff76a9e1239ae07bd43b9c8fcb857
             return( <div className={classes.grow}>
               <div>
               <AppBar display="block" position="static" width="100" >
                 <Toolbar> 
-                  <IconButton
+                  {/* <IconButton
                     edge="start"
                     className={classes.menuButton}
                     color="inherit"
                     aria-label="open drawer"
                   >
                     <MenuIcon />
-                  </IconButton>
+                  </IconButton> */}
                  <Link to= '/' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
                    HOME   
                   </Typography></Link> 
@@ -215,8 +224,15 @@ function Navbar() {
                   <SearchBar searchChange={value.searchChange} ></SearchBar>
                   <div className={classes.grow} />
                   <div className={classes.sectionDesktop}>
-
-
+                  {value.signedin?(
+                    <MenuItem>
+                    <Typography  onClick={value.onLoggout} className={classes.title} variant="h6" noWrap>
+                    LOGGOUT
+                    </Typography>
+                    </MenuItem>
+                    // <Button type="button" onClick={value.onLoggout}  className="btn btn-primary">loggOut</Button>
+                  ) : (
+                  <div className={classes.sectionDesktop}>
                   <MenuItem>
                   <Link to= '/register' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
                    SIGNUP  
@@ -227,13 +243,26 @@ function Navbar() {
                    SIGN IN   
                   </Typography></Link>
                   </MenuItem>
+                  </div> )}
                   
+                  
+                  {/* <MenuItem>
+                  <Link to= '/register' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
+                   SIGNUP  
+                  </Typography></Link>
+                  </MenuItem>
+                  <MenuItem>
+                  <Link to= '/signin' id='titleatag' className='zoom' ><Typography className={classes.title} variant="h6" noWrap>
+                   SIGN IN   
+                  </Typography></Link>
+                  </MenuItem>
+                   */}
                   <Link to= '/cart'>
                   <IconButton
                     color="inherit"
                     aria-label="cart"
                   >
-                  <Badge badgeContent={cart.lenght} color="secondary">
+                  <Badge badgeContent={value.cart.lenght} color="secondary">
                   <ShoppingCartIcon  style={ { fontSize: 30 , color: "white"}}/>
                   </Badge>
                   </IconButton>
@@ -253,7 +282,7 @@ function Navbar() {
                         <NotificationsIcon />
                       </Badge>
                     </IconButton> */}
-
+{/* 
                     <IconButton
                       edge="end"
                       aria-label="account of current user"
@@ -274,7 +303,7 @@ function Navbar() {
                       color="inherit"
                     >
                       <MoreIcon />
-                    </IconButton>
+                    </IconButton> */}
                     
                   </div>
                 </Toolbar>

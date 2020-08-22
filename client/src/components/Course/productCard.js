@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ProductConsumer } from "./contex";
 import PropTypes from 'prop-types'
+import { CloudinaryContext, Image } from "cloudinary-react";
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+
 
 export default class Product extends Component {
   render() {
@@ -17,7 +20,7 @@ export default class Product extends Component {
                   onClick= {()=>value.handleDetail(productID)}
                 >
                   <Link to={{ pathname: '/courses/' + productID }}>
-                    <img src={require(`../../static/images/services/${productID}.png`)} alt="product" className="card-img-top" />
+                    <img src={`http://localhost:4000/static/${productID}.png`} alt="product" className="card-img-top" />
                   </Link>
 
                   <button
@@ -33,7 +36,7 @@ export default class Product extends Component {
                       In Cart
                     </p>
                   ) : (
-                    <i className="fas fa-cart-plus" />
+                    <ShoppingCartIcon></ShoppingCartIcon>
                   )}
                   </button>
                 </div>
@@ -98,9 +101,9 @@ const ProductWrapper = styled.div`
       bottom: 0;
       right: 0;
       padding: 0.2 rem 0.4rem;
-      background: var(--lightBlue);
+      background: #009ffd;
       border: none;
-      color:var(--mainWhite);
+      color: #f3f3f3;
       font-size: 1.4rem;
       border-radius: 0.5rem 0 0 0;
       transform: translate(100%, 100%);
@@ -110,7 +113,7 @@ const ProductWrapper = styled.div`
       transform: translate(0,0);
     }
     .cart-btn:hover{
-      color: var(--mainBlue);
+      color: #2a2a72;
       cursor: pointer;
     }
 `;

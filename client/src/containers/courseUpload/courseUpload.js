@@ -54,6 +54,7 @@ export default function CourseUpload() {
         <Typography component="h1" variant="h5">
           ADD PRODUCT
         </Typography>
+        
         <FileUpload></FileUpload>
         <form className={classes.form}  onSubmit={value.addProduct} >
              <Grid container spacing={2}> 

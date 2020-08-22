@@ -10,6 +10,8 @@ const pageRouter = require('./routes/User');
 const pageRouter2 = require('./routes/Checkout');
 const pageRouter3 = require('./routes/services');
 const pageRouter4 = require('./routes/uploadFile');
+const pageRouter5 = require('./routes/onbought');
+
 //const pageRouter4 = require('./routes/Courses')
 
 app.use(cors(corsOptions));
@@ -26,11 +28,15 @@ app.use(session({
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended : true}));
 
-
+app.use('/static', express.static('public'))
 app.use('/', pageRouter);
 app.use('/', pageRouter2);
 app.use('/', pageRouter3);
 app.use('/', pageRouter4);
+app.use('/', pageRouter5);
+
+
+
 // app.set('view engine', 'handlebars');//// yiya hai pehle wale error ka solution lekin usse doosra error generate hogya
 
 // const mysqlConnection = mysql.createConnection({
@@ -116,7 +122,7 @@ app.use('/', pageRouter4);
 
 
 var Users = require('./routes/User')
-var services = require('./routes/services')
+//var services = require('./routes/services')
 //newcode
 // require('./routes/auth.routes')(app);
 // require('./routes/user.routes')(app);

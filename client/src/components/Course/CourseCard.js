@@ -85,13 +85,20 @@ import Button from 'react-bootstrap/Button';
 import 'tachyons'
 //import './CourseCard.css'
 import Container from 'react-bootstrap/Container'
+import { CloudinaryContext, Image } from "cloudinary-react";
 
  const CourseCard = ({ productID, company, price  , inCart  }) =>{
   return(
     
     <div  className=" dib br3 ma2 grow bw2 shadow-5 ">
     <Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src={require(`../../static/images/services/${productID}.png`)} />
+  {/* <Card.Img variant="top" src={require(`../../static/images/services/${productID}.png`)} /> */}
+  <Image
+              key={productID}
+              publicId={productID}
+              fetch-format="auto"
+              quality="auto"
+            />
   <Card.Body>
     <Card.Text>
     {company}
