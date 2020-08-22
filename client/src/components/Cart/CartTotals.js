@@ -8,12 +8,26 @@ import { toast } from "react-toastify";
 //import { Button } from '@material-ui/core';
 toast.configure();
 
-export default function CartTotals({value, history}) {
+export default function CartTotals({value}) {
     const {cartSubTotal, cartTax, cartTotal, clearCart} = value;
-    var product = value.cart.product;
-    var cart = value.cart;
+    var {cart} = value.cart;
     var user = value.loggedInUser;
-   
+    // if(cart)
+    // {
+        console.log("CART" + value.cart)
+    var name= value.cart.map((product,i)=>{
+        //console.log(product)
+        return product[i].product_name
+    }).join(" and ")
+    console.log(name)
+
+//}
+
+    const [product] = React.useState({
+        name: name,
+        price: cartTotal
+        
+      });
 
 
     console.log(product);
