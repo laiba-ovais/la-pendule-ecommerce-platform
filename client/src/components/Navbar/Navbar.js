@@ -20,7 +20,7 @@ import './Navbar.css';
 import {ButtonContainer} from "../Button/Button"
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {ProductConsumer} from '../Course/contex';
-import AutoComplete from './AutoComplete'
+
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -190,7 +190,7 @@ function Navbar() {
         {
           (value)=>{
             const {cart} = value;
-            console.log(cart.lenght)
+            console.log(cart.length)
             return( <div className={classes.grow}>
               <div>
               <AppBar display="block" position="static" width="100" >
