@@ -59,9 +59,9 @@ export default function SignIn(props) {
       {(value)=>{
       
       
-      if(value.SignIn){
-        props.history.push(`/profile`)
-      }
+      // if(value.SignIn){
+      //   props.history.push(`/profile`)
+      // }
       
       return( <Container className={classes.back} component="main" maxWidth="xs">
       <CssBaseline />
@@ -122,7 +122,7 @@ export default function SignIn(props) {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/SignUp" variant="body2">
+              <Link href="/register" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

@@ -1,9 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
 // import PayPalButton from './PayPalButton'
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { toast } from "react-toastify";
+//import { Button } from '@material-ui/core';
 toast.configure();
 
 export default function CartTotals({value, history}) {
@@ -103,7 +105,10 @@ export default function CartTotals({value, history}) {
                     shippingAddress
                 />
                   ) : (
-                    <h3>Please sign in for Payments</h3>
+                    <a href="/signIn">
+                        <Button type="button" className="btn btn-primary">Sign In</Button>
+                    </a>
+                    
                   )}
                     {/* <PayPalButton total={cartTotal} clearCart={clearCart} history={history}/> */}
                 </div>

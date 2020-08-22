@@ -150,7 +150,7 @@ fetchUserData(){
         }) 
         localStorage.setItem("user", JSON.stringify(tempUser)); 
         localStorage.setItem("loggedInUser", JSON.stringify(tempUser)); 
-      this.props.history.push(`/profile`)
+      this.props.history.push(`/cart`)
       }
       if(response.data.error){
         alert("User not found No registered")
