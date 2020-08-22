@@ -229,17 +229,13 @@ componentDidUpdate=()=>{
   localStorage.setItem("signedin", JSON.stringify(this.state.signedin));
   localStorage.setItem("loggedInUser", JSON.stringify(this.state.loggedInUser));
 
-
-
-
   
-  // if(this.state.cart)
-  // {
-  // var tempcartname =this.state.cart.product.map((product,i)=>{
-  //   return product[i].product_name
-  // })
-  // console.log(tempcartname)
-// }
+  
+  var tempcartname =this.state.cart.map((product,i)=>{
+    return product[i]
+  })
+  console.log(tempcartname)
+
 
 
   console.log(this.state.products)

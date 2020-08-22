@@ -189,8 +189,7 @@ function Navbar() {
 <ProductConsumer>
         {
           (value)=>{
-            const {cart} = value;
-            console.log(cart.lenght)
+           
             return( <div className={classes.grow}>
               <div>
               <AppBar display="block" position="static" width="100" >
@@ -233,7 +232,7 @@ function Navbar() {
                     color="inherit"
                     aria-label="cart"
                   >
-                  <Badge badgeContent={cart.lenght} color="secondary">
+                  <Badge badgeContent={value.cart.lenght} color="secondary">
                   <ShoppingCartIcon  style={ { fontSize: 30 , color: "white"}}/>
                   </Badge>
                   </IconButton>
