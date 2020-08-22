@@ -194,12 +194,9 @@ function Navbar() {
 <ProductConsumer>
         {
           (value)=>{
-<<<<<<< HEAD
             const {cart} = value;
             console.log(cart.length)
-=======
-           
->>>>>>> cfcd3b8306aff76a9e1239ae07bd43b9c8fcb857
+
             return( <div className={classes.grow}>
               <div>
               <AppBar display="block" position="static" width="100" >
