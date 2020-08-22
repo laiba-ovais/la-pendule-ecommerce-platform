@@ -3,6 +3,7 @@ const mysql = require('mysql');
 var bodyParser = require('body-parser');
 // const jwt = require('jsonwebtoken')
 // process.env.SECRET_KEY = 'secret'
+const connection = require('../database');
 
 const router = express.Router();
 const {encryptPWD,comparePWD} = require('../config/passwordCompare');
