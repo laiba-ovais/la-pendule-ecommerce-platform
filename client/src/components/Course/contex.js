@@ -84,6 +84,15 @@ fetchUserData(){
    
     this.setProducts();
     this.setUsers();
+    if(this.state.cart&& this.state.products){
+    this.state.products.forEach(element => {
+      this.state.cart.product.forEach(product=>{
+        if(element.productID===product.productID){
+          element.inCart=true
+        }
+      })
+      
+    });}// yaar esa krna hai k jo cart mein products ho uski incart property true hojaye...
   
   }
   // isse input field mein type honay wali value states ko assign hojati hai
@@ -206,9 +215,9 @@ fetchProductData(){
         productID: product.productID,
         product_name: `${product.product_name}`,
         company: `${product.company}`,
-        price: `${product.price}`,
+        price: product.price,
         info: `${product.info}`,
-        stock: `${product.stock}`,
+        stock: product.stock,
         inCart:false,
         total:0,
         count:0
@@ -260,7 +269,7 @@ fetchProductData(){
     else
     this.setState(()=>{return {products:filteredcourse}})
 
-  }//agar yahan set horhi hai, tou uper wali value kahan se arhi hai
+  }
 // item cart mein jata hai
   addToCart = (productID) => {
      let tempProducts = [...this.state.products];
@@ -403,7 +412,8 @@ fetchProductData(){
               onsubmit:this.onsubmit,
               onChange:this.onChange,
               onRegister:this.onRegister,
-              addProduct:this.addProduct
+              addProduct:this.addProduct,
+
 
           }
       }>
