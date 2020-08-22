@@ -59,6 +59,7 @@ class ProductProvider extends Component {
     this.onRegister = this.onRegister.bind(this)
     this.addProduct = this.addProduct.bind(this)
     this.onLoggout = this.onLoggout.bind(this)
+    this. onbaught=this. onbaught.bind(this)
   }
   componentWillMount() {
     localStorage.getItem('signedin')&&localStorage.getItem('cart')&&localStorage.getItem('products') &&localStorage.getItem('cartTax') && localStorage.getItem('cartTotal') && localStorage.getItem('cartSubTotal')&&this.setState({
@@ -120,7 +121,25 @@ fetchUserData(){
     localStorage.removeItem("signedin");
     this.props.history.push('/signin');
   }
+  onbaught=()=> {
+   
+  
+    this.cart.forEach(element => {
+        axios({  // isse post kr rhy hain email or password thk
+            method: 'POST',
+            url: '/onbaught',
+            data: {
+              productID    : element.productID,
+              userid : this.loggedInUser.id
+            }}).then(response=>{
+                console.log(response);
+            } )
+        
+    });
 
+
+    
+}
   setUsers=()=>{
     this.fetchUserData()
   }
@@ -448,7 +467,8 @@ fetchProductData(){
               onChange:this.onChange,
               onRegister:this.onRegister,
               addProduct:this.addProduct,
-              onLoggout:this.onLoggout
+              onLoggout:this.onLoggout,
+              onbaught:this. onbaught
 
 
           }
