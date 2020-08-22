@@ -10,14 +10,14 @@ toast.configure();
 
 export default function CartTotals({value}) {
     const {cartSubTotal, cartTax, cartTotal, clearCart} = value;
-    var {cart} = value.cart;
+    var {cart} = value;
     var user = value.loggedInUser;
     // if(cart)
     // {
-        console.log("CART" + value.cart)
-    var name= value.cart.map((product,i)=>{
+        //yeh kch show nhi kar rha
+    var name= cart.map((product)=>{
         //console.log(product)
-        return product[i].product_name
+        return `${product.product_name} ammount = ${product.count}`
     }).join(" and ")
     console.log(name)
 
@@ -113,7 +113,7 @@ export default function CartTotals({value}) {
                     onClick={onbaught}
                     stripeKey="pk_test_51H3QTXHzmFQ3IEpHb5AQsUscXQoZEINiF2zi8ApZ7gelluyKvuKD2QTSVVYdiSYZWkPYD4up4fuBUcjV7xW8ee4m00eTpjdSaA"
                     token={handleToken}
-                    amount={cartTotal}
+                    amount={cartTotal*100}
                     name="Course Payments"
                     billingAddress
                     shippingAddress

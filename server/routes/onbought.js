@@ -18,7 +18,7 @@ const mysqlConnection = mysql.createConnection({
   });
 
   
-  router.post('/productAdded' , function(req, res){
+  router.post('/onbaught' , function(req, res){
     var user = req.body;
     
        mysqlConnection.query("insert into baught ( `productID`,`user_id`) values('"+ req.body.productID +"', '"+req.body.UserID +"');"
@@ -30,4 +30,7 @@ const mysqlConnection = mysql.createConnection({
         
             
 })
+
+
+
 module.exports = router;
