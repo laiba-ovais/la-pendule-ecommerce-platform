@@ -10,13 +10,20 @@ router.use(
     })
 )
 
+var mysql_pool  = mysql.createPool({
+  connectionLimit : 100,
+  host            : '104.199.232.15',
+  user            : 'root',
+  password        : 'Palkia786',
+  database        : 'wegcdb'
+});
 const mysqlConnection = mysql.createConnection({
   host: '104.199.232.15',
     user:'root',
     password: 'Palkia786',
     database: 'wegcdb'
   });
-  mysqlConnection.connect((err) =>{
+  mysql_pool.getConnection((err) =>{
     if(!err){
     console.log('DB connection successful');
     var sql = "CREATE TABLE IF NOT EXISTS products (productID INT NOT NULL AUTO_INCREMENT, product_name VARCHAR(255), company VARCHAR(255), info VARCHAR(1000), price DECIMAL(7,2), stock INT(100), PRIMARY KEY(productID))";

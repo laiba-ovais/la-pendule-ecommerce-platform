@@ -1,13 +1,13 @@
-const mysql = require('mysql');
-const config = require('../config');
+// const mysql = require('mysql');
+// const config = require('../config');
 
-const courses = require('./courses') ;
+// const courses = require('./courses') ;
 
- const Connection = mysql.createConnection(config.mysql);
+//  const Connection = mysql.createConnection(config.mysql);
 
-Connection.connect(err => {
-    if(err) console.log(err);
+// Connection.connect(err => {
+//     if(err) console.log(err);
     
-})
+// })
 
-module.exports= {courses, Connection};
+// module.exports= {courses, Connection};

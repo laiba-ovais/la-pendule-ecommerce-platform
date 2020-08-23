@@ -19,7 +19,7 @@ const pageRouter5 = require('./routes/onbought');
 
 app.use(cors(corsOptions));
 var corsOptions = {
-    origin: "http://localhost:4000"
+    origin: "http://localhost:8080"
   };
 
 app.use(session({
@@ -138,7 +138,7 @@ app.get('/',(req,res)=>{
 
 
 
-app.listen(4000, () =>{
+app.listen(8080, () =>{
     console.log("sdsad");
 })
 
