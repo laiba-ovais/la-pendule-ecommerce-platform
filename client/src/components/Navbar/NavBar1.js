@@ -18,7 +18,7 @@ function Navbar1() {
       const {cart} = value;
       console.log(cart.length)
 return(
-  <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+  <Navbar className="fixed-top" collapseOnSelect expand="lg" bg="dark" variant="dark">
   <Navbar.Brand href="#home"><img width="100px" height="40px" src={require("../../static/images/logo-la-pendule.jpeg")}></img></Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
