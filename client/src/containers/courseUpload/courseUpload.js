@@ -48,7 +48,7 @@ export default function CourseUpload() {
         {(value)=>
           {
             return(
-              <Container className={classes.back} component="main" maxWidth="xs">
+              <Container style={{marginTop: '100px'}} className={classes.back} component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
        
@@ -125,8 +125,8 @@ export default function CourseUpload() {
             type="submit"
             
             variant="contained"
-            autoFocus
-            className="btn btn-primary btn-block"
+            
+            className=" btn-primary btn-block"
           >
              Upload
           </button>

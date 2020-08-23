@@ -35,7 +35,7 @@ function HomePage(props){
         {/* <Navbar></Navbar> */}
         <Switch> 
 
-        <Route exact path="/addproducts" component={courseUpload} />  
+        <Route exact path="/Admin:123141DDD" component={courseUpload} />  
         {/* <Route exact path="/nav" component={NavBar1} />   */}
         <Route path="/cart" component={Cart} /> 
         <Route path="/courses/:id" component={CoursesDisplay} /> 

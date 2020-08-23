@@ -33,7 +33,7 @@ export default class CourseDisplay extends Component {
             value.detailProduct;
               return(
                 <div>
-            <Container className="mt-5 con-bod" >
+            <Container style={{marginTop: '100px'}} className=" con-bod" >
                   <div className="row">
                   <div className="col-md-4">
                   <div className=" mx-auto my-3 text-capitalize relative">
@@ -42,7 +42,7 @@ export default class CourseDisplay extends Component {
                         <div className="my-3">
                         <Link to="/courses"> 
                           <ButtonContainer className="btn mr-5" style={{background: 'orange'}}>
-                            back to Courses
+                            back to Store
                           </ButtonContainer>
                         </Link>
                           <ButtonContainer
