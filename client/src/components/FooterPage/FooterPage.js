@@ -8,7 +8,7 @@ function FooterPage ()  {
       
       <div style={{background: '#343a40'}} className="footer-copyright text-center py-3">
         <MDBContainer fluid color="white">
-          &copy; {new Date().getFullYear()} Copyright: <a href="/" > WatchME</a>
+          &copy; {new Date().getFullYear()} Copyright: <a href="/" > La Pendule</a>
         </MDBContainer>
       </div>
     </MDBFooter>

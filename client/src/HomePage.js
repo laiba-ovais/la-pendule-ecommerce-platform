@@ -12,6 +12,7 @@ import GridWatches from './containers/GridWatches/GridWatches'
 import FooterPage from './components/FooterPage/FooterPage';
 import NavBar1 from './components/Navbar/NavBar1';
 import PersonList from './components/getUser/getUser'
+import About from './components/About/About';
 
 import ServiceRegister from './components/ServiceRegisteration/ServiceRegister';
 
@@ -45,7 +46,7 @@ function HomePage(props){
         <Route exact path="/register" component = {SignUp}/>
         <Route exact path="/signin" component = {SignIn}/>
         <Route exact path="/grid" component = {GridWatches}/>
-        
+        <Route exact path="/about"component = {About}/>
         <Route exact path="/user" component = {PersonList}/>
         {/* <Route exact path="/playlist" component = {Playist}/> */}
         </Switch>
