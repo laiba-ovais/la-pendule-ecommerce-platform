@@ -20,7 +20,7 @@ export default class Product extends Component {
                   onClick= {()=>value.handleDetail(productID)}
                 >
                   <Link to={{ pathname: '/courses/' + productID }}>
-                    <img src={`http://35.194.177.214:4000/static/${productID}.png`} alt="product" className="card-img-top" />
+                    <img src={`https://35.194.177.214:4000/static/${productID}.png`} alt="product" className="card-img-top" />
                   </Link>
 
                   <button
