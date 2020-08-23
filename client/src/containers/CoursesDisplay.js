@@ -37,7 +37,7 @@ export default class CourseDisplay extends Component {
                   <div className="row">
                   <div className="col-md-4">
                   <div className=" mx-auto my-3 text-capitalize relative">
-                        <img src={`http://35.194.177.214:4000/static/${productID}.png`} width="500px" height="500px" alt="product"/>
+                        <img src={`https://graphite-sphere-286919.uc.r.appspot.com/static/${productID}.png`} width="500px" height="500px" alt="product"/>
                         </div>
                         <div className="my-3">
                         <Link to="/courses"> 
