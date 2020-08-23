@@ -50,7 +50,7 @@ class Course extends React.Component{
         {
           (value)=>{
             return( <div style={{marginTop: '100px'}} className ="container">
-            <SearchBar></SearchBar>
+            <SearchBar searchChange={value.searchChange} ></SearchBar>
             <GridList cols={3} cellHeight={'auto'}> 
             <CourseCardList CourseDetails={value.products}/>  
             </GridList>

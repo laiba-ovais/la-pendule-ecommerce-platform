@@ -62,9 +62,9 @@ class ProductProvider extends Component {
     this. onbaught=this. onbaught.bind(this)
   }
   componentWillMount() {
-    localStorage.getItem('signedin')&&localStorage.getItem('cart')&&localStorage.getItem('products') &&localStorage.getItem('cartTax') && localStorage.getItem('cartTotal') && localStorage.getItem('cartSubTotal')&&this.setState({
+    localStorage.getItem('signedin')&&localStorage.getItem('cart')&&localStorage.getItem('cartTax') && localStorage.getItem('cartTotal') && localStorage.getItem('cartSubTotal')&&this.setState({
       cart: JSON.parse(localStorage.getItem('cart')),
-      products: JSON.parse(localStorage.getItem('products')),
+     
       cartTax: JSON.parse(localStorage.getItem('cartTax')),
       cartTotal: JSON.parse(localStorage.getItem('cartTotal')),
       cartSubTotal: JSON.parse(localStorage.getItem('cartSubTotal')),
@@ -247,16 +247,6 @@ componentDidUpdate=()=>{
   localStorage.setItem("cartTotal", JSON.stringify(this.state.cartTotal));
   localStorage.setItem("signedin", JSON.stringify(this.state.signedin));
   localStorage.setItem("loggedInUser", JSON.stringify(this.state.loggedInUser));
-
-  
-  
-  var tempcartname =this.state.cart.map((product,i)=>{
-    return product[i]
-  })
-  console.log(tempcartname)
-
-
-
   console.log(this.state.products)
 }
 fetchProductData(){
@@ -275,7 +265,7 @@ fetchProductData(){
        
     }
 ))).then((product) => {  
-  localStorage.setItem("products", JSON.stringify(this.state.products));
+  // localStorage.setItem("products", JSON.stringify(this.state.products));
   console.log(product)
   return(this.setState({products:product}))})
   .catch(error => console.log('parsing failed', error)) 
