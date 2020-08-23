@@ -18,8 +18,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="white" href="https://material-ui.com/">
+        La Pendule
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -47,7 +47,10 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   back:{
-      backgroundColor: 'white'
+    marginTop: '100px',
+      backgroundColor: 'white',
+      borderRadius: '5px 5px 5px 5px',
+    color: 'white'
   }
 }));
 

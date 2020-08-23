@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container'
 
 const About = () => {
     return(
-<div className="container-fluid text-center d-none d-lg-block">
+<div style={{marginTop:'100px'}} className="container-fluid text-center d-none d-lg-block">
 
 <Typography variant="h6" noWrap>
                    ABOUT LA PENDULE   

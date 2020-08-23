@@ -34,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   back:{
-      backgroundColor: 'white'
+      backgroundColor: 'white',
+      mariginTop: '100px'
   }
 }));
 
@@ -51,7 +52,7 @@ export default function CourseUpload() {
       <CssBaseline />
       <div className={classes.paper}>
        
-        <Typography component="h1" variant="h5">
+        <Typography style={{paddingTop: '5px'}} component="h1" variant="h5">
           ADD PRODUCT
         </Typography>
         
@@ -122,10 +123,10 @@ export default function CourseUpload() {
           
           <button
             type="submit"
-            fullWidth
+            
             variant="contained"
             autoFocus
-            className="btn btn-success btn-block"
+            className="btn btn-primary btn-block"
           >
              Upload
           </button>

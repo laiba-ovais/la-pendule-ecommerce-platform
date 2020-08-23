@@ -33,24 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-/**
- * The example data is structured as follows:
- *
- * import image from 'path/to/image.jpg';
- * [etc...]
- *
- * const tileData = [
- *   {
- *     img: image,
- *     title: 'Image',
- *     author: 'author',
- *   },
- *   {
- *     [etc...]
- *   },
- * ];
- */
-export default function GridWatches({_id, courseTitle, courseImage, price}) {
+export default function GridWatches({productID, product_name, courseImage, price}) {
   const classes = useStyles();
   return (
     <ProductConsumer >
@@ -66,9 +49,10 @@ export default function GridWatches({_id, courseTitle, courseImage, price}) {
            
           <GridListTile onClick={()=>value.handleDetail(product._id)} key={product._id}>
              <Link to={{ pathname: '/courses/' + product._id }} >
-            <img width="600px" height="300px" src={require(`../../static/images/services/${i+1}.png`)} alt={product.courseTitle} />
+            <img width="600px" height="300px" key={productID}
+              publicId={productID} alt={product.courseTitle} />
             <GridListTileBar
-              title={product.courseTitle}
+              title={product.product_name}
               classes={{
                 root: classes.titleBar,
                 title: classes.title,

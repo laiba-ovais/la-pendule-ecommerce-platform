@@ -14,8 +14,6 @@ import NavBar1 from './components/Navbar/NavBar1';
 import PersonList from './components/getUser/getUser'
 import About from './components/About/About';
 
-import ServiceRegister from './components/ServiceRegisteration/ServiceRegister';
-
 import CourseUpload from './containers/courseUpload/courseUpload';
 import ProductProvider from './components/Course/contex';
 // var createBrowserHistory = require('history/lib/createBrowserHistory');
@@ -36,7 +34,7 @@ function HomePage(props){
             <NavBar1></NavBar1>
         {/* <Navbar></Navbar> */}
         <Switch> 
-        <Route exact path="/serviceRegistration" component={ServiceRegister} />  
+
         <Route exact path="/addproducts" component={courseUpload} />  
         {/* <Route exact path="/nav" component={NavBar1} />   */}
         <Route path="/cart" component={Cart} /> 

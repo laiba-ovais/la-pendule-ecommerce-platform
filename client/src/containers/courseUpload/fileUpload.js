@@ -92,7 +92,7 @@ onChangeHandler=event=>{
 
   render() {
     return (
-      <div class="container">
+      <div class="container" style={{textAlign:'center'}}>
 	      <div class="row">
       	  <div class="offset-md-3 col-md-6">
                <div class="form-group files">
@@ -105,7 +105,7 @@ onChangeHandler=event=>{
         
               </div> 
               
-              <button type="button" class="btn btn-success btn-block" onClick={this.onClickHandler}>Upload</button>
+              <button type="button" class="btn btn-primary btn-block" onClick={this.onClickHandler}>Upload</button>
 
 	      </div>
       </div>

@@ -49,7 +49,8 @@ class Course extends React.Component{
 <ProductConsumer>
         {
           (value)=>{
-            return( <div className ="container">
+            return( <div style={{marginTop: '100px'}} className ="container">
+            <SearchBar></SearchBar>
             <GridList cols={3} cellHeight={'auto'}> 
             <CourseCardList CourseDetails={value.products}/>  
             </GridList>
