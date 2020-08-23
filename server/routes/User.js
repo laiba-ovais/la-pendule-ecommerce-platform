@@ -14,21 +14,28 @@ router.use(
         extended:false
     })
 )
+var mysql_pool  = mysql.createPool({
+  connectionLimit : 100,
+  host            : '104.199.232.15',
+  user            : 'root',
+  password        : 'Palkia786',
+  database        : 'wegcdb'
+});
 const mysqlConnection = mysql.createConnection({
   host: '104.199.232.15',
   user:'root',
   password: 'Palkia786',
   database: 'wegcdb'
 });
-mysqlConnection.connect((err) =>{
+mysql_pool.getConnection((err) =>{
   if(!err){
   console.log('DB connection successful');
   var sql = "CREATE TABLE IF NOT EXISTS users (ID INT(4),first_name VARCHAR(255), last_name VARCHAR(255), password VARCHAR(255) , email VARCHAR(255), PRIMARY KEY(ID))";
-  mysqlConnection.query(sql, function (err, result) {
+  mysql_pool.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Table created");
   //   var sql ="INSERT INTO `users` (`ID`, `first_name`,`last_name`, `password`, `email`) VALUES (1, 'test', 'test','test', 'test@test.com');";
-      mysqlConnection.query(sql,function(err,result){if (err) throw err;
+  mysql_pool.query(sql,function(err,result){if (err) throw err;
           console.log("values inserted");})
   });}
   else
@@ -54,13 +61,13 @@ router.post('/submit' , function(req, res){
           last_name: user.lastname,
           time: Date.now()
       }
-      mysqlConnection.query("SELECT * FROM users WHERE email = ?", [Oneuser.email], function(err,rows){
+      mysql_pool.query("SELECT * FROM users WHERE email = ?", [Oneuser.email], function(err,rows){
           if (err) {
-              mysqlConnection.end();
+            mysql_pool.end();
               console.log(err);
           }
           if (!rows.length){
-              mysqlConnection.query("insert into users ( `first_name`,`last_name`, `password`, `email`, `time`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ hashedpassword +"', '"+ req.body.email+"', '"+ Oneuser.time+"');",function(err2,result){
+            mysql_pool.query("insert into users ( `first_name`,`last_name`, `password`, `email`, `time`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ hashedpassword +"', '"+ req.body.email+"', '"+ Oneuser.time+"');",function(err2,result){
                   if(err2)  console.log(err2);
                   console.log(res.body , "data is saved");
                   res.send({email:req.body.email}) });
@@ -88,7 +95,7 @@ router.post('/signin', (req, res) => {
   console.log(req.body);
 // var passdb = [];
 
-  mysqlConnection.query("SELECT password FROM users WHERE email='"+req.body.email +"'",function(err, results,fields){
+mysql_pool.query("SELECT password FROM users WHERE email='"+req.body.email +"'",function(err, results,fields){
     if(err)throw err;
     
     if(results.length===0){
@@ -100,7 +107,7 @@ router.post('/signin', (req, res) => {
     
     if(comparePWD(req.body.password,password)) // ye function hai jo encrypted password ko normal se compare krta hai or true bata ta hai agr encrypted = encrypted(normal)
     {
-    mysqlConnection.query('SELECT email, password FROM users WHERE email = ? AND password = ?', [Oneuser.email, Oneuser.password], 
+      mysql_pool.query('SELECT email, password FROM users WHERE email = ? AND password = ?', [Oneuser.email, Oneuser.password], 
     function(err, results)
     {
 
@@ -126,7 +133,7 @@ router.post('/signin', (req, res) => {
 router.get('/getuser', (req, res) => {
     
   // var passdb = [];
-   mysqlConnection.query("SELECT * FROM users",function(err, results,fields){
+  mysql_pool.query("SELECT * FROM users",function(err, results,fields){
       if(err)throw err;
       if(results){
         res.json({results:results});

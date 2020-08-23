@@ -47,10 +47,9 @@ export default function GridWatches({productID, product_name, courseImage, price
         {value.products.map((product,i) => (
            
            
-          <GridListTile onClick={()=>value.handleDetail(product._id)} key={product._id}>
-             <Link to={{ pathname: '/courses/' + product._id }} >
-            <img width="600px" height="300px" key={productID}
-              publicId={productID} alt={product.courseTitle} />
+          <GridListTile onClick={()=>value.handleDetail(product.productID)} key={product.productID}>
+             <Link to={{ pathname: '/courses/' + product.productID }} >
+            <img  src=  {`http://localhost:4000/static/${productID}.png`}  width="600px" height="300px" alt={product.product_name} />
             <GridListTileBar
               title={product.product_name}
               classes={{
