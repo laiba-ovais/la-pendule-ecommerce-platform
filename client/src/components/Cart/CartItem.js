@@ -8,7 +8,7 @@ export default function CartItem({ item, value }) {
     <div style={{marginTop: '100px'}} className="row my-2 text-capitalize text-center">
       <div className="col-10 mx-auto col-lg-2">
         <img
-          src={`http://localhost:4000/static/${productID}.png`}
+          src={`http://35.194.177.214:4000/static/${productID}.png`}
           style={{ widht: "5rem", height: "5rem" }}
           className="img-fluid"
           alt="product"

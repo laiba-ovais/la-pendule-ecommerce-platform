@@ -48,8 +48,8 @@ export default function GridWatches({productID, product_name, courseImage, price
            
            
           <GridListTile onClick={()=>value.handleDetail(product.productID)} key={product.productID}>
-             <Link to={{ pathname: '/courses/' + product.productID }} >
-            <img  src=  {`http://localhost:4000/static/${productID}.png`}  width="600px" height="300px" alt={product.product_name} />
+            <Link to={{ pathname: '/courses/' + product.productID }} >
+            <img  src=  {`http://35.194.177.214:4000/static/${product.productID}.png`}  width="600px" height="300px" alt={product.product_name} />
             <GridListTileBar
               title={product.product_name}
               classes={{

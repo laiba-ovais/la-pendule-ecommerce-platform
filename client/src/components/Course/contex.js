@@ -78,7 +78,7 @@ class ProductProvider extends Component {
 }
 fetchUserData(){
   
-  fetch("http://localhost:4000/getuser").then(response => response.json())
+  fetch("http://35.194.177.214:4000/getuser").then(response => response.json())
    .then(parsedJSON =>parsedJSON.results.map(user => (
     {
         name: `${user.first_name} ${user.last_name}`,
@@ -250,7 +250,7 @@ componentDidUpdate=()=>{
   console.log(this.state.products)
 }
 fetchProductData(){
-  fetch("http://localhost:4000/getproduct").then(response => response.json())
+  fetch("http://35.194.177.214:4000/getproduct").then(response => response.json())
    .then(parsedJSON =>parsedJSON.results.map(product => (
     {
         productID: product.productID,
