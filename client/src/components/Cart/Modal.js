@@ -22,7 +22,7 @@ export default class Modal extends Component {
                                 <div id="modal" 
                                 className="col-8 mx-auto col-md-6 col-lg-4 text-center text-capitalize p-5">
                                     <h5>item added to the cart</h5>
-                                    <img src={`https://graphite-sphere-286919.uc.r.appspot.com/static/${productID}.png`} className="img-fluid" alt="product"/>
+                                    <img src={`http://localhost:4000/static/${productID}.png`} className="img-fluid" alt="product"/>
                                     <h5>{product_name}</h5>
                                     <h5 className="text-muted">price: $ {price}</h5>
                                     <Link to='/courses'>

@@ -5,10 +5,10 @@ router.get('/api/courses',async(req,res)=>{
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
-  host: '104.199.232.15',
+  host: 'localhost',
   user: "root",
   password: "Palkia786",
-  database: "wegcdb"
+  database: "mydb"
 });
 
 con.connect(function(err) {

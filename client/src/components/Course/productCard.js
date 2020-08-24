@@ -20,7 +20,7 @@ export default class Product extends Component {
                   onClick= {()=>value.handleDetail(productID)}
                 >
                   <Link to={{ pathname: '/courses/' + productID }}>
-                    <img src={`https://graphite-sphere-286919.uc.r.appspot.com/static/${productID}.png`} alt="product" className="card-img-top" />
+                    <img src={`http://localhost:4000/static/${productID}.png`} alt="product" className="card-img-top" />
                   </Link>
 
                   <button
