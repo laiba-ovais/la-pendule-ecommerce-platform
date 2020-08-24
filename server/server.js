@@ -1,11 +1,15 @@
 require('dotenv').config()
 const express = require('express');
-
+const app = express();
 
 const cors = require("cors");
+app.use(cors(corsOptions));
+var corsOptions = {
+    origin: "http://35.194.177.214:4000"
+  };
 var bodyParser = require('body-parser');
 const mysql = require('mysql');
-const app = express();
+
 const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
 var session = require('express-session');
@@ -17,10 +21,7 @@ const pageRouter5 = require('./routes/onbought');
 
 //const pageRouter4 = require('./routes/Courses')
 
-app.use(cors(corsOptions));
-var corsOptions = {
-    origin: "http://localhost:4000"
-  };
+
 
 app.use(session({
 	secret: 'secret',
