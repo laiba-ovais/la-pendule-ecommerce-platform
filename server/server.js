@@ -6,12 +6,9 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     next();
   });
-var corsOptions = {
-    origin: "http://35.194.177.214:4000",
-    optionsSuccessStatus: 200
-  };
+  
 const cors = require("cors");
-app.use(cors(corsOptions));
+app.use(cors());
 
   
 var bodyParser = require('body-parser');
