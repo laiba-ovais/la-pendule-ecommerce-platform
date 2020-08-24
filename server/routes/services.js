@@ -12,7 +12,7 @@ router.use(
 
 var mysql_pool  = mysql.createPool({
   connectionLimit : 100,
-  host            : 'localhost',
+  host            : '104.199.232.15',
   user            : 'root',
   password        : 'Palkia786',
   database        : 'mydb'
