@@ -3,7 +3,7 @@ const mysql = require('mysql');
 var bodyParser = require('body-parser');
 // const jwt = require('jsonwebtoken')
 // process.env.SECRET_KEY = 'secret'
-const createUnixSocketPool = require('../database');
+
 
 const router = express.Router();
 const cors = require("cors");
