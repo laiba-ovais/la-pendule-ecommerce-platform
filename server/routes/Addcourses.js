@@ -3,7 +3,8 @@ const router = express.Router();
 
 router.get('/api/courses',async(req,res)=>{
 var mysql = require('mysql');
-
+const cors = require("cors");
+router.use(cors());
 var con = mysql.createConnection({
   host: '104.199.232.15',
   user: "root",

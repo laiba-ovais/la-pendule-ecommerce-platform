@@ -10,6 +10,11 @@ router.use(
     })
 )
 
+const cors = require("cors");
+router.use(cors());
+
+
+
 var mysql_pool  = mysql.createPool({
   connectionLimit : 100,
   host            : '104.199.232.15',

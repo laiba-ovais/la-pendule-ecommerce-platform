@@ -6,6 +6,9 @@ var bodyParser = require('body-parser');
 const createUnixSocketPool = require('../database');
 
 const router = express.Router();
+const cors = require("cors");
+router.use(cors());
+router
 const {encryptPWD,comparePWD} = require('../config/passwordCompare');
 
 router.use(bodyParser.json());

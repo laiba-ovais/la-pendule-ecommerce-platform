@@ -4,7 +4,8 @@ const { v4: uuidv4 } = require('uuid');
 const router = express.Router();
 var nodemailer = require('nodemailer');
 
-
+const cors = require("cors");
+router.use(cors());
 router.get("/", (req, res) => {
   res.send("Add your Stripe Secret Key to the .require('stripe') statement!");
 });

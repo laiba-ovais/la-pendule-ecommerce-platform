@@ -9,7 +9,8 @@ router.use(
         extended:false
     })
 )
-
+const cors = require("cors");
+router.use(cors());
 const mysqlConnection = mysql.createConnection({
     host: '104.199.232.15',
     user:'root',
