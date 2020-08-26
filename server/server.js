@@ -2,14 +2,14 @@ require('dotenv').config()
 const express = require('express');
 
 const app = express();
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://peaceful-earth-36070.herokuapp.com.TLD"); // update to match the domain you will make the request from
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    res.setHeader('Access-Control-Allow-Headers', 'authorization');
-        next();
-  });
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'http://peaceful-earth-36070.herokuapp.com');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+}
+app.use(allowCrossDomain);
 const cors = require("cors");
 app.use(cors());
 
