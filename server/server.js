@@ -7,6 +7,7 @@ app.use(function(req, res, next) {
       "Access-Control-Allow-Headers",
       "Origin, X-Requested-With, Content-Type, Accept"
     );
+    res.header('Access-Control-Allow-Origin:http://peaceful-earth-36070.herokuapp.com')
     res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
     res.header("Access-Control-Allow-Credentials", true); 
     if (req.method === "OPTIONS") {
