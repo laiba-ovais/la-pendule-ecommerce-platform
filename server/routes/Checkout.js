@@ -64,7 +64,7 @@ router.post("/checkout", async (req, res) => {
       from: 'weprojectnodemailer@gmail.com',
       to: token.email,
       subject: `Payment Success payment id ${token.id}`,
-      text: `Order has been placed of payment id ${token.id} of ${product.name},for price  ${product.price} and will be deilvered at ${token.address} shortly in 3 days `
+      text: `Dear  Order has been placed of payment id ${token.id} of ${product.name}, for price  ${product.price} and will be deilvered at ${token.card.address_line1} shortly in 3 days `
     };
     
     transporter.sendMail(mailOptions, function(error, info){
