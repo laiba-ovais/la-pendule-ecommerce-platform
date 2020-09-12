@@ -63,7 +63,7 @@ router.post('/submit' , function(req, res){
           password:user.password,
           first_name: user.firstname,
           last_name: user.lastname,
-          time: Date.now().toISOString()
+          time:  new Date()
       }
       mysql_pool.query("SELECT * FROM users WHERE email = ?", [Oneuser.email], function(err,rows){
           if (err) {
