@@ -73,7 +73,7 @@ router.post('/submit' , function(req, res){
           if (!rows.length){
             mysql_pool.query("insert into users ( `first_name`,`last_name`, `password`, `email`, `time`) values('"+ req.body.first_name +"', '"+req.body.last_name +"', '"+ hashedpassword +"', '"+ req.body.email+"', '"+ Oneuser.time+"');",function(err2,result){
                   if(err2)  console.log(err2);
-                  console.log(res.body , "data is saved");
+                  console.log(req.body.first_name+" and "+req.body.email  , "data is saved");
                   res.send({email:req.body.email}) });
           }
           else{
