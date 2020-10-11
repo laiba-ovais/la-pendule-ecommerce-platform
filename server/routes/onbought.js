@@ -12,10 +12,10 @@ router.use(
 const cors = require("cors");
 router.use(cors());
 const mysqlConnection = mysql.createConnection({
-    host: '104.199.232.15',
+    host: 'localhost',
     user:'root',
     password: 'Palkia786',
-    database: 'wegcdb'
+    database: 'mydb'
   });
 
   

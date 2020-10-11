@@ -17,16 +17,16 @@ router.use(cors());
 
 var mysql_pool  = mysql.createPool({
   connectionLimit : 100,
-  host            : '104.199.232.15',
-  user            : 'root',
-  password        : 'Palkia786',
-  database        : 'wegcdb'
+  host: 'localhost',
+  user:'root',
+  password: 'Palkia786',
+  database: 'mydb'
 });
 const mysqlConnection = mysql.createConnection({
-  host: '104.199.232.15',
-    user:'root',
-    password: 'Palkia786',
-    database: 'wegcdb'
+  host: 'localhost',
+  user:'root',
+  password: 'Palkia786',
+  database: 'mydb'
   });
   mysql_pool.getConnection((err) =>{
     if(!err){
